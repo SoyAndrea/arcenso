@@ -16,3 +16,7 @@ Imports:
     quarto,
     rlang,
     shiny
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
