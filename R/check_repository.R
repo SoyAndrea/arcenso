@@ -1,6 +1,6 @@
-#' Title
+#' check_repository
 #'
-#' @param year
+#' @param year census year for which you want to view the currently available tabulations
 #' @param topic
 #' @param geolvl
 #'
