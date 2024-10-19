@@ -1,13 +1,13 @@
-#' Title
+#' get_census
+#'get a list with the tables currently available in the package
+#' @param year census year for which the user wants to view the currently available tabulations. The default is “1970”.
+#' @param topic census topic of the tables Setting the parameter to NULL will download all available tables.
+#' @param geolvl geographic disaggregation level, use “Total del país” for the overall results. Setting the parameter to NULL will download all available tables.
 #'
-#' @param year
-#' @param topic
-#' @param geolvl
-#'
-#' @return
+#' @return Returns a list with the tables that meet the parameters. To check the tables currently available use the check_repository function
 #' @export
 #'
-#' @examples
+#' @examples get_census( year = 1970, topic = "EDUCACION", geolvl = "Total del país")
 get_census <- function( year = 1970, topic = NULL, geolvl = NULL){
 
   if(year != 1970) stop(paste0("El año ", year, " todavia no fue cargado en AR_CENSO o no es un año censal"))
