@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# **ARcenso** <img src="man/figures/logo.png" align="right" style="float:right;"  />
+# **ARcenso** <img src="man/figures/logo.png" align="right" style="float:right; width: 45%; height: 450%;"  />
 
 <!-- badges: start -->
 <!-- badges: end -->

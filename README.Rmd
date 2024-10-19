@@ -13,7 +13,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# **ARcenso**  <img src="man/figures/logo.png" align="right" style="float:right;"  /> 
+# **ARcenso**  <img src="man/figures/logo.png" align="right" style="float:right; width: 45%; height: 450%;"  /> 
 
 <!-- badges: start -->
 
