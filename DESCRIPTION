@@ -1,8 +1,10 @@
 Package: arcenso
 Title: What the Package Does (One Line, Title Case)
 Version: 0.0.0.9000
-Authors@R: 
-    person("Andrea", "Gomez Vargas", , "andrea.gomezv11@gmail.com", role = c("aut", "cre"))
+Authors@R: c(
+    person("Andrea", "Gomez Vargas", , "andrea.gomezv11@gmail.com", role = c("aut", "cre")),
+    person("Emanuel", "Ciardullo", role = "aut")
+    )
 Description: What the package does (one paragraph).
 License: MIT + file LICENSE
 Encoding: UTF-8
