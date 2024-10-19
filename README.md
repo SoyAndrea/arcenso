@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# arcenso
+# **ARcenso** <img src="man/figures/logo.png" align="right" style="float:right; width: 45%; height: 450%;"  />
 
 <!-- badges: start -->
 <!-- badges: end -->
@@ -25,4 +25,6 @@ This is a basic example which shows you how to solve a common problem:
 ``` r
 library(arcenso)
 ## basic example code
+
+# get_census(year = 1970)
 ```

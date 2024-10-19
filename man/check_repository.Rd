@@ -2,12 +2,17 @@
 % Please edit documentation in R/check_repository.R
 \name{check_repository}
 \alias{check_repository}
+<<<<<<< HEAD
 \title{check_repository
 reports the tables currently available in the package}
+=======
+\title{Title}
+>>>>>>> 066b6db568ed2da80dad1a22831ed154bb221e61
 \usage{
 check_repository(year = 1970, topic = NULL, geolvl = NULL)
 }
 \arguments{
+<<<<<<< HEAD
 \item{year}{census year for which the user wants to view the currently available tabulations. The default is “1970”.}
 
 \item{topic}{census topic of the tables Setting the parameter to NULL will download all available tables.}
@@ -23,4 +28,10 @@ reports the tables currently available in the package
 }
 \examples{
 check_repository( year = 1970, topic = "EDUCACION", geolvl = "Total del país")
+=======
+\item{geolvl}{}
+}
+\description{
+Title
+>>>>>>> 066b6db568ed2da80dad1a22831ed154bb221e61
 }
