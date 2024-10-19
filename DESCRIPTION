@@ -8,7 +8,7 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
-URL: https://github.com/SoyAndrea/arcenso
+URL: https://soyandrea.github.io/arcenso/, https://github.com/SoyAndrea/arcenso
 BugReports: https://github.com/SoyAndrea/arcenso/issues
 Imports: 
     gt,
