@@ -12,7 +12,7 @@ get_census <- function( year = 1970, topic = NULL, geolvl = NULL){
 
   if(year != 1970) stop(paste0("El año ", year, " todavia no fue cargado en AR_CENSO o no es un año censal"))
 
-  info_cuadros_arcenso = readRDS("data/info_cuadros_arcenso.RDS")
+  load("info_cuadros_arcenso.rda")
   repo <- list.files("data/", full.names = T)
 
   selec <- info_cuadros_arcenso[info_cuadros_arcenso$anio %in% year & info_cuadros_arcenso$PKG %in% "SI",  ]
