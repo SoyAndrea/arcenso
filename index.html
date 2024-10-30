@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>What the Package Does (One Line, Title Case) • arcenso</title>
+<title>Data from Argentina’s Population Census • arcenso</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="apple-touch-icon.png">
@@ -16,7 +16,7 @@
 <link href="deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="deps/font-awesome-6.4.2/css/all.min.css" rel="stylesheet">
 <link href="deps/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet">
-<script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="What the Package Does (One Line, Title Case)">
+<script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Data from Argentina’s Population Census">
 <meta name="description" content="What the package does (one paragraph).">
 <meta property="og:description" content="What the package does (one paragraph).">
 <meta property="og:image" content="/logo.png">
@@ -91,9 +91,212 @@
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://soyandrea.github.io/arcenso/" class="external-link">arcenso</a></span><span class="op">)</span></span>
 <span></span>
-<span><span class="co">## basic example code</span></span>
+<span><span class="co">## get a list with the tables currently available in the package</span></span>
 <span></span>
-<span><span class="co"># get_census(year = 1970)</span></span></code></pre></div>
+<span><span class="fu"><a href="reference/get_census.html">get_census</a></span><span class="op">(</span> year <span class="op">=</span> <span class="fl">1970</span>, topic <span class="op">=</span> <span class="st">"FECUNDIDAD"</span>, geolvl <span class="op">=</span> <span class="st">"Total del país"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; $c70_total_del_pais_poblacion_c17</span></span>
+<span><span class="co">#&gt;           grupo_edad hijos_nacidos_vivos mujeres</span></span>
+<span><span class="co">#&gt; 1   Menos de 15 años               Total  647350</span></span>
+<span><span class="co">#&gt; 2   Menos de 15 años                   0  643550</span></span>
+<span><span class="co">#&gt; 3   Menos de 15 años                   1    2300</span></span>
+<span><span class="co">#&gt; 4   Menos de 15 años                   2    1400</span></span>
+<span><span class="co">#&gt; 5   Menos de 15 años                   3     100</span></span>
+<span><span class="co">#&gt; 6   Menos de 15 años                   4       0</span></span>
+<span><span class="co">#&gt; 7   Menos de 15 años                   5       0</span></span>
+<span><span class="co">#&gt; 8   Menos de 15 años                   6       0</span></span>
+<span><span class="co">#&gt; 9   Menos de 15 años                   7       0</span></span>
+<span><span class="co">#&gt; 10  Menos de 15 años                   8       0</span></span>
+<span><span class="co">#&gt; 11  Menos de 15 años                   9       0</span></span>
+<span><span class="co">#&gt; 12  Menos de 15 años            10 y más       0</span></span>
+<span><span class="co">#&gt; 13             15-19               Total 1039850</span></span>
+<span><span class="co">#&gt; 14             15-19                   0  926750</span></span>
+<span><span class="co">#&gt; 15             15-19                   1   80050</span></span>
+<span><span class="co">#&gt; 16             15-19                   2   23750</span></span>
+<span><span class="co">#&gt; 17             15-19                   3    7200</span></span>
+<span><span class="co">#&gt; 18             15-19                   4    1550</span></span>
+<span><span class="co">#&gt; 19             15-19                   5     350</span></span>
+<span><span class="co">#&gt; 20             15-19                   6     100</span></span>
+<span><span class="co">#&gt; 21             15-19                   7      50</span></span>
+<span><span class="co">#&gt; 22             15-19                   8      50</span></span>
+<span><span class="co">#&gt; 23             15-19                   9       0</span></span>
+<span><span class="co">#&gt; 24             15-19            10 y más       0</span></span>
+<span><span class="co">#&gt; 25             20-24               Total  980550</span></span>
+<span><span class="co">#&gt; 26             20-24                   0  592300</span></span>
+<span><span class="co">#&gt; 27             20-24                   1  194900</span></span>
+<span><span class="co">#&gt; 28             20-24                   2  112050</span></span>
+<span><span class="co">#&gt; 29             20-24                   3   51250</span></span>
+<span><span class="co">#&gt; 30             20-24                   4   19550</span></span>
+<span><span class="co">#&gt; 31             20-24                   5    6500</span></span>
+<span><span class="co">#&gt; 32             20-24                   6    2650</span></span>
+<span><span class="co">#&gt; 33             20-24                   7     850</span></span>
+<span><span class="co">#&gt; 34             20-24                   8     200</span></span>
+<span><span class="co">#&gt; 35             20-24                   9     100</span></span>
+<span><span class="co">#&gt; 36             20-24            10 y más     200</span></span>
+<span><span class="co">#&gt; 37             25-29               Total  860150</span></span>
+<span><span class="co">#&gt; 38             25-29                   0  271300</span></span>
+<span><span class="co">#&gt; 39             25-29                   1  198300</span></span>
+<span><span class="co">#&gt; 40             25-29                   2  198200</span></span>
+<span><span class="co">#&gt; 41             25-29                   3   96000</span></span>
+<span><span class="co">#&gt; 42             25-29                   4   49700</span></span>
+<span><span class="co">#&gt; 43             25-29                   5   24900</span></span>
+<span><span class="co">#&gt; 44             25-29                   6   12350</span></span>
+<span><span class="co">#&gt; 45             25-29                   7    5600</span></span>
+<span><span class="co">#&gt; 46             25-29                   8    2300</span></span>
+<span><span class="co">#&gt; 47             25-29                   9    1000</span></span>
+<span><span class="co">#&gt; 48             25-29            10 y más     500</span></span>
+<span><span class="co">#&gt; 49             30-34               Total  795650</span></span>
+<span><span class="co">#&gt; 50             30-34                   0  140350</span></span>
+<span><span class="co">#&gt; 51             30-34                   1  141600</span></span>
+<span><span class="co">#&gt; 52             30-34                   2  231100</span></span>
+<span><span class="co">#&gt; 53             30-34                   3  127150</span></span>
+<span><span class="co">#&gt; 54             30-34                   4   62750</span></span>
+<span><span class="co">#&gt; 55             30-34                   5   34450</span></span>
+<span><span class="co">#&gt; 56             30-34                   6   23600</span></span>
+<span><span class="co">#&gt; 57             30-34                   7   15950</span></span>
+<span><span class="co">#&gt; 58             30-34                   8    8650</span></span>
+<span><span class="co">#&gt; 59             30-34                   9    4400</span></span>
+<span><span class="co">#&gt; 60             30-34            10 y más    5650</span></span>
+<span><span class="co">#&gt; 61             35-39               Total  767400</span></span>
+<span><span class="co">#&gt; 62             35-39                   0  105750</span></span>
+<span><span class="co">#&gt; 63             35-39                   1  121250</span></span>
+<span><span class="co">#&gt; 64             35-39                   2  225050</span></span>
+<span><span class="co">#&gt; 65             35-39                   3  125450</span></span>
+<span><span class="co">#&gt; 66             35-39                   4   65650</span></span>
+<span><span class="co">#&gt; 67             35-39                   5   40400</span></span>
+<span><span class="co">#&gt; 68             35-39                   6   29050</span></span>
+<span><span class="co">#&gt; 69             35-39                   7   20100</span></span>
+<span><span class="co">#&gt; 70             35-39                   8   13150</span></span>
+<span><span class="co">#&gt; 71             35-39                   9    8700</span></span>
+<span><span class="co">#&gt; 72             35-39            10 y más   12850</span></span>
+<span><span class="co">#&gt; 73             40-44               Total  769600</span></span>
+<span><span class="co">#&gt; 74             40-44                   0   98200</span></span>
+<span><span class="co">#&gt; 75             40-44                   1  125250</span></span>
+<span><span class="co">#&gt; 76             40-44                   2  216650</span></span>
+<span><span class="co">#&gt; 77             40-44                   3  129350</span></span>
+<span><span class="co">#&gt; 78             40-44                   4   62500</span></span>
+<span><span class="co">#&gt; 79             40-44                   5   37900</span></span>
+<span><span class="co">#&gt; 80             40-44                   6   27850</span></span>
+<span><span class="co">#&gt; 81             40-44                   7   18500</span></span>
+<span><span class="co">#&gt; 82             40-44                   8   14150</span></span>
+<span><span class="co">#&gt; 83             40-44                   9   13100</span></span>
+<span><span class="co">#&gt; 84             40-44            10 y más   26150</span></span>
+<span><span class="co">#&gt; 85             45-49               Total  698950</span></span>
+<span><span class="co">#&gt; 86             45-49                   0   96550</span></span>
+<span><span class="co">#&gt; 87             45-49                   1  121350</span></span>
+<span><span class="co">#&gt; 88             45-49                   2  189700</span></span>
+<span><span class="co">#&gt; 89             45-49                   3  107700</span></span>
+<span><span class="co">#&gt; 90             45-49                   4   58100</span></span>
+<span><span class="co">#&gt; 91             45-49                   5   30800</span></span>
+<span><span class="co">#&gt; 92             45-49                   6   23900</span></span>
+<span><span class="co">#&gt; 93             45-49                   7   18600</span></span>
+<span><span class="co">#&gt; 94             45-49                   8   14250</span></span>
+<span><span class="co">#&gt; 95             45-49                   9    9950</span></span>
+<span><span class="co">#&gt; 96             45-49            10 y más   28050</span></span>
+<span><span class="co">#&gt; 97             50-54               Total  584800</span></span>
+<span><span class="co">#&gt; 98             50-54                   0   90200</span></span>
+<span><span class="co">#&gt; 99             50-54                   1  101050</span></span>
+<span><span class="co">#&gt; 100            50-54                   2  147900</span></span>
+<span><span class="co">#&gt; 101            50-54                   3   89450</span></span>
+<span><span class="co">#&gt; 102            50-54                   4   45850</span></span>
+<span><span class="co">#&gt; 103            50-54                   5   29900</span></span>
+<span><span class="co">#&gt; 104            50-54                   6   19900</span></span>
+<span><span class="co">#&gt; 105            50-54                   7   14300</span></span>
+<span><span class="co">#&gt; 106            50-54                   8   13600</span></span>
+<span><span class="co">#&gt; 107            50-54                   9    9500</span></span>
+<span><span class="co">#&gt; 108            50-54            10 y más   23150</span></span>
+<span><span class="co">#&gt; 109            55-59               Total  549250</span></span>
+<span><span class="co">#&gt; 110            55-59                   0   93000</span></span>
+<span><span class="co">#&gt; 111            55-59                   1   92050</span></span>
+<span><span class="co">#&gt; 112            55-59                   2  126750</span></span>
+<span><span class="co">#&gt; 113            55-59                   3   78350</span></span>
+<span><span class="co">#&gt; 114            55-59                   4   44050</span></span>
+<span><span class="co">#&gt; 115            55-59                   5   29400</span></span>
+<span><span class="co">#&gt; 116            55-59                   6   21200</span></span>
+<span><span class="co">#&gt; 117            55-59                   7   14950</span></span>
+<span><span class="co">#&gt; 118            55-59                   8   14800</span></span>
+<span><span class="co">#&gt; 119            55-59                   9   10950</span></span>
+<span><span class="co">#&gt; 120            55-59            10 y más   23750</span></span>
+<span><span class="co">#&gt; 121            60-64               Total  454750</span></span>
+<span><span class="co">#&gt; 122            60-64                   0   76750</span></span>
+<span><span class="co">#&gt; 123            60-64                   1   75200</span></span>
+<span><span class="co">#&gt; 124            60-64                   2   93200</span></span>
+<span><span class="co">#&gt; 125            60-64                   3   62000</span></span>
+<span><span class="co">#&gt; 126            60-64                   4   37100</span></span>
+<span><span class="co">#&gt; 127            60-64                   5   26050</span></span>
+<span><span class="co">#&gt; 128            60-64                   6   20700</span></span>
+<span><span class="co">#&gt; 129            60-64                   7   16000</span></span>
+<span><span class="co">#&gt; 130            60-64                   8   13300</span></span>
+<span><span class="co">#&gt; 131            60-64                   9    9850</span></span>
+<span><span class="co">#&gt; 132            60-64            10 y más   24600</span></span>
+<span><span class="co">#&gt; 133            65-69               Total  350450</span></span>
+<span><span class="co">#&gt; 134            65-69                   0   59000</span></span>
+<span><span class="co">#&gt; 135            65-69                   1   49700</span></span>
+<span><span class="co">#&gt; 136            65-69                   2   66800</span></span>
+<span><span class="co">#&gt; 137            65-69                   3   46750</span></span>
+<span><span class="co">#&gt; 138            65-69                   4   33050</span></span>
+<span><span class="co">#&gt; 139            65-69                   5   24250</span></span>
+<span><span class="co">#&gt; 140            65-69                   6   17500</span></span>
+<span><span class="co">#&gt; 141            65-69                   7   13700</span></span>
+<span><span class="co">#&gt; 142            65-69                   8   10800</span></span>
+<span><span class="co">#&gt; 143            65-69                   9    8550</span></span>
+<span><span class="co">#&gt; 144            65-69            10 y más   20350</span></span>
+<span><span class="co">#&gt; 145            70-74               Total  244200</span></span>
+<span><span class="co">#&gt; 146            70-74                   0   40800</span></span>
+<span><span class="co">#&gt; 147            70-74                   1   28650</span></span>
+<span><span class="co">#&gt; 148            70-74                   2   42450</span></span>
+<span><span class="co">#&gt; 149            70-74                   3   31900</span></span>
+<span><span class="co">#&gt; 150            70-74                   4   26250</span></span>
+<span><span class="co">#&gt; 151            70-74                   5   19350</span></span>
+<span><span class="co">#&gt; 152            70-74                   6   12950</span></span>
+<span><span class="co">#&gt; 153            70-74                   7   10650</span></span>
+<span><span class="co">#&gt; 154            70-74                   8    7950</span></span>
+<span><span class="co">#&gt; 155            70-74                   9    6800</span></span>
+<span><span class="co">#&gt; 156            70-74            10 y más   16450</span></span>
+<span><span class="co">#&gt; 157            75-79               Total  156550</span></span>
+<span><span class="co">#&gt; 158            75-79                   0   24400</span></span>
+<span><span class="co">#&gt; 159            75-79                   1   18000</span></span>
+<span><span class="co">#&gt; 160            75-79                   2   21900</span></span>
+<span><span class="co">#&gt; 161            75-79                   3   19000</span></span>
+<span><span class="co">#&gt; 162            75-79                   4   16550</span></span>
+<span><span class="co">#&gt; 163            75-79                   5   12350</span></span>
+<span><span class="co">#&gt; 164            75-79                   6   10500</span></span>
+<span><span class="co">#&gt; 165            75-79                   7    9250</span></span>
+<span><span class="co">#&gt; 166            75-79                   8    7050</span></span>
+<span><span class="co">#&gt; 167            75-79                   9    4700</span></span>
+<span><span class="co">#&gt; 168            75-79            10 y más   12850</span></span>
+<span><span class="co">#&gt; 169            80-84               Total   89400</span></span>
+<span><span class="co">#&gt; 170            80-84                   0   13650</span></span>
+<span><span class="co">#&gt; 171            80-84                   1   10450</span></span>
+<span><span class="co">#&gt; 172            80-84                   2    9450</span></span>
+<span><span class="co">#&gt; 173            80-84                   3   10000</span></span>
+<span><span class="co">#&gt; 174            80-84                   4    9200</span></span>
+<span><span class="co">#&gt; 175            80-84                   5    8200</span></span>
+<span><span class="co">#&gt; 176            80-84                   6    6850</span></span>
+<span><span class="co">#&gt; 177            80-84                   7    5100</span></span>
+<span><span class="co">#&gt; 178            80-84                   8    3950</span></span>
+<span><span class="co">#&gt; 179            80-84                   9    4300</span></span>
+<span><span class="co">#&gt; 180            80-84            10 y más    8250</span></span>
+<span><span class="co">#&gt; 181         85 y más               Total   52350</span></span>
+<span><span class="co">#&gt; 182         85 y más                   0    6950</span></span>
+<span><span class="co">#&gt; 183         85 y más                   1    5300</span></span>
+<span><span class="co">#&gt; 184         85 y más                   2    5150</span></span>
+<span><span class="co">#&gt; 185         85 y más                   3    5700</span></span>
+<span><span class="co">#&gt; 186         85 y más                   4    4900</span></span>
+<span><span class="co">#&gt; 187         85 y más                   5    4900</span></span>
+<span><span class="co">#&gt; 188         85 y más                   6    4050</span></span>
+<span><span class="co">#&gt; 189         85 y más                   7    3900</span></span>
+<span><span class="co">#&gt; 190         85 y más                   8    2650</span></span>
+<span><span class="co">#&gt; 191         85 y más                   9    3000</span></span>
+<span><span class="co">#&gt; 192         85 y más            10 y más    5850</span></span>
+<span></span>
+<span></span>
+<span><span class="co">##  reports the tables currently available in the package</span></span>
+<span></span>
+<span><span class="fu"><a href="reference/check_repository.html">check_repository</a></span><span class="op">(</span> year <span class="op">=</span> <span class="fl">1970</span>, topic <span class="op">=</span> <span class="st">"FECUNDIDAD"</span>, geolvl <span class="op">=</span> <span class="st">"Total del país"</span><span class="op">)</span></span>
+<span><span class="co">#&gt;                            Archivo</span></span>
+<span><span class="co">#&gt; 1 c70_total_del_pais_poblacion_c17</span></span>
+<span><span class="co">#&gt;                                                                                                                            Titulo</span></span>
+<span><span class="co">#&gt; 1 Cuadro 17. Total del país. Población femenina de 12 y más años, por grupo de edad según número de hijos nacidos vivos. Año 1970</span></span></code></pre></div>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="links">
