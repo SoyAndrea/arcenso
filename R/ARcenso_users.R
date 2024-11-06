@@ -155,7 +155,7 @@ server <- function(input, output, session) {
 
      if(grepl(substr(input$anio,3,4), cuadro)){
 
-     path <- paste0("dataRDS/",input$anio,"/")
+     path <- paste0(paste0(system.file("extdata", package = "arcenso"),"/"),input$anio,"/")
 
      tabla_censal <- readRDS(paste0(path,cuadro, ".RDS"))
 
