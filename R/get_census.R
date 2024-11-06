@@ -10,7 +10,7 @@
 #' @examples get_census( year = 1970, topic = "EDUCACION", geolvl = "Total del país")
 get_census <- function( year = 1970, topic = NULL, geolvl = NULL){
 
-  if(year != 1970) stop(paste0("El año ", year, " todavia no fue cargado en AR_CENSO o no es un año censal"))
+  if(year != 1970 & year != 1980) stop(paste0("El año ", year, " todavia no fue cargado en AR_CENSO o no es un año censal"))
 
   #load("info_cuadros_arcenso.rda")
   repo <- list.files(paste0(system.file("extdata", package = "arcenso"),"/"), full.names = T)
