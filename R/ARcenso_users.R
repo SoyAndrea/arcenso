@@ -12,7 +12,7 @@ mytheme <-
   adminlte_global(content_bg = "#FFF", box_bg = "#FFFFFF",info_box_bg = "#FFFFFF")
 )
 
-load("info_cuadros_arcenso.RData")
+#load("info_cuadros_arcenso.RData")
 
 # Header ------------------------------------------------------------------
 ui_header <- dashboardHeader(title = "ARcenso consulta", disable = T)
