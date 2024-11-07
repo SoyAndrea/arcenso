@@ -13,11 +13,14 @@ RoxygenNote: 7.3.2
 URL: https://soyandrea.github.io/arcenso/, https://github.com/SoyAndrea/arcenso
 BugReports: https://github.com/SoyAndrea/arcenso/issues
 Imports: 
+    dplyr,
     gt,
     praise,
-    quarto,
+    fresh,
+    shinyWidgets,
     rlang,
-    shiny
+    shiny,
+    shinydashboard
 Suggests: 
     knitr,
     rmarkdown
