@@ -87,7 +87,7 @@ arcenso <- function(){
     
     output$banner <- renderImage({
       
-      filename <- normalizePath(file.path('./img','arcenso.png'))
+      filename <- file.path(paste0(system.file("extdata", package = "arcenso"),"/img"),'arcenso.png')
       list(src = filename,
            width = 850,
            height = 200,
