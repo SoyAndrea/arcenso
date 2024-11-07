@@ -5,6 +5,15 @@
 #'
 #' @examples arcenso()
 arcenso <- function(){
+  
+  library(shiny)
+  library(shinydashboard)
+  library(dplyr)
+  library(fresh)
+  library(shinyWidgets)
+  library(gt)
+  library(gtExtras)
+  
   mytheme <-
     create_theme(
       adminlte_color(light_blue = "#434C5E"),
