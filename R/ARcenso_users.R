@@ -4,7 +4,6 @@ library(dplyr)
 library(fresh)
 library(shinyWidgets)
 library(gt)
-library(gtExtras)
 
 mytheme <-
   create_theme(
