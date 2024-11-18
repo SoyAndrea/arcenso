@@ -53,6 +53,8 @@ remotes::install_github("SoyAndrea/arcenso")
 
 - `check_repository()`: reports the tables currently available in the package
 
+- `arcenso()`: shinyapp to query the available tables in the package
+
 
 ## Usage
 
@@ -61,10 +63,10 @@ library(arcenso)
 
 ## get a list with the tables currently available in the package
 
-get_census( year = 1970, topic = "FECUNDIDAD", geolvl = "Total del país")
+get_census( year = 1970, topic = "CONDICIONES HABITACIONALES", geolvl = "Total del país")
 
 
 ##  reports the tables currently available in the package
 
-check_repository( year = 1970, topic = "FECUNDIDAD", geolvl = "Total del país")
+check_repository( year = 1970, topic = "CONDICIONES HABITACIONALES", geolvl = "Total del país")
 ```
