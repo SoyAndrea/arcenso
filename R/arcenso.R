@@ -3,7 +3,9 @@
 #' @return Shiny
 #' @export
 #'
-#' @examples arcenso()
+#' @examples \dontrun{
+#' #' arcenso()
+#' }
 arcenso <- function(){
 
   library(shiny)

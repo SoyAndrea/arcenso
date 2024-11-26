@@ -13,5 +13,7 @@ Shiny
 arcenso
 }
 \examples{
-arcenso()
+\dontrun{
+#' arcenso()
+}
 }
