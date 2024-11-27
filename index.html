@@ -67,6 +67,10 @@
 <p>This project was supported by the <a href="https://ropensci.org/blog/2024/02/15/champions-program-champions-2024/" class="external-link">rOpenSci Champions Program</a> 2023-2024, with <a href="https://github.com/SoyAndrea" class="external-link">Andrea Gomez Vargas</a> as the main developer and <a href="https://github.com/luisDVA" class="external-link">Luis D. Verde Arregoitia</a> as the mentor.</p>
 <p><strong>arcenso</strong> is a package under development that will allow access to the official data of the national population censuses in Argentina from the National Institute of Statistics and Census - INDEC. Currently, the results of the historical censuses of 1970, 1980, 1991, 2001, 2010 and 2022 are available in different formats through physical books, PDFs, Excel files or in REDATAM, without having a unified system or format that allows working with the data of these six census periods as a database. In addition, the presentation of the data is not homogeneous between the periods, making it difficult to make historical or serial comparisons of the available information.</p>
 <p>This package aims to make census data available, homogenized and ready to use. It will include the census data from 1970 to 2022. Having a package of census information will allow the public and private sectors, citizens and other actors in society to access current and historical information on Argentina’s population, households and housing in a more accessible way.</p>
+<blockquote>
+<p><strong>The available data will be added to the package in stages as shown in the graphic below by year and geographic disaggregation. Currently, the package is in stage 1 of the roadmap.</strong></p>
+</blockquote>
+<p><img src="docs/roadmap.png"></p>
 </div>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
@@ -94,7 +98,7 @@
 <span></span>
 <span><span class="co">## get a list with the tables currently available in the package</span></span>
 <span></span>
-<span><span class="fu"><a href="reference/get_census.html">get_census</a></span><span class="op">(</span> year <span class="op">=</span> <span class="fl">1970</span>, topic <span class="op">=</span> <span class="st">"CONDICIONES HABITACIONALES"</span>, geolvl <span class="op">=</span> <span class="st">"Total del país"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/get_census.html">get_census</a></span><span class="op">(</span>year <span class="op">=</span> <span class="fl">1970</span>, topic <span class="op">=</span> <span class="st">"CONDICIONES HABITACIONALES"</span>, geolvl <span class="op">=</span> <span class="st">"Total del país"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; $c70_total_del_pais_poblacion_c18</span></span>
 <span><span class="co">#&gt;                   regimen_de_tenencia hogares personas  cuartos</span></span>
 <span><span class="co">#&gt; 1                         Propietario 3553250 13778700 11197900</span></span>
@@ -169,7 +173,7 @@
 <span></span>
 <span><span class="co">##  reports the tables currently available in the package</span></span>
 <span></span>
-<span><span class="fu"><a href="reference/check_repository.html">check_repository</a></span><span class="op">(</span> year <span class="op">=</span> <span class="fl">1970</span>, topic <span class="op">=</span> <span class="st">"CONDICIONES HABITACIONALES"</span>, geolvl <span class="op">=</span> <span class="st">"Total del país"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/check_repository.html">check_repository</a></span><span class="op">(</span>year <span class="op">=</span> <span class="fl">1970</span>, topic <span class="op">=</span> <span class="st">"CONDICIONES HABITACIONALES"</span>, geolvl <span class="op">=</span> <span class="st">"Total del país"</span><span class="op">)</span></span>
 <span><span class="co">#&gt;                            Archivo</span></span>
 <span><span class="co">#&gt; 1 c70_total_del_pais_poblacion_c18</span></span>
 <span><span class="co">#&gt; 2 c70_total_del_pais_poblacion_c20</span></span>
