@@ -36,7 +36,7 @@ accessible way.
 > in the graphic below by year and geographic disaggregation. Currently,
 > the package is in stage 1 of the roadmap.**
 
-![](docs/roadmap.png)
+![](man/figures/roadmap.png)
 
 ## Installation
 
@@ -45,6 +45,8 @@ You can install the development version of arcenso from
 
 ``` r
 # install.packages("remotes")
+# if you do not have remotes installed
+
 remotes::install_github("SoyAndrea/arcenso")
 ```
 

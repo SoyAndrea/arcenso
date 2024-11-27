@@ -36,7 +36,7 @@ This package aims to make census data available, homogenized and ready to use. I
 
 > **The available data will be added to the package in stages as shown in the graphic below by year and geographic disaggregation. Currently, the package is in stage 1 of the roadmap.**
 
-![](docs/roadmap.png)
+![](man/figures/roadmap.png)
 
 ## Installation
 
