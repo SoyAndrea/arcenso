@@ -10,7 +10,7 @@ get_census(year = 1970, topic = NULL, geolvl = NULL)
 \arguments{
 \item{year}{census year for which the user wants to view the currently available tabulations. The default is “1970”.}
 
-\item{topic}{census topic of the tables Setting the parameter to NULL will download all available tables.}
+\item{topic}{census topic of the tables available: ESTRUCTURA DE POBLACION, CONDICION DE ACTIVIDAD, FECUNDIDAD, CONDICIONES HABITACIONALES, COMPOSICIÓN DE LO HOGARES, MIGRACIÓN, SITUACIÓN CONYUGAL y EDUCACION. Setting the parameter to NULL will download all available tables.}
 
 \item{geolvl}{geographic disaggregation level, use “Total del país” for the overall results. Setting the parameter to NULL will download all available tables.}
 }

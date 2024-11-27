@@ -32,6 +32,12 @@ citizens and other actors in society to access current and historical
 information on Argentina’s population, households and housing in a more
 accessible way.
 
+> **The available data will be added to the package in stages as shown
+> in the graphic below by year and geographic disaggregation. Currently,
+> the package is in stage 1 of the roadmap.**
+
+![](docs/roadmap.png)
+
 ## Installation
 
 You can install the development version of arcenso from
@@ -61,7 +67,7 @@ library(arcenso)
 
 ## get a list with the tables currently available in the package
 
-get_census( year = 1970, topic = "CONDICIONES HABITACIONALES", geolvl = "Total del país")
+get_census(year = 1970, topic = "CONDICIONES HABITACIONALES", geolvl = "Total del país")
 #> $c70_total_del_pais_poblacion_c18
 #>                   regimen_de_tenencia hogares personas  cuartos
 #> 1                         Propietario 3553250 13778700 11197900
@@ -136,7 +142,7 @@ get_census( year = 1970, topic = "CONDICIONES HABITACIONALES", geolvl = "Total d
 
 ##  reports the tables currently available in the package
 
-check_repository( year = 1970, topic = "CONDICIONES HABITACIONALES", geolvl = "Total del país")
+check_repository(year = 1970, topic = "CONDICIONES HABITACIONALES", geolvl = "Total del país")
 #>                            Archivo
 #> 1 c70_total_del_pais_poblacion_c18
 #> 2 c70_total_del_pais_poblacion_c20

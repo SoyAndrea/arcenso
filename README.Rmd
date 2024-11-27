@@ -34,6 +34,9 @@ This project was supported by the [rOpenSci Champions Program](https://ropensci.
 
 This package aims to make census data available, homogenized and ready to use. It will include the census data from 1970 to 2022. Having a package of census information will allow the public and private sectors, citizens and other actors in society to access current and historical information on Argentina’s population, households and housing in a more accessible way.
 
+> **The available data will be added to the package in stages as shown in the graphic below by year and geographic disaggregation. Currently, the package is in stage 1 of the roadmap.**
+
+![](docs/roadmap.png)
 
 ## Installation
 
@@ -41,6 +44,8 @@ You can install the development version of arcenso from [GitHub](https://github.
 
 ``` r
 # install.packages("remotes")
+# if you do not have remotes installed
+
 remotes::install_github("SoyAndrea/arcenso")
 ```
 
@@ -63,10 +68,10 @@ library(arcenso)
 
 ## get a list with the tables currently available in the package
 
-get_census( year = 1970, topic = "CONDICIONES HABITACIONALES", geolvl = "Total del país")
+get_census(year = 1970, topic = "CONDICIONES HABITACIONALES", geolvl = "Total del país")
 
 
 ##  reports the tables currently available in the package
 
-check_repository( year = 1970, topic = "CONDICIONES HABITACIONALES", geolvl = "Total del país")
+check_repository(year = 1970, topic = "CONDICIONES HABITACIONALES", geolvl = "Total del país")
 ```

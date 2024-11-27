@@ -1,7 +1,7 @@
 #' get_census
 #'get a list with the tables currently available in the package
 #' @param year census year for which the user wants to view the currently available tabulations. The default is “1970”.
-#' @param topic census topic of the tables Setting the parameter to NULL will download all available tables.
+#' @param topic census topic of the tables available: ESTRUCTURA DE POBLACION, CONDICION DE ACTIVIDAD, FECUNDIDAD, CONDICIONES HABITACIONALES, COMPOSICIÓN DE LO HOGARES, MIGRACIÓN, SITUACIÓN CONYUGAL y EDUCACION. Setting the parameter to NULL will download all available tables.
 #' @param geolvl geographic disaggregation level, use “Total del país” for the overall results. Setting the parameter to NULL will download all available tables.
 #'
 #' @return Returns a list with the tables that meet the parameters. To check the tables currently available use the check_repository function
