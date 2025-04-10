@@ -5,12 +5,12 @@ Authors@R: c(
     person("Andrea", "Gomez Vargas", , "andrea.gomezv11@gmail.com", role = c("aut", "cre")),
     person("Emanuel", "Ciardullo", role = "aut")
     )
-Description: What the package does (one paragraph).
+Description: Description: Offers access to tidy and curated data from Argentina's official population censuses, including national totals and data for 24 jurisdictions for 1970, and national totals for 1980. Designed to facilitate exploration and reuse of historical census information, with tools to access, check, and visualize the data interactively.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2.9000
-URL: https://soyandrea.github.io/arcenso/, https://github.com/SoyAndrea/arcenso
+URL: https://soyandrea.github.io/arcenso/, https://doi.org/10.5281/zenodo.15192435
 BugReports: https://github.com/SoyAndrea/arcenso/issues
 Imports: 
     dplyr,

@@ -4,6 +4,9 @@
 # **ARcenso** <img src="man/figures/logo.png" align="right" height="138"/>
 
 <!-- badges: start -->
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15192435.svg)](https://doi.org/10.5281/zenodo.15192435)
+
 <!-- badges: end -->
 
 ## Overview
