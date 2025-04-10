@@ -2,5 +2,3 @@ url: https://soyandrea.github.io/arcenso/
 template:
   bootstrap: 5
   bootswatch: flatly
-  includes:
-    after_body: pkgdown/extra/mermaid.html

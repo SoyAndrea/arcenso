@@ -1,6 +1,6 @@
 Package: arcenso
 Title: Data from Argentina’s Population Census
-Version: 0.0.0.9000
+Version: 0.1.0
 Authors@R: c(
     person("Andrea", "Gomez Vargas", , "andrea.gomezv11@gmail.com", role = c("aut", "cre")),
     person("Emanuel", "Ciardullo", role = "aut")

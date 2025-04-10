@@ -11,8 +11,9 @@
 This project was supported by the [rOpenSci Champions
 Program](https://ropensci.org/blog/2024/02/15/champions-program-champions-2024/)
 2023-2024, with [Andrea Gomez Vargas](https://github.com/SoyAndrea) as
-the main developer and [Luis D. Verde
-Arregoitia](https://github.com/luisDVA) as the mentor.
+the main developer, [Emanuel Ciardullo](https://github.com/ECiardullo)
+as co-author and [Luis D. Verde Arregoitia](https://github.com/luisDVA)
+as the mentor.
 
 **arcenso** is a package under development that will allow access to the
 official data of the national population censuses in Argentina from the
@@ -33,32 +34,21 @@ information on Argentina’s population, households and housing in a more
 accessible way.
 
 > **The available data will be added to the package in stages as shown
-> in the graphic below by year and geographic disaggregation. Currently,
+> in the table below by year and geographic disaggregation. Currently,
 > the package is in stage 1 of the roadmap.**
 
-<div class="mermaid">
+## Data Availability Roadmap
 
-graph TD A\[Hola\] –\> B\[Mundo\]
-
-</div>
-
-``` mermaid
-graph LR
-  A["1️⃣ 1970 total país y jurisdicciones<br>1980 total país"]
-  B["2️⃣ 1991 y 2001 total país"]
-  C["3️⃣ 2010 total país"]
-  D["4️⃣ 1980 -1991 jurisdicciones"]
-  E["5️⃣ 2001 - 2010 jurisdicciones"]
-  F["6️⃣ 2022 total país y jurisdicciones"]
-
-  Start["Data Availability Roadmap"]
-  Start --> A
-  Start --> B
-  Start --> C
-  Start --> D
-  Start --> E
-  Start --> F
-```
+| Stage | Census years | Geographic level | Notes |
+|----|----|----|----|
+| **1** | 1970 | National and 24 jurisdictions | First available census data |
+|  | 1980 | National level | Jurisdiction-level data not available |
+| 2 | 1991 and 2001 | National level |  |
+| 3 | 2010 | National level |  |
+| 4 | 2022 | National level |  |
+| 5 | 1980 and 1991 | 24 jurisdictions |  |
+| 6 | 2001 and 2010 | 24 jurisdictions |  |
+| 7 | 2022 | 24 jurisdictions |  |
 
 ## Installation
 
