@@ -3,7 +3,7 @@ pkgdown: 2.1.1
 pkgdown_sha: ~
 articles:
   arcenso: arcenso.html
-last_built: 2025-04-10T23:02Z
+last_built: 2025-04-10T23:32Z
 urls:
   reference: https://soyandrea.github.io/arcenso/reference
   article: https://soyandrea.github.io/arcenso/articles
