@@ -36,7 +36,29 @@ accessible way.
 > in the graphic below by year and geographic disaggregation. Currently,
 > the package is in stage 1 of the roadmap.**
 
-![](man/figures/roadmap.png)
+<div class="mermaid">
+
+graph TD A\[Hola\] –\> B\[Mundo\]
+
+</div>
+
+``` mermaid
+graph LR
+  A["1️⃣ 1970 total país y jurisdicciones<br>1980 total país"]
+  B["2️⃣ 1991 y 2001 total país"]
+  C["3️⃣ 2010 total país"]
+  D["4️⃣ 1980 -1991 jurisdicciones"]
+  E["5️⃣ 2001 - 2010 jurisdicciones"]
+  F["6️⃣ 2022 total país y jurisdicciones"]
+
+  Start["Data Availability Roadmap"]
+  Start --> A
+  Start --> B
+  Start --> C
+  Start --> D
+  Start --> E
+  Start --> F
+```
 
 ## Installation
 
