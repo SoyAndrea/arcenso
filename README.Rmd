@@ -78,15 +78,48 @@ remotes::install_github("SoyAndrea/arcenso")
 
 ## Usage
 
-```{r example}
+First, load the library:
+
+```{r setup}
 library(arcenso)
-
-## get a list with the tables currently available in the package
-
-get_census(year = 1970, topic = "CONDICIONES HABITACIONALES", geolvl = "Total del país")
-
-
-##  reports the tables currently available in the package
-
-check_repository(year = 1970, topic = "CONDICIONES HABITACIONALES", geolvl = "Total del país")
 ```
+
+### Exploring the Repository
+
+Before downloading data, you can check which tables are available for a specific year, topic, and geographic level using `check_repository()`:
+
+```{r exploration}
+check_repository(
+  year = 1970, 
+  topic = "CONDICIONES HABITACIONALES", 
+  geolvl = "Total del país")
+```
+
+
+### Accessing Census Data
+
+Once you have identified the table you need, use `get_census()` to retrieve the data. This function returns a list containing the corresponding data frames:
+
+```{r data-access}
+
+# Download 1970 housing data
+census_data_1970 <- get_census(
+  year = 1970, 
+  topic = "CONDICIONES HABITACIONALES", 
+  geolvl = "Total del país"
+)
+
+# Preview the first table in the list
+head(census_data_1970[[1]])
+```
+
+
+### Interactive Exploration (Shiny App)
+
+The arcenso package includes an interactive web interface to explore census data without writing code. To launch the application locally, run:
+
+```{r shiny-app, eval = FALSE}
+# Launch the interactive Shiny application
+arcenso()
+```
+

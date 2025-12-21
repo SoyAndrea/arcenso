@@ -79,91 +79,62 @@ remotes::install_github("SoyAndrea/arcenso")
 
 ## Usage
 
+First, load the library:
+
 ``` r
 library(arcenso)
+```
 
-## get a list with the tables currently available in the package
+### Exploring the Repository
 
-get_census(year = 1970, topic = "CONDICIONES HABITACIONALES", geolvl = "Total del país")
-#> $c70_total_del_pais_poblacion_c18
-#>                   regimen_de_tenencia hogares personas  cuartos
-#> 1                         Propietario 3553250 13778700 11197900
-#> 2            Inquilino o arrendatario 1380950  4692800  3305350
-#> 3 Ocupante en relación de dependencia  353300  1402500   880050
-#> 4                   Ocupante gratuito  575650  2271150  1196500
-#> 5                    En otro carácter  192950   816350   419800
-#> 
-#> $c70_total_del_pais_poblacion_c20
-#>     tama?o_hogar                     regimen_tenencia hogares
-#> 1   De 1 persona                                Total  615900
-#> 2   De 1 persona                          Propietario  255900
-#> 3   De 1 persona             Inquilino o arrendatario  199350
-#> 4   De 1 persona Ocupante con relación de dependencia   52600
-#> 5   De 1 persona                    Ocupante gratuito   82100
-#> 6   De 1 persona                                 Otro   25950
-#> 7  De 2 personas                                Total 1125250
-#> 8  De 2 personas                          Propietario  652950
-#> 9  De 2 personas             Inquilino o arrendatario  302400
-#> 10 De 2 personas Ocupante con relación de dependencia   49250
-#> 11 De 2 personas                    Ocupante gratuito   91300
-#> 12 De 2 personas                                 Otro   29350
-#> 13 De 3 personas                                Total 1230600
-#> 14 De 3 personas                          Propietario  744800
-#> 15 De 3 personas             Inquilino o arrendatario  290650
-#> 16 De 3 personas Ocupante con relación de dependencia   62150
-#> 17 De 3 personas                    Ocupante gratuito  103200
-#> 18 De 3 personas                                 Otro   29800
-#> 19 De 4 personas                                Total 1255000
-#> 20 De 4 personas                          Propietario  787900
-#> 21 De 4 personas             Inquilino o arrendatario  266000
-#> 22 De 4 personas Ocupante con relación de dependencia   65650
-#> 23 De 4 personas                    Ocupante gratuito  102850
-#> 24 De 4 personas                                 Otro   32600
-#> 25 De 5 personas                                Total  818550
-#> 26 De 5 personas                          Propietario  516100
-#> 27 De 5 personas             Inquilino o arrendatario  157500
-#> 28 De 5 personas Ocupante con relación de dependencia   48200
-#> 29 De 5 personas                    Ocupante gratuito   71550
-#> 30 De 5 personas                                 Otro   25200
-#> 31 De 6 personas                                Total  443250
-#> 32 De 6 personas                          Propietario  272000
-#> 33 De 6 personas             Inquilino o arrendatario   80000
-#> 34 De 6 personas Ocupante con relación de dependencia   29000
-#> 35 De 6 personas                    Ocupante gratuito   45750
-#> 36 De 6 personas                                 Otro   16500
-#> 37 De 7 personas                                Total  276750
-#> 38 De 7 personas                          Propietario  163400
-#> 39 De 7 personas             Inquilino o arrendatario   44950
-#> 40 De 7 personas Ocupante con relación de dependencia   19950
-#> 41 De 7 personas                    Ocupante gratuito   35200
-#> 42 De 7 personas                                 Otro   13250
-#> 43 De 8 personas                                Total  121450
-#> 44 De 8 personas                          Propietario   70600
-#> 45 De 8 personas             Inquilino o arrendatario   18250
-#> 46 De 8 personas Ocupante con relación de dependencia   10050
-#> 47 De 8 personas                    Ocupante gratuito   16250
-#> 48 De 8 personas                                 Otro    6300
-#> 49 De 9 personas                                Total   76000
-#> 50 De 9 personas                          Propietario   40950
-#> 51 De 9 personas             Inquilino o arrendatario    9400
-#> 52 De 9 personas Ocupante con relación de dependencia    7150
-#> 53 De 9 personas                    Ocupante gratuito   12900
-#> 54 De 9 personas                                 Otro    5600
-#> 55   De 10 y más                                Total   93350
-#> 56   De 10 y más                          Propietario   48650
-#> 57   De 10 y más             Inquilino o arrendatario   12450
-#> 58   De 10 y más Ocupante con relación de dependencia    9300
-#> 59   De 10 y más                    Ocupante gratuito   14550
-#> 60   De 10 y más                                 Otro    8400
+Before downloading data, you can check which tables are available for a
+specific year, topic, and geographic level using `check_repository()`:
 
-
-##  reports the tables currently available in the package
-
-check_repository(year = 1970, topic = "CONDICIONES HABITACIONALES", geolvl = "Total del país")
+``` r
+check_repository(
+  year = 1970, 
+  topic = "CONDICIONES HABITACIONALES", 
+  geolvl = "Total del país")
 #>                            Archivo
 #> 1 c70_total_del_pais_poblacion_c18
 #> 2 c70_total_del_pais_poblacion_c20
 #>                                                                                                      Titulo
 #> 1    Cuadro 18. Total del país. Hogares particulares, personas y cuartos, por régimen de tenencia. Año 1970
 #> 2 Cuadro 20. Total del país. Hogares particulares, por tamaño del hogar según régimen de tenencia. Año 1970
+```
+
+### Accessing Census Data
+
+Once you have identified the table you need, use `get_census()` to
+retrieve the data. This function returns a list containing the
+corresponding data frames:
+
+``` r
+
+# Download 1970 housing data
+census_data_1970 <- get_census(
+  year = 1970, 
+  topic = "CONDICIONES HABITACIONALES", 
+  geolvl = "Total del país"
+)
+
+# Preview the first table in the list
+head(census_data_1970[[1]])
+#>                   regimen_de_tenencia hogares personas  cuartos
+#> 1                         Propietario 3553250 13778700 11197900
+#> 2            Inquilino o arrendatario 1380950  4692800  3305350
+#> 3 Ocupante en relación de dependencia  353300  1402500   880050
+#> 4                   Ocupante gratuito  575650  2271150  1196500
+#> 5                    En otro carácter  192950   816350   419800
+```
+
+### Interactive Exploration (Shiny App)
+
+The arcenso package includes an interactive web interface to explore
+census data without writing code. To launch the application locally,
+run:
+
+``` r
+# Launch the interactive Shiny application
+arcenso()
 ```
