@@ -1,0 +1,134 @@
+# **ARcenso**
+
+## Overview
+
+This project was supported by the [rOpenSci Champions
+Program](https://ropensci.org/blog/2024/02/15/champions-program-champions-2024/)
+2023-2024, with [Andrea Gomez Vargas](https://github.com/SoyAndrea) as
+the main developer, [Emanuel Ciardullo](https://github.com/ECiardullo)
+as co-author and [Luis D. Verde Arregoitia](https://github.com/luisDVA)
+as the mentor.
+
+**arcenso** is a package under development that will allow access to the
+official data of the national population censuses in Argentina from the
+National Institute of Statistics and Census - INDEC. Currently, the
+results of the historical censuses of 1970, 1980, 1991, 2001, 2010 and
+2022 are available in different formats through physical books, PDFs,
+Excel files or in REDATAM, without having a unified system or format
+that allows working with the data of these six census periods as a
+database. In addition, the presentation of the data is not homogeneous
+between the periods, making it difficult to make historical or serial
+comparisons of the available information.
+
+This package aims to make census data available, homogenized and ready
+to use. It will include the census data from 1970 to 2022. Having a
+package of census information will allow the public and private sectors,
+citizens and other actors in society to access current and historical
+information on Argentina’s population, households and housing in a more
+accessible way.
+
+> **The available data will be added to the package in stages as shown
+> in the table below by year and geographic disaggregation. Currently,
+> the package is in stage 1 of the roadmap.**
+
+## Data Availability Roadmap
+
+| Stage | Census years  | Geographic level              | Notes                                 |
+|-------|---------------|-------------------------------|---------------------------------------|
+| **1** | 1970          | National and 24 jurisdictions | First available census data           |
+|       | 1980          | National level                | Jurisdiction-level data not available |
+| 2     | 1991 and 2001 | National level                |                                       |
+| 3     | 2010          | National level                |                                       |
+| 4     | 2022          | National level                |                                       |
+| 5     | 1980 and 1991 | 24 jurisdictions              |                                       |
+| 6     | 2001 and 2010 | 24 jurisdictions              |                                       |
+| 7     | 2022          | 24 jurisdictions              |                                       |
+
+## Installation
+
+You can install the development version of arcenso from
+[GitHub](https://github.com/) with:
+
+``` r
+# install.packages("remotes")
+# if you do not have remotes installed
+
+remotes::install_github("SoyAndrea/arcenso")
+```
+
+## Main functions
+
+**arcenso** provides
+
+- [`get_census()`](https://soyandrea.github.io/arcenso/reference/get_census.md):
+  get a list with the tables currently available in the package
+
+- [`check_repository()`](https://soyandrea.github.io/arcenso/reference/check_repository.md):
+  reports the tables currently available in the package
+
+- [`arcenso()`](https://soyandrea.github.io/arcenso/reference/arcenso.md):
+  shinyapp to query the available tables in the package
+
+## Usage
+
+First, load the library:
+
+``` r
+library(arcenso)
+```
+
+### Exploring the Repository
+
+Before downloading data, you can check which tables are available for a
+specific year, topic, and geographic level using
+[`check_repository()`](https://soyandrea.github.io/arcenso/reference/check_repository.md):
+
+``` r
+check_repository(
+  year = 1970, 
+  topic = "CONDICIONES HABITACIONALES", 
+  geolvl = "Total del país")
+#>                            Archivo
+#> 1 c70_total_del_pais_poblacion_c18
+#> 2 c70_total_del_pais_poblacion_c20
+#>                                                                                                      Titulo
+#> 1    Cuadro 18. Total del país. Hogares particulares, personas y cuartos, por régimen de tenencia. Año 1970
+#> 2 Cuadro 20. Total del país. Hogares particulares, por tamaño del hogar según régimen de tenencia. Año 1970
+```
+
+### Accessing Census Data
+
+Once you have identified the table you need, use
+[`get_census()`](https://soyandrea.github.io/arcenso/reference/get_census.md)
+to retrieve the data. This function returns a list containing the
+corresponding data frames:
+
+``` r
+
+# Download 1970 housing data
+census_data_1970 <- get_census(
+  year = 1970, 
+  topic = "CONDICIONES HABITACIONALES", 
+  geolvl = "Total del país"
+)
+
+# Preview the first table in the list
+head(census_data_1970[[1]])
+#>                   regimen_de_tenencia hogares personas  cuartos
+#> 1                         Propietario 3553250 13778700 11197900
+#> 2            Inquilino o arrendatario 1380950  4692800  3305350
+#> 3 Ocupante en relación de dependencia  353300  1402500   880050
+#> 4                   Ocupante gratuito  575650  2271150  1196500
+#> 5                    En otro carácter  192950   816350   419800
+```
+
+### Interactive Exploration (Shiny App)
+
+The arcenso package includes an interactive web interface to explore
+census data without writing code. To launch the application locally,
+run:
+
+``` r
+# Launch the interactive Shiny application
+arcenso()
+```

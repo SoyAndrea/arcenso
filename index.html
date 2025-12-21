@@ -6,12 +6,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Data from Argentina’s Population Census • arcenso</title>
-<!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="apple-touch-icon.png">
-<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="apple-touch-icon-120x120.png">
-<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="apple-touch-icon-76x76.png">
-<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="apple-touch-icon-60x60.png">
+<!-- favicons --><link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
+<link rel="icon" type="”image/svg+xml”" href="favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" sizes="any" href="favicon.ico">
+<link rel="manifest" href="site.webmanifest">
 <script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
@@ -164,93 +163,55 @@
 <div class="section level2">
 <h2 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a>
 </h2>
+<p>First, load the library:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://soyandrea.github.io/arcenso/">arcenso</a></span><span class="op">)</span></span>
-<span></span>
-<span><span class="co">## get a list with the tables currently available in the package</span></span>
-<span></span>
-<span><span class="fu"><a href="reference/get_census.html">get_census</a></span><span class="op">(</span>year <span class="op">=</span> <span class="fl">1970</span>, topic <span class="op">=</span> <span class="st">"CONDICIONES HABITACIONALES"</span>, geolvl <span class="op">=</span> <span class="st">"Total del país"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; $c70_total_del_pais_poblacion_c18</span></span>
-<span><span class="co">#&gt;                   regimen_de_tenencia hogares personas  cuartos</span></span>
-<span><span class="co">#&gt; 1                         Propietario 3553250 13778700 11197900</span></span>
-<span><span class="co">#&gt; 2            Inquilino o arrendatario 1380950  4692800  3305350</span></span>
-<span><span class="co">#&gt; 3 Ocupante en relación de dependencia  353300  1402500   880050</span></span>
-<span><span class="co">#&gt; 4                   Ocupante gratuito  575650  2271150  1196500</span></span>
-<span><span class="co">#&gt; 5                    En otro carácter  192950   816350   419800</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $c70_total_del_pais_poblacion_c20</span></span>
-<span><span class="co">#&gt;     tama?o_hogar                     regimen_tenencia hogares</span></span>
-<span><span class="co">#&gt; 1   De 1 persona                                Total  615900</span></span>
-<span><span class="co">#&gt; 2   De 1 persona                          Propietario  255900</span></span>
-<span><span class="co">#&gt; 3   De 1 persona             Inquilino o arrendatario  199350</span></span>
-<span><span class="co">#&gt; 4   De 1 persona Ocupante con relación de dependencia   52600</span></span>
-<span><span class="co">#&gt; 5   De 1 persona                    Ocupante gratuito   82100</span></span>
-<span><span class="co">#&gt; 6   De 1 persona                                 Otro   25950</span></span>
-<span><span class="co">#&gt; 7  De 2 personas                                Total 1125250</span></span>
-<span><span class="co">#&gt; 8  De 2 personas                          Propietario  652950</span></span>
-<span><span class="co">#&gt; 9  De 2 personas             Inquilino o arrendatario  302400</span></span>
-<span><span class="co">#&gt; 10 De 2 personas Ocupante con relación de dependencia   49250</span></span>
-<span><span class="co">#&gt; 11 De 2 personas                    Ocupante gratuito   91300</span></span>
-<span><span class="co">#&gt; 12 De 2 personas                                 Otro   29350</span></span>
-<span><span class="co">#&gt; 13 De 3 personas                                Total 1230600</span></span>
-<span><span class="co">#&gt; 14 De 3 personas                          Propietario  744800</span></span>
-<span><span class="co">#&gt; 15 De 3 personas             Inquilino o arrendatario  290650</span></span>
-<span><span class="co">#&gt; 16 De 3 personas Ocupante con relación de dependencia   62150</span></span>
-<span><span class="co">#&gt; 17 De 3 personas                    Ocupante gratuito  103200</span></span>
-<span><span class="co">#&gt; 18 De 3 personas                                 Otro   29800</span></span>
-<span><span class="co">#&gt; 19 De 4 personas                                Total 1255000</span></span>
-<span><span class="co">#&gt; 20 De 4 personas                          Propietario  787900</span></span>
-<span><span class="co">#&gt; 21 De 4 personas             Inquilino o arrendatario  266000</span></span>
-<span><span class="co">#&gt; 22 De 4 personas Ocupante con relación de dependencia   65650</span></span>
-<span><span class="co">#&gt; 23 De 4 personas                    Ocupante gratuito  102850</span></span>
-<span><span class="co">#&gt; 24 De 4 personas                                 Otro   32600</span></span>
-<span><span class="co">#&gt; 25 De 5 personas                                Total  818550</span></span>
-<span><span class="co">#&gt; 26 De 5 personas                          Propietario  516100</span></span>
-<span><span class="co">#&gt; 27 De 5 personas             Inquilino o arrendatario  157500</span></span>
-<span><span class="co">#&gt; 28 De 5 personas Ocupante con relación de dependencia   48200</span></span>
-<span><span class="co">#&gt; 29 De 5 personas                    Ocupante gratuito   71550</span></span>
-<span><span class="co">#&gt; 30 De 5 personas                                 Otro   25200</span></span>
-<span><span class="co">#&gt; 31 De 6 personas                                Total  443250</span></span>
-<span><span class="co">#&gt; 32 De 6 personas                          Propietario  272000</span></span>
-<span><span class="co">#&gt; 33 De 6 personas             Inquilino o arrendatario   80000</span></span>
-<span><span class="co">#&gt; 34 De 6 personas Ocupante con relación de dependencia   29000</span></span>
-<span><span class="co">#&gt; 35 De 6 personas                    Ocupante gratuito   45750</span></span>
-<span><span class="co">#&gt; 36 De 6 personas                                 Otro   16500</span></span>
-<span><span class="co">#&gt; 37 De 7 personas                                Total  276750</span></span>
-<span><span class="co">#&gt; 38 De 7 personas                          Propietario  163400</span></span>
-<span><span class="co">#&gt; 39 De 7 personas             Inquilino o arrendatario   44950</span></span>
-<span><span class="co">#&gt; 40 De 7 personas Ocupante con relación de dependencia   19950</span></span>
-<span><span class="co">#&gt; 41 De 7 personas                    Ocupante gratuito   35200</span></span>
-<span><span class="co">#&gt; 42 De 7 personas                                 Otro   13250</span></span>
-<span><span class="co">#&gt; 43 De 8 personas                                Total  121450</span></span>
-<span><span class="co">#&gt; 44 De 8 personas                          Propietario   70600</span></span>
-<span><span class="co">#&gt; 45 De 8 personas             Inquilino o arrendatario   18250</span></span>
-<span><span class="co">#&gt; 46 De 8 personas Ocupante con relación de dependencia   10050</span></span>
-<span><span class="co">#&gt; 47 De 8 personas                    Ocupante gratuito   16250</span></span>
-<span><span class="co">#&gt; 48 De 8 personas                                 Otro    6300</span></span>
-<span><span class="co">#&gt; 49 De 9 personas                                Total   76000</span></span>
-<span><span class="co">#&gt; 50 De 9 personas                          Propietario   40950</span></span>
-<span><span class="co">#&gt; 51 De 9 personas             Inquilino o arrendatario    9400</span></span>
-<span><span class="co">#&gt; 52 De 9 personas Ocupante con relación de dependencia    7150</span></span>
-<span><span class="co">#&gt; 53 De 9 personas                    Ocupante gratuito   12900</span></span>
-<span><span class="co">#&gt; 54 De 9 personas                                 Otro    5600</span></span>
-<span><span class="co">#&gt; 55   De 10 y más                                Total   93350</span></span>
-<span><span class="co">#&gt; 56   De 10 y más                          Propietario   48650</span></span>
-<span><span class="co">#&gt; 57   De 10 y más             Inquilino o arrendatario   12450</span></span>
-<span><span class="co">#&gt; 58   De 10 y más Ocupante con relación de dependencia    9300</span></span>
-<span><span class="co">#&gt; 59   De 10 y más                    Ocupante gratuito   14550</span></span>
-<span><span class="co">#&gt; 60   De 10 y más                                 Otro    8400</span></span>
-<span></span>
-<span></span>
-<span><span class="co">##  reports the tables currently available in the package</span></span>
-<span></span>
-<span><span class="fu"><a href="reference/check_repository.html">check_repository</a></span><span class="op">(</span>year <span class="op">=</span> <span class="fl">1970</span>, topic <span class="op">=</span> <span class="st">"CONDICIONES HABITACIONALES"</span>, geolvl <span class="op">=</span> <span class="st">"Total del país"</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://soyandrea.github.io/arcenso/">arcenso</a></span><span class="op">)</span></span></code></pre></div>
+<div class="section level3">
+<h3 id="exploring-the-repository">Exploring the Repository<a class="anchor" aria-label="anchor" href="#exploring-the-repository"></a>
+</h3>
+<p>Before downloading data, you can check which tables are available for a specific year, topic, and geographic level using <code><a href="reference/check_repository.html">check_repository()</a></code>:</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="reference/check_repository.html">check_repository</a></span><span class="op">(</span></span>
+<span>  year <span class="op">=</span> <span class="fl">1970</span>, </span>
+<span>  topic <span class="op">=</span> <span class="st">"CONDICIONES HABITACIONALES"</span>, </span>
+<span>  geolvl <span class="op">=</span> <span class="st">"Total del país"</span><span class="op">)</span></span>
 <span><span class="co">#&gt;                            Archivo</span></span>
 <span><span class="co">#&gt; 1 c70_total_del_pais_poblacion_c18</span></span>
 <span><span class="co">#&gt; 2 c70_total_del_pais_poblacion_c20</span></span>
 <span><span class="co">#&gt;                                                                                                      Titulo</span></span>
 <span><span class="co">#&gt; 1    Cuadro 18. Total del país. Hogares particulares, personas y cuartos, por régimen de tenencia. Año 1970</span></span>
 <span><span class="co">#&gt; 2 Cuadro 20. Total del país. Hogares particulares, por tamaño del hogar según régimen de tenencia. Año 1970</span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="accessing-census-data">Accessing Census Data<a class="anchor" aria-label="anchor" href="#accessing-census-data"></a>
+</h3>
+<p>Once you have identified the table you need, use <code><a href="reference/get_census.html">get_census()</a></code> to retrieve the data. This function returns a list containing the corresponding data frames:</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="co"># Download 1970 housing data</span></span>
+<span><span class="va">census_data_1970</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/get_census.html">get_census</a></span><span class="op">(</span></span>
+<span>  year <span class="op">=</span> <span class="fl">1970</span>, </span>
+<span>  topic <span class="op">=</span> <span class="st">"CONDICIONES HABITACIONALES"</span>, </span>
+<span>  geolvl <span class="op">=</span> <span class="st">"Total del país"</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Preview the first table in the list</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">census_data_1970</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="co">#&gt;                   regimen_de_tenencia hogares personas  cuartos</span></span>
+<span><span class="co">#&gt; 1                         Propietario 3553250 13778700 11197900</span></span>
+<span><span class="co">#&gt; 2            Inquilino o arrendatario 1380950  4692800  3305350</span></span>
+<span><span class="co">#&gt; 3 Ocupante en relación de dependencia  353300  1402500   880050</span></span>
+<span><span class="co">#&gt; 4                   Ocupante gratuito  575650  2271150  1196500</span></span>
+<span><span class="co">#&gt; 5                    En otro carácter  192950   816350   419800</span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="interactive-exploration-shiny-app">Interactive Exploration (Shiny App)<a class="anchor" aria-label="anchor" href="#interactive-exploration-shiny-app"></a>
+</h3>
+<p>The arcenso package includes an interactive web interface to explore census data without writing code. To launch the application locally, run:</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Launch the interactive Shiny application</span></span>
+<span><span class="fu"><a href="reference/arcenso.html">arcenso</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+</div>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="links">
@@ -280,8 +241,8 @@
 <div class="developers">
 <h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
-<li>Andrea Gomez Vargas <br><small class="roles"> Author, maintainer </small>  </li>
-<li>Emanuel Ciardullo <br><small class="roles"> Author </small>  </li>
+<li>Andrea Gomez Vargas <br><small class="roles"> Author, maintainer </small>   </li>
+<li>Emanuel Ciardullo <br><small class="roles"> Author </small>   </li>
 </ul>
 </div>
 
@@ -301,7 +262,7 @@
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
     </footer>
