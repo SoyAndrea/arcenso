@@ -1,8 +1,8 @@
-# **ARcenso**: Data from Argentina’s Population Census
+# **ARcenso**
 
   
 
-  
+# Data from Argentina’s Population Census
 
 ## Overview
 
@@ -140,6 +140,13 @@ To launch the application locally, run:
 # Launch the interactive Shiny application
 arcenso_gui()
 ```
+
+Look at the interactive interface in action:
+
+![Interactive Exploration with
+ARcenso](reference/figures/arcenso_gui.png)
+
+Interactive Exploration with ARcenso
 
 ## Citation
 
