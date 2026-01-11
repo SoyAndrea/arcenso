@@ -2,25 +2,27 @@
 % Please edit documentation in R/check_repository.R
 \name{check_repository}
 \alias{check_repository}
-\title{check_repository
-reports the tables currently available in the package}
+\title{Check available census tables}
 \usage{
 check_repository(year = 1970, topic = NULL, geolvl = NULL)
 }
 \arguments{
-\item{year}{census year for which the user wants to view the currently available tabulations. The default is “1970”.}
+\item{year}{Census year (1970 or 1980). Default is 1970.}
 
-\item{topic}{census topic of the tables available: ESTRUCTURA DE POBLACION, CONDICION DE ACTIVIDAD, FECUNDIDAD, CONDICIONES HABITACIONALES, COMPOSICIÓN DE LO HOGARES, MIGRACIÓN, SITUACIÓN CONYUGAL y EDUCACION. Setting the parameter to NULL will download all available tables.}
+\item{topic}{Census topic of the tables (e.g., "EDUCACION").
+If NULL, all available topics for the selected year will be shown.}
 
-\item{geolvl}{geographic disaggregation level, use “Total del país” for the overall results. Setting the parameter to NULL will download all available tables.}
+\item{geolvl}{Geographic disaggregation level (e.g., "Total del país").
+If NULL, all jurisdictions will be included.}
 }
 \value{
-Returns a data frame with the title of the tables that can be acces with the get_census function and the name given by that function to each table
+A data frame containing the table titles and the internal names
+required to access them via the get_census function.
 }
 \description{
-check_repository
-reports the tables currently available in the package
+Reports the census tables currently available in the package for consultation
+based on the provided filters.
 }
 \examples{
-check_repository( year = 1970, topic = "EDUCACION", geolvl = "Total del país")
+check_repository(year = 1970, topic = "EDUCACION", geolvl = "Total del país")
 }

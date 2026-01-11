@@ -1,8 +1,31 @@
-.Rproj.user
+# --- RStudio & R internals ---
+.Rproj.user/
 .Rhistory
-.Rdata
+.RData
+.Ruserdata
+.Rapp.history
+
+# --- Package Build & Check ---
+/*.tar.gz
+/*.Rcheck/
+/vignettes/*.html
+/vignettes/*.pdf
+# Ignoramos la carpeta de ayuda generada localmente
+/.Rbuildignore
+
+# --- Documentation (pkgdown & Quarto) ---
+# Si usas pkgdown para la web del paquete
+/docs/
+# Si usas Quarto para notas o reportes internos
+.quarto/
+/_site/
+
+# --- Secrets & External APIs ---
 .httr-oauth
+.env
+
+# --- OS específicos ---
 .DS_Store
-.quarto
-inst/doc
-docs
+Thumbs.db
+
+

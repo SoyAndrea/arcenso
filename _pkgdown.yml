@@ -2,3 +2,28 @@ url: https://soyandrea.github.io/arcenso/
 template:
   bootstrap: 5
   bootswatch: flatly
+  includes:
+    in_header: |
+      <style>
+        /* Agrandar el logo y alinearlo */
+        .navbar-logo {
+          height: 70px !important; /* Ajustá este número a tu gusto */
+          max-height: none !important;
+          margin-right: 10px;
+        }
+        /* Asegurar que el logo y el texto estén a la izquierda */
+        .navbar-brand {
+          display: flex !important;
+          align-items: center !important;
+          justify-content: flex-start !important;
+        }
+        /* Ajuste de margen para que el menú no se pegue al logo gigante */
+        .navbar-nav {
+          margin-left: 20px;
+        }
+      </style>
+
+
+figure:
+  contents:
+    - logo: man/figures/logo.png

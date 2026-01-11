@@ -1,0 +1,24 @@
+bibentry(
+  bibtype = "Manual",
+  title = "ARcenso: Data from Argentina's Population Census",
+  author = c(
+    person(
+      given = "Andrea",
+      family = "Gomez Vargas",
+      email = "andrea.gomezv11@gmail.com",
+      role = c("aut", "cre"),
+      comment = c(ORCID = "0009-0007-8745-3967")
+    ),
+    person(
+      given = "Emanuel",
+      family = "Ciardullo",
+      email = "emanuelciardullo997@gmail.com",
+      role = "aut",
+      comment = c(ORCID = "0009-0004-9447-7420")
+    )
+  ),
+  year = "2025",
+  note = "R package version 0.1.0",
+  url = "https://soyandrea.github.io/arcenso/",
+  header = "To cite arcenso in publications use:"
+)

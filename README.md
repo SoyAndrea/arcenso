@@ -1,12 +1,12 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# **ARcenso** <img src="man/figures/logo.png" align="right" height="138"/>
+# **ARcenso** <img src="man/figures/logo.png" align="left" height="200" style="margin-right: 20px;"/>
 
 <!-- badges: start -->
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15192435.svg)](https://doi.org/10.5281/zenodo.15192435)
-
+[![R-CMD-check](https://github.com/SoyAndrea/arcenso/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/SoyAndrea/arcenso/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 ## Overview
@@ -75,7 +75,7 @@ remotes::install_github("SoyAndrea/arcenso")
 - `check_repository()`: reports the tables currently available in the
   package
 
-- `arcenso()`: shinyapp to query the available tables in the package
+- `arcenso_gui()`: shinyapp to query the available tables in the package
 
 ## Usage
 
@@ -120,21 +120,25 @@ census_data_1970 <- get_census(
 
 # Preview the first table in the list
 head(census_data_1970[[1]])
-#>                   regimen_de_tenencia hogares personas  cuartos
-#> 1                         Propietario 3553250 13778700 11197900
-#> 2            Inquilino o arrendatario 1380950  4692800  3305350
-#> 3 Ocupante en relación de dependencia  353300  1402500   880050
-#> 4                   Ocupante gratuito  575650  2271150  1196500
-#> 5                    En otro carácter  192950   816350   419800
+#> # A tibble: 5 × 4
+#>   regimen_de_tenencia                 hogares personas cuartos 
+#>   <chr>                               <chr>   <chr>    <chr>   
+#> 1 Propietario                         3553250 13778700 11197900
+#> 2 Inquilino o arrendatario            1380950 4692800  3305350 
+#> 3 Ocupante en relación de dependencia 353300  1402500  880050  
+#> 4 Ocupante gratuito                   575650  2271150  1196500 
+#> 5 En otro carácter                    192950  816350   419800
 ```
 
 ### Interactive Exploration (Shiny App)
 
-The arcenso package includes an interactive web interface to explore
-census data without writing code. To launch the application locally,
-run:
+The arcenso package includes a built-in interactive interface to explore
+and consult census tables without writing code. This is ideal for quick
+data discovery and browsing through historical records.
+
+To launch the application locally, run:
 
 ``` r
 # Launch the interactive Shiny application
-arcenso()
+arcenso_gui()
 ```

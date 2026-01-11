@@ -1,30 +1,45 @@
 Package: arcenso
-Title: Data from Argentina’s Population Census
+Type: Package
+Title: Data from Argentina's Population Census
 Version: 0.1.0
 Authors@R: c(
-    person("Andrea", "Gomez Vargas", , "andrea.gomezv11@gmail.com", role = c("aut", "cre")),
-    person("Emanuel", "Ciardullo", role = "aut")
+    person(
+      given = "Andrea",
+      family = "Gomez Vargas",
+      email = "andrea.gomezv11@gmail.com",
+      role = c("aut", "cre"),
+      comment = c(ORCID = "0009-0007-8745-3967")
+    ),
+    person(
+      given = "Emanuel",
+      family = "Ciardullo",
+      email = "emanuelciardullo997@gmail.com",
+      role = "aut",
+      comment = c(ORCID = "0009-0004-9447-7420")
     )
-Description: Description: Offers access to tidy and curated data from Argentina's official population censuses, including national totals and data for 24 jurisdictions for 1970, and national totals for 1980. Designed to facilitate exploration and reuse of historical census information, with tools to access, check, and visualize the data interactively.
+  )
+Description: Provides access to tidy and curated data from Argentina's 
+    official population censuses, covering national totals and data for the 
+    24 jurisdictions for 1970 and 1980. The package is designed to 
+    facilitate the exploration and reuse of historical census information 
+    through tools for data retrieval, validation, and interactive visualization.
 License: MIT + file LICENSE
 Encoding: UTF-8
+LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.2.9000
+RoxygenNote: 7.3.2
 URL: https://soyandrea.github.io/arcenso/, https://doi.org/10.5281/zenodo.15192435
 BugReports: https://github.com/SoyAndrea/arcenso/issues
+Depends: 
+    R (>= 3.5)
 Imports: 
     dplyr,
     gt,
-    praise,
-    fresh,
-    shinyWidgets,
-    rlang,
     shiny,
-    shinydashboard
+    magrittr
 Suggests: 
     knitr,
-    rmarkdown
+    rmarkdown,
+    testthat (>= 3.0.0)
 VignetteBuilder: knitr
-Depends: 
-    R (>= 2.10)
-LazyData: true
+Config/testthat/edition: 3

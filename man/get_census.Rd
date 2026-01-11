@@ -2,25 +2,23 @@
 % Please edit documentation in R/get_census.R
 \name{get_census}
 \alias{get_census}
-\title{get_census
-get a list with the tables currently available in the package}
+\title{Get census data tables}
 \usage{
 get_census(year = 1970, topic = NULL, geolvl = NULL)
 }
 \arguments{
-\item{year}{census year for which the user wants to view the currently available tabulations. The default is “1970”.}
+\item{year}{Census year (1970 or 1980). Default is 1970.}
 
-\item{topic}{census topic of the tables available: ESTRUCTURA DE POBLACION, CONDICION DE ACTIVIDAD, FECUNDIDAD, CONDICIONES HABITACIONALES, COMPOSICIÓN DE LO HOGARES, MIGRACIÓN, SITUACIÓN CONYUGAL y EDUCACION. Setting the parameter to NULL will download all available tables.}
+\item{topic}{Census topic of the tables (e.g., "EDUCACION").
+If NULL, all available topics for the year will be retrieved.}
 
-\item{geolvl}{geographic disaggregation level, use “Total del país” for the overall results. Setting the parameter to NULL will download all available tables.}
+\item{geolvl}{Geographic disaggregation level (e.g., "Total del país").
+If NULL, all jurisdictions will be retrieved.}
 }
 \value{
-Returns a list with the tables that meet the parameters. To check the tables currently available use the check_repository function
+A list of data frames containing the requested census tables.
 }
 \description{
-get_census
-get a list with the tables currently available in the package
-}
-\examples{
-get_census( year = 1970, topic = "EDUCACION", geolvl = "Total del país")
+Retrieves a list of curated data tables from Argentina's official population
+censuses based on the specified filters.
 }

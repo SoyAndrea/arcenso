@@ -1,37 +1,52 @@
-#' check_repository
-#'reports the tables currently available in the package
-#' @param year census year for which the user wants to view the currently available tabulations. The default is “1970”.
-#' @param topic census topic of the tables available: ESTRUCTURA DE POBLACION, CONDICION DE ACTIVIDAD, FECUNDIDAD, CONDICIONES HABITACIONALES, COMPOSICIÓN DE LO HOGARES, MIGRACIÓN, SITUACIÓN CONYUGAL y EDUCACION. Setting the parameter to NULL will download all available tables.
-#' @param geolvl geographic disaggregation level, use “Total del país” for the overall results. Setting the parameter to NULL will download all available tables.
+#' Check available census tables
 #'
-#' @return Returns a data frame with the title of the tables that can be acces with the get_census function and the name given by that function to each table
+#' Reports the census tables currently available in the package for consultation
+#' based on the provided filters.
+#'
+#' @param year Census year (1970 or 1980). Default is 1970.
+#' @param topic Census topic of the tables (e.g., "EDUCACION").
+#' If NULL, all available topics for the selected year will be shown.
+#' @param geolvl Geographic disaggregation level (e.g., "Total del país").
+#' If NULL, all jurisdictions will be included.
+#'
+#' @return A data frame containing the table titles and the internal names
+#' required to access them via the get_census function.
 #' @export
 #'
-#' @examples check_repository( year = 1970, topic = "EDUCACION", geolvl = "Total del país")
-check_repository <- function( year = 1970, topic = NULL, geolvl = NULL){
+#' @examples
+#' check_repository(year = 1970, topic = "EDUCACION", geolvl = "Total del país")
+check_repository <- function(year = 1970, topic = NULL, geolvl = NULL) {
 
-  if(year != 1970 & year != 1980) stop(paste0("El año ", year, " todavia no fue cargado en AR_CENSO o no es un año censal"))
-
-
-  #repo <- list.files(paste0(system.file("extdata", package = "arcenso"),"/"), full.names = T)
-
-  selec <- info_cuadros_arcenso[info_cuadros_arcenso$anio %in% year & info_cuadros_arcenso$PKG %in% "SI",  ]
-
-  if(!is.null(topic)){
-
-    if(!topic %in% unique(selec$tema)) stop(c("Temática elegida inválida \nLas temáticas disponibles para el año seleccionado son: \n", paste(unique(selec$tema), "\n")))
-
-    selec <- selec[selec$tema %in% topic,  ]
-  }
-  if(!is.null(geolvl)){
-    selec <- selec[grepl(geolvl, selec$Jurisdiccion),  ]
+  # 1. Validate year (ASCII escapes in error messages)
+  if (year != 1970 && year != 1980) {
+    stop(paste0("El an\u00f1o ", year, " todav\u00eda no fue cargado en arcenso o no es un an\u00f1o censal"))
   }
 
+  # 2. Initial filtering
+  # Uses the internal dataset documented in data.R
+  selec <- info_cuadros_arcenso[info_cuadros_arcenso$anio %in% year &
+                                  info_cuadros_arcenso$PKG %in% "SI", ]
 
-  lista_cuadros <- info_cuadros_arcenso[info_cuadros_arcenso$Archivo %in% selec$Archivo, c("Archivo", "Titulo")]
+  # 3. Validate Topic
+  if (!is.null(topic)) {
+    if (!topic %in% unique(selec$tema)) {
+      stop(paste0("Tem\u00e1tica elegida inv\u00e1lida. \nLas tem\u00e1ticas disponibles son: \n",
+                  paste(unique(selec$tema), collapse = "\n")))
+    }
+    selec <- selec[selec$tema %in% topic, ]
+  }
 
-  rownames(lista_cuadros) = NULL
+  # 4. Filter by geographic level
+  if (!is.null(geolvl)) {
+    # Using grepl for flexibility
+    selec <- selec[grepl(geolvl, selec$Jurisdiccion), ]
+  }
+
+  # 5. Select final columns
+  lista_cuadros <- selec[, c("Archivo", "Titulo")]
+
+  # Clean row names for aesthetic output
+  rownames(lista_cuadros) <- NULL
 
   return(lista_cuadros)
-
 }
