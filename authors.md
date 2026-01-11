@@ -3,20 +3,22 @@
 ## Authors
 
 - **Andrea Gomez Vargas**. Author, maintainer.
+  [](https://orcid.org/0009-0007-8745-3967)
 
 - **Emanuel Ciardullo**. Author.
+  [](https://orcid.org/0009-0004-9447-7420)
 
 ## Citation
 
 Source:
-[`DESCRIPTION`](https://github.com/SoyAndrea/arcenso/blob/master/DESCRIPTION)
+[`inst/CITATION`](https://github.com/SoyAndrea/arcenso/blob/master/inst/CITATION)
 
-Gomez Vargas A, Ciardullo E (2025). *arcenso: Data from Argentina’s
+Gomez Vargas A, Ciardullo E (2025). *ARcenso: Data from Argentina's
 Population Census*. R package version 0.1.0,
 <https://soyandrea.github.io/arcenso/>.
 
     @Manual{,
-      title = {arcenso: Data from Argentina’s Population Census},
+      title = {ARcenso: Data from Argentina's Population Census},
       author = {Andrea {Gomez Vargas} and Emanuel Ciardullo},
       year = {2025},
       note = {R package version 0.1.0},

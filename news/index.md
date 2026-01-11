@@ -18,8 +18,7 @@ to organize and provide access to tidy datasets based on Argentina’s
     – to access available datasets.
   - [`check_repository()`](https://soyandrea.github.io/arcenso/reference/check_repository.md)
     – to list all available sources.
-  - [`arcenso()`](https://soyandrea.github.io/arcenso/reference/arcenso.md)
-    – a Shiny app to explore the data interactively.
+  - `arcenso()` – a Shiny app to explore the data interactively.
 - 🌐 Online documentation site:  
   👉 <https://soyandrea.github.io/arcenso>
 

@@ -1,6 +1,7 @@
-# get_census get a list with the tables currently available in the package
+# Get census data tables
 
-get_census get a list with the tables currently available in the package
+Retrieves a list of curated data tables from Argentina's official
+population censuses based on the specified filters.
 
 ## Usage
 
@@ -12,30 +13,18 @@ get_census(year = 1970, topic = NULL, geolvl = NULL)
 
 - year:
 
-  census year for which the user wants to view the currently available
-  tabulations. The default is “1970”.
+  Census year (1970 or 1980). Default is 1970.
 
 - topic:
 
-  census topic of the tables available: ESTRUCTURA DE POBLACION,
-  CONDICION DE ACTIVIDAD, FECUNDIDAD, CONDICIONES HABITACIONALES,
-  COMPOSICIÓN DE LO HOGARES, MIGRACIÓN, SITUACIÓN CONYUGAL y EDUCACION.
-  Setting the parameter to NULL will download all available tables.
+  Census topic of the tables (e.g., "EDUCACION"). If NULL, all available
+  topics for the year will be retrieved.
 
 - geolvl:
 
-  geographic disaggregation level, use “Total del país” for the overall
-  results. Setting the parameter to NULL will download all available
-  tables.
+  Geographic disaggregation level (e.g., "Total del país"). If NULL, all
+  jurisdictions will be retrieved.
 
 ## Value
 
-Returns a list with the tables that meet the parameters. To check the
-tables currently available use the check_repository function
-
-## Examples
-
-``` r
-get_census( year = 1970, topic = "EDUCACION", geolvl = "Total del país")
-#> list()
-```
+A list of data frames containing the requested census tables.

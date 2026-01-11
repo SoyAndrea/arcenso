@@ -2,11 +2,11 @@
 
 ## All functions
 
-- [`arcenso()`](https://soyandrea.github.io/arcenso/reference/arcenso.md)
-  : arcenso
+- [`arcenso_gui()`](https://soyandrea.github.io/arcenso/reference/arcenso_gui.md)
+  : ARcenso Interactive Interface
 - [`check_repository()`](https://soyandrea.github.io/arcenso/reference/check_repository.md)
-  : check_repository reports the tables currently available in the
-  package
+  : Check available census tables
 - [`get_census()`](https://soyandrea.github.io/arcenso/reference/get_census.md)
-  : get_census get a list with the tables currently available in the
-  package
+  : Get census data tables
+- [`info_cuadros_arcenso`](https://soyandrea.github.io/arcenso/reference/info_cuadros_arcenso.md)
+  : Metadatos de los cuadros del Censo de Argentina

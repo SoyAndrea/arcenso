@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Data from Argentina’s Population Census • arcenso</title>
+<title>Data from Argentina's Population Census • arcenso</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
 <link rel="icon" type="”image/svg+xml”" href="favicon.svg">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
@@ -15,10 +15,28 @@
 <link href="deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
-<script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Data from Argentina’s Population Census">
-<meta name="description" content="Description: Offers access to tidy and curated data from Argentina's official population censuses, including national totals and data for 24 jurisdictions for 1970, and national totals for 1980. Designed to facilitate exploration and reuse of historical census information, with tools to access, check, and visualize the data interactively.">
-<meta property="og:description" content="Description: Offers access to tidy and curated data from Argentina's official population censuses, including national totals and data for 24 jurisdictions for 1970, and national totals for 1980. Designed to facilitate exploration and reuse of historical census information, with tools to access, check, and visualize the data interactively.">
+<script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Data from Argentina's Population Census">
+<meta name="description" content="Provides access to tidy and curated data from Argentina's official population censuses, covering national totals and data for the 24 jurisdictions for 1970 and 1980. The package is designed to facilitate the exploration and reuse of historical census information through tools for data retrieval, validation, and interactive visualization.">
+<meta property="og:description" content="Provides access to tidy and curated data from Argentina's official population censuses, covering national totals and data for the 24 jurisdictions for 1970 and 1980. The package is designed to facilitate the exploration and reuse of historical census information through tools for data retrieval, validation, and interactive visualization.">
 <meta property="og:image" content="https://soyandrea.github.io/arcenso/logo.png">
+<style>
+  /* Agrandar el logo y alinearlo */
+  .navbar-logo {
+    height: 70px !important; /* Ajustá este número a tu gusto */
+    max-height: none !important;
+    margin-right: 10px;
+  }
+  /* Asegurar que el logo y el texto estén a la izquierda */
+  .navbar-brand {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+  }
+  /* Ajuste de margen para que el menú no se pegue al logo gigante */
+  .navbar-nav {
+    margin-left: 20px;
+  }
+</style>
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -61,7 +79,6 @@
 </div>
 <!-- badges: start -->
 
-<!-- badges: end -->
 <div class="section level2">
 <h2 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
 </h2>
@@ -157,7 +174,7 @@
 <ul>
 <li><p><code><a href="reference/get_census.html">get_census()</a></code>: get a list with the tables currently available in the package</p></li>
 <li><p><code><a href="reference/check_repository.html">check_repository()</a></code>: reports the tables currently available in the package</p></li>
-<li><p><code><a href="reference/arcenso.html">arcenso()</a></code>: shinyapp to query the available tables in the package</p></li>
+<li><p><code><a href="reference/arcenso_gui.html">arcenso_gui()</a></code>: shinyapp to query the available tables in the package</p></li>
 </ul>
 </div>
 <div class="section level2">
@@ -197,20 +214,23 @@
 <span></span>
 <span><span class="co"># Preview the first table in the list</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">census_data_1970</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span>
-<span><span class="co">#&gt;                   regimen_de_tenencia hogares personas  cuartos</span></span>
-<span><span class="co">#&gt; 1                         Propietario 3553250 13778700 11197900</span></span>
-<span><span class="co">#&gt; 2            Inquilino o arrendatario 1380950  4692800  3305350</span></span>
-<span><span class="co">#&gt; 3 Ocupante en relación de dependencia  353300  1402500   880050</span></span>
-<span><span class="co">#&gt; 4                   Ocupante gratuito  575650  2271150  1196500</span></span>
-<span><span class="co">#&gt; 5                    En otro carácter  192950   816350   419800</span></span></code></pre></div>
+<span><span class="co">#&gt; # A tibble: 5 × 4</span></span>
+<span><span class="co">#&gt;   regimen_de_tenencia                 hogares personas cuartos </span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;                               &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;   </span></span>
+<span><span class="co">#&gt; 1 Propietario                         3553250 13778700 11197900</span></span>
+<span><span class="co">#&gt; 2 Inquilino o arrendatario            1380950 4692800  3305350 </span></span>
+<span><span class="co">#&gt; 3 Ocupante en relación de dependencia 353300  1402500  880050  </span></span>
+<span><span class="co">#&gt; 4 Ocupante gratuito                   575650  2271150  1196500 </span></span>
+<span><span class="co">#&gt; 5 En otro carácter                    192950  816350   419800</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="interactive-exploration-shiny-app">Interactive Exploration (Shiny App)<a class="anchor" aria-label="anchor" href="#interactive-exploration-shiny-app"></a>
 </h3>
-<p>The arcenso package includes an interactive web interface to explore census data without writing code. To launch the application locally, run:</p>
+<p>The arcenso package includes a built-in interactive interface to explore and consult census tables without writing code. This is ideal for quick data discovery and browsing through historical records.</p>
+<p>To launch the application locally, run:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Launch the interactive Shiny application</span></span>
-<span><span class="fu"><a href="reference/arcenso.html">arcenso</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="reference/arcenso_gui.html">arcenso_gui</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
 </div>
@@ -241,8 +261,8 @@
 <div class="developers">
 <h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
-<li>Andrea Gomez Vargas <br><small class="roles"> Author, maintainer </small>   </li>
-<li>Emanuel Ciardullo <br><small class="roles"> Author </small>   </li>
+<li>Andrea Gomez Vargas <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0009-0007-8745-3967" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a>  </li>
+<li>Emanuel Ciardullo <br><small class="roles"> Author </small> <a href="https://orcid.org/0009-0004-9447-7420" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a>  </li>
 </ul>
 </div>
 
@@ -250,6 +270,7 @@
 <h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
 <li><a href="https://doi.org/10.5281/zenodo.15192435" class="external-link"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.15192435.svg" alt="DOI"></a></li>
+<li><a href="https://github.com/SoyAndrea/arcenso/actions/workflows/R-CMD-check.yaml" class="external-link"><img src="https://github.com/SoyAndrea/arcenso/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></a></li>
 </ul>
 </div>
 
