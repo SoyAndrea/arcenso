@@ -1,13 +1,17 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# **ARcenso** <img src="man/figures/logo.png" align="left" height="200" style="margin-right: 20px;"/>
+# **ARcenso**: Data from Argentina’s Population Census <img src="man/figures/logo.png" align="left" height="200" style="margin-right: 20px; border: none; box-shadow: none; outline: none; text-decoration: none;"/>
+
+<br>
 
 <!-- badges: start -->
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15192435.svg)](https://doi.org/10.5281/zenodo.15192435)
 [![R-CMD-check](https://github.com/SoyAndrea/arcenso/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/SoyAndrea/arcenso/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
+
+<br>
 
 ## Overview
 
@@ -141,4 +145,19 @@ To launch the application locally, run:
 ``` r
 # Launch the interactive Shiny application
 arcenso_gui()
+```
+
+## Citation
+
+If you use **ARcenso** in your research or projects, please cite it as
+follows:
+
+Gomez Vargas, A., & Ciardullo, E. (2025). arcenso: Data from Argentina’s
+Population Census. R package version 0.1.0. Available at:
+<https://soyandrea.github.io/arcenso/>
+
+You can also get the BibTeX entry by running:
+
+``` r
+citation("arcenso")
 ```
