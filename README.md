@@ -1,9 +1,9 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# **ARcenso**: Data from Argentina’s Population Census <img src="man/figures/logo.png" align="left" height="200" style="margin-right: 20px; border: none; box-shadow: none; outline: none; text-decoration: none;"/>
+# **ARcenso** <img src="man/figures/logo.png" align="left" height="210" style="margin-right: 20px; border: none; box-shadow: none; outline: none; text-decoration: none;"/>
 
-<br>
+<br clear="left"/>
 
 <!-- badges: start -->
 
@@ -11,7 +11,7 @@
 [![R-CMD-check](https://github.com/SoyAndrea/arcenso/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/SoyAndrea/arcenso/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
-<br>
+# Data from Argentina’s Population Census
 
 ## Overview
 
@@ -146,6 +146,15 @@ To launch the application locally, run:
 # Launch the interactive Shiny application
 arcenso_gui()
 ```
+
+Look at the interactive interface in action:
+
+<figure>
+<img src="man/figures/arcenso_gui.png"
+alt="Interactive Exploration with ARcenso" />
+<figcaption aria-hidden="true">Interactive Exploration with
+ARcenso</figcaption>
+</figure>
 
 ## Citation
 

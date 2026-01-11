@@ -14,11 +14,10 @@ knitr::opts_chunk$set(
 ```
 
 
-# **ARcenso**: Data from Argentina’s Population Census <img src="man/figures/logo.png" align="left" height="200" style="margin-right: 20px; border: none; box-shadow: none; outline: none; text-decoration: none;"/>
+# **ARcenso** <img src="man/figures/logo.png" align="left" height="210" style="margin-right: 20px; border: none; box-shadow: none; outline: none; text-decoration: none;"/>
 
 
-<br>
-
+<br clear="left"/>
 
 <!-- badges: start -->
 
@@ -26,7 +25,8 @@ knitr::opts_chunk$set(
 [![R-CMD-check](https://github.com/SoyAndrea/arcenso/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/SoyAndrea/arcenso/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
-<br>
+
+# Data from Argentina’s Population Census
 
 ## Overview 
 
@@ -126,6 +126,10 @@ arcenso_gui()
 ```
 
 
+Look at the interactive interface in action:
+
+![Interactive Exploration with ARcenso](man/figures/arcenso_gui.png)
+
 
 ## Citation
 
@@ -138,3 +142,5 @@ You can also get the BibTeX entry by running:
 ```{r, eval=FALSE}
 citation("arcenso")
 ```
+
+
