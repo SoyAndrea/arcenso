@@ -120,6 +120,7 @@ Finalmente, procedemos a la representación gráfica utilizando `ggplot2`.
 
 ```{r fig.width=9, fig.height=5} 
 datos_piramide %>%
+  mutate(sexo = factor(sexo, levels = c("Varones", "Mujeres"))) %>% 
   ggplot(aes(x = poblacion_rel, y = grupo_de_edad, fill = sexo)) +
   geom_col() +
   scale_fill_manual(values = c("#00f59b", "#7014f2")) +

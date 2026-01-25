@@ -36,6 +36,8 @@ Imports:
     gt (>= 0.9.0),
     shiny (>= 1.7.0)
 Suggests: 
+    dplyr,
+    ggplot2,
     knitr,
     rmarkdown,
     testthat (>= 3.0.0)
