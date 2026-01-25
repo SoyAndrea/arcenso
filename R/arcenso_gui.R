@@ -4,15 +4,18 @@
 #' Argentina's historical census data.
 #'
 #' @return A Shiny app object.
-#' @export
 #'
 #' @examples
 #' \dontrun{
 #' arcenso_gui()
 #' }
+#'
+#' @import shiny
+#' @import gt
+#' @export
 arcenso_gui <- function() {
 
-  # UI SIMPLE ---------------------------------------------------------------
+  # UI ----------------------------------------------------------------------
   ui <- shiny::fluidPage(
     shiny::titlePanel("ARcenso: Consulta de Datos"),
 
@@ -24,65 +27,152 @@ arcenso_gui <- function() {
         shiny::selectInput("tema", "Tem\u00e1tica", choices = NULL),
         shiny::selectInput("listas", "Seleccione tabla", choices = NULL),
         shiny::hr(),
-
+        shiny::p("Desarrollado con el paquete {arcenso}")
       ),
 
       shiny::mainPanel(
-        shiny::h3(shiny::textOutput("archivo")),
+        shiny::div(
+          style = "text-align: right; margin-bottom: 10px; border-bottom: 1px solid #eee; padding-bottom: 5px;",
+          shiny::tags$span("ID de Cuadro: ", style = "color: #666; font-size: 0.9em; margin-right: 5px;"),
+          shiny::tags$code(shiny::textOutput("id_view", inline = TRUE),
+                           style = "color: #007bff; font-weight: bold; font-size: 1.1em;")
+        ),
+
         gt::gt_output("tablacensal"),
+
         shiny::br(),
         shiny::uiOutput("fuente_ui")
       )
     )
   )
 
-  # SERVER (La lógica se mantiene casi igual, pero más limpia) -----------
+  # SERVER ------------------------------------------------------------------
   server <- function(input, output, session) {
 
-    # Observadores para selects dependientes
+    # 1. Filtros (Con freezeReactiveValue para evitar errores al cambiar año)
     shiny::observeEvent(input$anio, {
-      geo_filtrada <- info_cuadros_arcenso$Jurisdiccion[info_cuadros_arcenso$anio == input$anio]
-      shiny::updateSelectInput(session, "geo", choices = unique(geo_filtrada))
+      shiny::req(input$anio)
+
+      # --- FIX 1: CONGELAR INPUTS ---
+      # Esto evita que se disparen errores mientras se calculan las nuevas opciones
+      shiny::freezeReactiveValue(input, "geo")
+      shiny::freezeReactiveValue(input, "tema")
+      shiny::freezeReactiveValue(input, "listas")
+      # ------------------------------
+
+      codigos_existentes <- census_metadata$cod_geo[census_metadata$anio == input$anio]
+      geo_subset <- geo_metadata[geo_metadata$cod_geo %in% codigos_existentes, ]
+
+      es_total <- geo_subset$cod_geo == "00"
+      df_total <- geo_subset[es_total, ]
+      df_provs <- geo_subset[!es_total, ]
+      df_provs <- df_provs[order(df_provs$cod_geo), ]
+
+      geo_sorted <- rbind(df_total, df_provs)
+      opciones <- stats::setNames(geo_sorted$cod_geo, geo_sorted$nombre_geo)
+
+      shiny::updateSelectInput(session, "geo", choices = opciones)
     })
 
     shiny::observeEvent(input$geo, {
-      tema_filtrado <- info_cuadros_arcenso$tema[
-        info_cuadros_arcenso$anio == input$anio & info_cuadros_arcenso$Jurisdiccion == input$geo
+      shiny::req(input$anio)
+      shiny::freezeReactiveValue(input, "tema")   # Congelamos los siguientes
+      shiny::freezeReactiveValue(input, "listas")
+
+      tema_filtrado <- census_metadata$tema[
+        census_metadata$anio == input$anio & census_metadata$cod_geo == input$geo
       ]
-      shiny::updateSelectInput(session, "tema", choices = unique(tema_filtrado))
+      shiny::updateSelectInput(session, "tema", choices = sort(unique(tema_filtrado)))
     })
 
     shiny::observeEvent(input$tema, {
-      listas_filtrado <- info_cuadros_arcenso$Titulo[
-        info_cuadros_arcenso$anio == input$anio &
-          info_cuadros_arcenso$Jurisdiccion == input$geo &
-          info_cuadros_arcenso$tema == input$tema
+      shiny::req(input$anio, input$geo)
+      shiny::freezeReactiveValue(input, "listas") # Congelamos el último
+
+      listas_filtrado <- census_metadata$titulo[
+        census_metadata$anio == input$anio &
+          census_metadata$cod_geo == input$geo &
+          census_metadata$tema == input$tema
       ]
-      shiny::updateSelectInput(session, "listas", choices = unique(listas_filtrado))
+      shiny::updateSelectInput(session, "listas", choices = sort(unique(listas_filtrado)))
     })
 
+    # 2. Output ID
+    output$id_view <- shiny::renderText({
+      shiny::req(input$listas)
+      # Validacion rapida para evitar parpadeos
+      titulo_valido <- input$listas %in% census_metadata$titulo[census_metadata$anio == input$anio]
+      if(!titulo_valido) return("-")
+
+      id <- census_metadata$id_cuadro[census_metadata$titulo == input$listas]
+      if(length(id) > 0) id[1] else "-"
+    })
+
+    # 3. Render Tabla
     output$tablacensal <- gt::render_gt({
       shiny::req(input$listas)
 
-      # Usamos nuestra propia función get_census para la lógica!
-      # Esto es lo más profesional: que la app use las funciones del paquete
-      res <- get_census(year = as.numeric(input$anio),
-                        topic = input$tema,
-                        geolvl = input$geo)
+      # --- FIX 2: VALIDACIÓN DE SEGURIDAD ---
+      # Verificamos que el titulo seleccionado realmente pertenezca al anio seleccionado.
+      # Si no coincide (porque está cambiando), detenemos la ejecución silenciosamente.
+      titulos_posibles <- census_metadata$titulo[census_metadata$anio == input$anio]
+      shiny::req(input$listas %in% titulos_posibles)
+      # --------------------------------------
 
-      # Buscamos la tabla específica por título en el índice
-      nombre_archivo <- info_cuadros_arcenso$Archivo[info_cuadros_arcenso$Titulo == input$listas]
+      nombre_en_excel <- census_metadata$archivo_rds[census_metadata$titulo == input$listas]
+      shiny::req(length(nombre_en_excel) > 0)
 
-      if(length(res) > 0 && nombre_archivo %in% names(res)) {
-        gt::gt(res[[nombre_archivo]]) %>%
-          gt::opt_interactive(use_compact_mode = TRUE)
+      path_carpeta <- system.file("extdata", as.character(input$anio), package = "arcenso")
+      archivos_reales <- list.files(path_carpeta, full.names = TRUE)
+
+      limpiar <- function(x) {
+        x <- tolower(x)
+        x <- gsub("\\.rds$", "", x)
+        x <- chartr("\u00e1\u00e9\u00ed\u00f3\u00fa\u00f1", "aeioun", x)
+        return(x)
+      }
+
+      buscado_clean <- limpiar(nombre_en_excel[1])
+      reales_clean  <- limpiar(basename(archivos_reales))
+      match_idx <- which(reales_clean == buscado_clean)
+
+      if (length(match_idx) > 0) {
+        df <- readRDS(archivos_reales[match_idx[1]])
+
+        gt::gt(df) |>
+          gt::tab_header(
+            title = input$listas
+          ) |>
+          gt::cols_label_with(
+            fn = function(x) {
+              x <- gsub("_", " ", x)
+              x <- tolower(x)
+              substr(x, 1, 1) <- toupper(substr(x, 1, 1))
+              return(x)
+            }
+          ) |>
+          gt::fmt_number(
+            columns = gt::where(is.numeric),
+            decimals = 0,
+            sep_mark = ".",
+            dec_mark = ","
+          ) |>
+          gt::opt_interactive(use_compact_mode = TRUE) |>
+          gt::tab_options(
+            table.width = gt::pct(100),
+            heading.align = "left",
+            heading.title.font.size = 16,
+            column_labels.background.color = "#f0f0f0"
+          )
+
+      } else {
+        gt::gt(data.frame(Error = "Archivo no encontrado en el paquete"))
       }
     })
 
     output$fuente_ui <- shiny::renderUI({
-      txt <- if(input$anio == 1970) "INDEC, Censo Nacional de Poblaci\u00f3n, Familias y Viviendas 1970."
-      else "INDEC, Censo Nacional de Poblaci\u00f3n y Viviendas 1980."
-      shiny::tags$i(paste("Fuente:", txt))
+      txt <- if(input$anio == 1970) "1970" else "1980"
+      shiny::tags$i(paste("Fuente: INDEC, Censo Nacional de Poblaci\u00f3n", txt))
     })
   }
 

@@ -1,7 +1,7 @@
 Package: arcenso
 Type: Package
 Title: Data from Argentina's Population Census
-Version: 0.1.0
+Version: 0.2.0
 Authors@R: c(
     person(
       given = "Andrea",
@@ -31,12 +31,10 @@ RoxygenNote: 7.3.2
 URL: https://soyandrea.github.io/arcenso/, https://doi.org/10.5281/zenodo.15192435
 BugReports: https://github.com/SoyAndrea/arcenso/issues
 Depends: 
-    R (>= 3.5)
+    R (>= 4.1.0)
 Imports: 
-    dplyr,
-    gt,
-    shiny,
-    magrittr
+    gt (>= 0.9.0),
+    shiny (>= 1.7.0)
 Suggests: 
     knitr,
     rmarkdown,

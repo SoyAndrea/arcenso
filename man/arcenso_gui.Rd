@@ -17,4 +17,5 @@ Argentina's historical census data.
 \dontrun{
 arcenso_gui()
 }
+
 }

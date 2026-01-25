@@ -14,7 +14,7 @@ knitr::opts_chunk$set(
 ```
 
 
-# **ARcenso** <img src="man/figures/logo.png" align="left" height="210" style="margin-right: 20px; border: none; box-shadow: none; outline: none; text-decoration: none;"/>
+# **ARcenso** <img src="man/figures/logo.png" align="right" height="170" style="margin-right: 20px; border: none; box-shadow: none; outline: none; text-decoration: none;"/>
 
 
 <br clear="left"/>
@@ -26,17 +26,20 @@ knitr::opts_chunk$set(
 <!-- badges: end -->
 
 
-# Data from Argentina’s Population Census
+# **Data from Argentina’s Population Census**
 
-## Overview 
+## Overview
 
-This project was supported by the [rOpenSci Champions Program](https://ropensci.org/blog/2024/02/15/champions-program-champions-2024/) 2023-2024, with [Andrea Gomez Vargas](https://github.com/SoyAndrea) as the main developer, [Emanuel Ciardullo](https://github.com/ECiardullo) as co-author and [Luis D. Verde Arregoitia](https://github.com/luisDVA) as the mentor. 
+This project was supported by the [rOpenSci Champions Program](https://ropensci.org/blog/2024/02/15/champions-program-champions-2024/) 2023-2024, with [Andrea Gomez Vargas](https://github.com/SoyAndrea) as the main developer and [Emanuel Ciardullo](https://github.com/ECiardullo) as co-author.
 
-**arcenso** is a package under development that will allow access to the official data of the national population censuses in Argentina from the National Institute of Statistics and Census - INDEC. Currently, the results of the historical censuses of 1970, 1980, 1991, 2001, 2010 and 2022 are available in different formats through physical books, PDFs, Excel files or in REDATAM, without having a unified system or format that allows working with the data of these six census periods as a database. In addition, the presentation of the data is not homogeneous between the periods, making it difficult to make historical or serial comparisons of the available information.
+**ARcenso** is a package under development designed to democratize access to official data from Argentina's National Population Censuses produced by the National Institute of Statistics and Census (INDEC).
 
-This package aims to make census data available, homogenized and ready to use. It will include the census data from 1970 to 2022. Having a package of census information will allow the public and private sectors, citizens and other actors in society to access current and historical information on Argentina’s population, households and housing in a more accessible way.
+Currently, historical census results (1970, 1980, 1991, 2001, 2010, and 2022) are scattered across physical books, PDFs, Excel files, or closed systems like REDATAM. This fragmentation makes it difficult to perform historical analysis or serial comparisons.
 
-> **The available data will be added to the package in stages as shown in the table below by year and geographic disaggregation. Currently, the package is in stage 1 of the roadmap.**
+**ARcenso** aims to make this data available, homogenized, and ready to use in R.
+
+> **Note:** The available data is being added in stages. Currently, the package is in **Stage 1**.
+
 
 ## Data Availability Roadmap
 
@@ -44,12 +47,12 @@ This package aims to make census data available, homogenized and ready to use. I
 |-------|-------------------------------------|----------------------------------------|----------------------------------|
 | **1**    | 1970                                | National and 24 jurisdictions          | First available census data  |
 |       | 1980                                | National level                         | Jurisdiction-level data not available|
-| 2    | 1991 and 2001                          | National level                         |                                  |
-| 3    | 2010                                | National level                         |                                  |
-| 4    | 2022                                | National level                         |                                  |
-| 5    | 1980 and 1991                         | 24 jurisdictions                       |                                  |
-| 6    | 2001 and 2010                         | 24 jurisdictions                       |                                  |
-| 7    | 2022                                | 24 jurisdictions                       |                                  |
+| 2    | 1991 and 2001                          | National level                         | Coming soon                                  |
+| 3    | 2010                                | National level                         |    Coming soon                              |
+| 4    | 2022                                | National level                         |  Coming soon                                |
+| 5    | 1980 and 1991                         | 24 jurisdictions                       | Coming soon                                 |
+| 6    | 2001 and 2010                         | 24 jurisdictions                       | Coming soon                                 |
+| 7    | 2022                                | 24 jurisdictions                       |  Coming soon                                |
 
 
 
@@ -67,13 +70,14 @@ remotes::install_github("SoyAndrea/arcenso")
 ## Main functions
 
 
-**arcenso** provides 
+**arcenso** provides three core tools:
 
-- `get_census()`: get a list with the tables currently available in the package
 
-- `check_repository()`: reports the tables currently available in the package
+- `arcenso_gui()`: Launches a Shiny app to query and visualize available tables interactively.
 
-- `arcenso_gui()`: shinyapp to query the available tables in the package
+- `check_repository()`: Reports the tables currently available in the package based on search criteria.
+
+- `get_census()`: Retrieves the actual datasets as a list of data frames.
 
 
 ## Usage
@@ -84,39 +88,10 @@ First, load the library:
 library(arcenso)
 ```
 
-### Exploring the Repository
-
-Before downloading data, you can check which tables are available for a specific year, topic, and geographic level using `check_repository()`:
-
-```{r exploration}
-check_repository(
-  year = 1970, 
-  topic = "CONDICIONES HABITACIONALES", 
-  geolvl = "Total del país")
-```
-
-
-### Accessing Census Data
-
-Once you have identified the table you need, use `get_census()` to retrieve the data. This function returns a list containing the corresponding data frames:
-
-```{r data-access}
-
-# Download 1970 housing data
-census_data_1970 <- get_census(
-  year = 1970, 
-  topic = "CONDICIONES HABITACIONALES", 
-  geolvl = "Total del país"
-)
-
-# Preview the first table in the list
-head(census_data_1970[[1]])
-```
-
 
 ### Interactive Exploration (Shiny App)
 
-The arcenso package includes a built-in interactive interface to explore and consult census tables without writing code. This is ideal for quick data discovery and browsing through historical records.
+The easiest way to discover available data is through the built-in interface. You can browse tables, filter by geographic level, and copy the exact Table ID you need.
 
 To launch the application locally, run:
 
@@ -131,6 +106,99 @@ Look at the interactive interface in action:
 ![Interactive Exploration with ARcenso](man/figures/arcenso_gui.png)
 
 
+
+
+### Exploring the Repository
+
+Before downloading data, you can check which tables are available for a specific year, topic, and geographic level using `check_repository()`:
+
+```{r exploration}
+# Check available tables for 1970 related to "educacion"
+check_repository(
+  year = 1970, 
+  topic = "educacion"
+)
+```
+
+
+### Accessing Census Data
+
+Once you have identified the table you need (either by ID or topic), use `get_census()` to retrieve the data.
+
+
+#### Get specific table by ID (Recommended)
+
+This is the most robust method for reproducible research.
+
+```{r data-access}
+# Download specific table (e.g., Structure of Population, National level)
+census_data <- get_census(
+  year = 1970, 
+  id = "1970_00_estructura_01"
+)
+
+census_data
+```
+
+
+#### Search by topic and geography
+
+You can also filter directly while requesting data. 
+
+
+```{r}
+# Download 1970 housing data for Tierra del Fuego (geo_code "94")
+table_hab_94 <- get_census(
+  year = 1970, 
+  topic = "habitacional", 
+  geo_code = "94"
+)
+
+table_hab_94 
+```
+
+## Reference Dictionaries
+
+Don't know the geographic code for a province? Want to see all available topics?
+ The package includes built-in datasets for quick reference.
+
+
+### Geographic Codes (`geo_code`)
+
+
+Use `geo_metadata` to look up the INDEC codes required for filtering.
+
+
+```{r}
+# View the full table of geographic codes
+head(arcenso::geo_metadata)
+```
+
+
+### Available Topics (`census_metadata`)
+
+You can list all unique topics available in the census metadata using standard R commands:
+
+```{r}
+# List all unique topics
+
+unique(arcenso::census_metadata$tema)
+```
+## Acknowledgments
+
+This package was developed as part of the **[rOpenSci Champions Program](https://ropensci.org/champions/) (2023-2024)**.
+
+We would like to express our special gratitude to:
+
+* **[Yanina Bellini Saibene](https://github.com/yabellini)** (Program Leader) for her constant support, accompaniment, and guidance in structuring the project workflow.
+
+* **[Luis D. Verde Arregoitia](https://github.com/luisDVA)** for his invaluable mentorship, patience, and guidance throughout the development process.
+
+* **[Tamara Giselle Derner](https://www.linkedin.com/in/tamaraderner/)** for designing the hex sticker and finding the perfect symbol to give the package a true national identity.
+
+* The **rOpenSci community** for fostering diverse participation, and the wider **R community** for their interest and company along the way.
+
+
 ## Citation
 
 If you use **ARcenso** in your research or projects, please cite it as follows:
@@ -139,6 +207,7 @@ Gomez Vargas, A., & Ciardullo, E. (2025). arcenso: Data from Argentina's Populat
 
 
 You can also get the BibTeX entry by running:
+
 ```{r, eval=FALSE}
 citation("arcenso")
 ```

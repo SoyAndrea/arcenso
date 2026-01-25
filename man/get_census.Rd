@@ -4,16 +4,18 @@
 \alias{get_census}
 \title{Get census data tables}
 \usage{
-get_census(year = 1970, topic = NULL, geolvl = NULL)
+get_census(year = 1970, id = NULL, topic = NULL, geo_code = NULL)
 }
 \arguments{
-\item{year}{Census year (1970 or 1980). Default is 1970.}
+\item{year}{Integer. Census year (1970 or 1980). Default is 1970.}
 
-\item{topic}{Census topic of the tables (e.g., "EDUCACION").
-If NULL, all available topics for the year will be retrieved.}
+\item{id}{Character vector. Specific Table IDs to retrieve (e.g., "1970_00_estructura_01").
+If specified, this takes precedence over topic filters.}
 
-\item{geolvl}{Geographic disaggregation level (e.g., "Total del país").
-If NULL, all jurisdictions will be retrieved.}
+\item{topic}{Character vector. Keywords to filter topics (e.g., "migracion", c("vivienda", "material")).
+Matches are case-insensitive.}
+
+\item{geo_code}{Character. Geographic code (e.g., "02" for CABA).}
 }
 \value{
 A list of data frames containing the requested census tables.
@@ -21,4 +23,18 @@ A list of data frames containing the requested census tables.
 \description{
 Retrieves a list of curated data tables from Argentina's official population
 censuses based on the specified filters.
+}
+\examples{
+\dontrun{
+  # 1. Retrieve a specific table by its ID
+  # Note: 'year' is still required to locate the file in the correct folder
+  my_table <- get_census(year = 1970, id = "1970_00_estructura_01")
+
+  # 2. Retrieve tables by topic (e.g., all tables about 'vivienda')
+  housing_data <- get_census(year = 1970, topic = "vivienda")
+
+  # 3. Retrieve tables for multiple topics (OR logic)
+  # Gets tables related to 'vivienda' OR 'hogar'
+  mix_data <- get_census(year = 1970, topic = c("vivienda", "hogar"))
+}
 }

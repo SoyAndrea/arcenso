@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# **ARcenso** <img src="man/figures/logo.png" align="left" height="210" style="margin-right: 20px; border: none; box-shadow: none; outline: none; text-decoration: none;"/>
+# **ARcenso** <img src="man/figures/logo.png" align="right" height="170" style="margin-right: 20px; border: none; box-shadow: none; outline: none; text-decoration: none;"/>
 
 <br clear="left"/>
 
@@ -11,38 +11,30 @@
 [![R-CMD-check](https://github.com/SoyAndrea/arcenso/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/SoyAndrea/arcenso/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
-# Data from Argentina’s Population Census
+# **Data from Argentina’s Population Census**
 
 ## Overview
 
 This project was supported by the [rOpenSci Champions
 Program](https://ropensci.org/blog/2024/02/15/champions-program-champions-2024/)
 2023-2024, with [Andrea Gomez Vargas](https://github.com/SoyAndrea) as
-the main developer, [Emanuel Ciardullo](https://github.com/ECiardullo)
-as co-author and [Luis D. Verde Arregoitia](https://github.com/luisDVA)
-as the mentor.
+the main developer and [Emanuel
+Ciardullo](https://github.com/ECiardullo) as co-author.
 
-**arcenso** is a package under development that will allow access to the
-official data of the national population censuses in Argentina from the
-National Institute of Statistics and Census - INDEC. Currently, the
-results of the historical censuses of 1970, 1980, 1991, 2001, 2010 and
-2022 are available in different formats through physical books, PDFs,
-Excel files or in REDATAM, without having a unified system or format
-that allows working with the data of these six census periods as a
-database. In addition, the presentation of the data is not homogeneous
-between the periods, making it difficult to make historical or serial
-comparisons of the available information.
+**ARcenso** is a package under development designed to democratize
+access to official data from Argentina’s National Population Censuses
+produced by the National Institute of Statistics and Census (INDEC).
 
-This package aims to make census data available, homogenized and ready
-to use. It will include the census data from 1970 to 2022. Having a
-package of census information will allow the public and private sectors,
-citizens and other actors in society to access current and historical
-information on Argentina’s population, households and housing in a more
-accessible way.
+Currently, historical census results (1970, 1980, 1991, 2001, 2010, and
+2022) are scattered across physical books, PDFs, Excel files, or closed
+systems like REDATAM. This fragmentation makes it difficult to perform
+historical analysis or serial comparisons.
 
-> **The available data will be added to the package in stages as shown
-> in the table below by year and geographic disaggregation. Currently,
-> the package is in stage 1 of the roadmap.**
+**ARcenso** aims to make this data available, homogenized, and ready to
+use in R.
+
+> **Note:** The available data is being added in stages. Currently, the
+> package is in **Stage 1**.
 
 ## Data Availability Roadmap
 
@@ -50,12 +42,12 @@ accessible way.
 |----|----|----|----|
 | **1** | 1970 | National and 24 jurisdictions | First available census data |
 |  | 1980 | National level | Jurisdiction-level data not available |
-| 2 | 1991 and 2001 | National level |  |
-| 3 | 2010 | National level |  |
-| 4 | 2022 | National level |  |
-| 5 | 1980 and 1991 | 24 jurisdictions |  |
-| 6 | 2001 and 2010 | 24 jurisdictions |  |
-| 7 | 2022 | 24 jurisdictions |  |
+| 2 | 1991 and 2001 | National level | Coming soon |
+| 3 | 2010 | National level | Coming soon |
+| 4 | 2022 | National level | Coming soon |
+| 5 | 1980 and 1991 | 24 jurisdictions | Coming soon |
+| 6 | 2001 and 2010 | 24 jurisdictions | Coming soon |
+| 7 | 2022 | 24 jurisdictions | Coming soon |
 
 ## Installation
 
@@ -71,15 +63,16 @@ remotes::install_github("SoyAndrea/arcenso")
 
 ## Main functions
 
-**arcenso** provides
+**arcenso** provides three core tools:
 
-- `get_census()`: get a list with the tables currently available in the
-  package
+- `arcenso_gui()`: Launches a Shiny app to query and visualize available
+  tables interactively.
 
-- `check_repository()`: reports the tables currently available in the
-  package
+- `check_repository()`: Reports the tables currently available in the
+  package based on search criteria.
 
-- `arcenso_gui()`: shinyapp to query the available tables in the package
+- `get_census()`: Retrieves the actual datasets as a list of data
+  frames.
 
 ## Usage
 
@@ -89,56 +82,11 @@ First, load the library:
 library(arcenso)
 ```
 
-### Exploring the Repository
-
-Before downloading data, you can check which tables are available for a
-specific year, topic, and geographic level using `check_repository()`:
-
-``` r
-check_repository(
-  year = 1970, 
-  topic = "CONDICIONES HABITACIONALES", 
-  geolvl = "Total del país")
-#>                            Archivo
-#> 1 c70_total_del_pais_poblacion_c18
-#> 2 c70_total_del_pais_poblacion_c20
-#>                                                                                                      Titulo
-#> 1    Cuadro 18. Total del país. Hogares particulares, personas y cuartos, por régimen de tenencia. Año 1970
-#> 2 Cuadro 20. Total del país. Hogares particulares, por tamaño del hogar según régimen de tenencia. Año 1970
-```
-
-### Accessing Census Data
-
-Once you have identified the table you need, use `get_census()` to
-retrieve the data. This function returns a list containing the
-corresponding data frames:
-
-``` r
-
-# Download 1970 housing data
-census_data_1970 <- get_census(
-  year = 1970, 
-  topic = "CONDICIONES HABITACIONALES", 
-  geolvl = "Total del país"
-)
-
-# Preview the first table in the list
-head(census_data_1970[[1]])
-#> # A tibble: 5 × 4
-#>   regimen_de_tenencia                 hogares personas cuartos 
-#>   <chr>                               <chr>   <chr>    <chr>   
-#> 1 Propietario                         3553250 13778700 11197900
-#> 2 Inquilino o arrendatario            1380950 4692800  3305350 
-#> 3 Ocupante en relación de dependencia 353300  1402500  880050  
-#> 4 Ocupante gratuito                   575650  2271150  1196500 
-#> 5 En otro carácter                    192950  816350   419800
-```
-
 ### Interactive Exploration (Shiny App)
 
-The arcenso package includes a built-in interactive interface to explore
-and consult census tables without writing code. This is ideal for quick
-data discovery and browsing through historical records.
+The easiest way to discover available data is through the built-in
+interface. You can browse tables, filter by geographic level, and copy
+the exact Table ID you need.
 
 To launch the application locally, run:
 
@@ -155,6 +103,150 @@ alt="Interactive Exploration with ARcenso" />
 <figcaption aria-hidden="true">Interactive Exploration with
 ARcenso</figcaption>
 </figure>
+
+### Exploring the Repository
+
+Before downloading data, you can check which tables are available for a
+specific year, topic, and geographic level using `check_repository()`:
+
+``` r
+# Check available tables for 1970 related to "educacion"
+check_repository(
+  year = 1970, 
+  topic = "educacion"
+)
+#> # A tibble: 75 × 3
+#>    id_cuadro            cod_geo titulo                                          
+#>    <chr>                <chr>   <chr>                                           
+#>  1 1970_00_educacion_01 00      Cuadro 7. Total del país. Población de 10 y más…
+#>  2 1970_00_educacion_02 00      Cuadro 8. Total del país. Población de 5 y más …
+#>  3 1970_00_educacion_03 00      Cuadro 9. Total del país. Población de 5 y más …
+#>  4 1970_02_educacion_01 02      Cuadro 3. Capital Federal. Población de 10 y má…
+#>  5 1970_02_educacion_02 02      Cuadro 4. Capital Federal. Población de 5 y más…
+#>  6 1970_02_educacion_03 02      Cuadro 5. Capital Federal. Población de 5 y más…
+#>  7 1970_06_educacion_01 06      Cuadro 3. Provincia de Buenos Aires. Población …
+#>  8 1970_06_educacion_02 06      Cuadro 4. Provincia de Buenos Aires. Población …
+#>  9 1970_06_educacion_03 06      Cuadro 5. Provincia de Buenos Aires. Población …
+#> 10 1970_10_educacion_01 10      Cuadro 3. Provincia de Catamarca. Población de …
+#> # ℹ 65 more rows
+```
+
+### Accessing Census Data
+
+Once you have identified the table you need (either by ID or topic), use
+`get_census()` to retrieve the data.
+
+#### Get specific table by ID (Recommended)
+
+This is the most robust method for reproducible research.
+
+``` r
+# Download specific table (e.g., Structure of Population, National level)
+census_data <- get_census(
+  year = 1970, 
+  id = "1970_00_estructura_01"
+)
+
+census_data
+#> $`1970_00_estructura_01`
+#> # A tibble: 54 × 3
+#>    grupo_de_edad sexo    poblacion
+#>    <chr>         <chr>   <chr>    
+#>  1 0-4           Total   2355300  
+#>  2 0-4           Varones 1196950  
+#>  3 0-4           Mujeres 1158350  
+#>  4 5-9           Total   2297000  
+#>  5 5-9           Varones 1163050  
+#>  6 5-9           Mujeres 1133950  
+#>  7 10-14         Total   2201150  
+#>  8 10-14         Varones 1114300  
+#>  9 10-14         Mujeres 1086850  
+#> 10 15-19         Total   2098700  
+#> # ℹ 44 more rows
+```
+
+#### Search by topic and geography
+
+You can also filter directly while requesting data.
+
+``` r
+# Download 1970 housing data for Tierra del Fuego (geo_code "94")
+table_hab_94 <- get_census(
+  year = 1970, 
+  topic = "habitacional", 
+  geo_code = "94"
+)
+
+table_hab_94 
+#> $`1970_94_habitacional_01`
+#> # A tibble: 4 × 4
+#>   regimen_de_tenencia                 hogares personas cuartos
+#>   <chr>                               <chr>   <chr>    <chr>  
+#> 1 Inquilino o arrendatario            784     2772     2132   
+#> 2 Ocupante en relación de dependencia 713     2388     2321   
+#> 3 Ocupante gratuito                   122     353      377    
+#> 4 En otro carácter                    39      154      107
+```
+
+## Reference Dictionaries
+
+Don’t know the geographic code for a province? Want to see all available
+topics? The package includes built-in datasets for quick reference.
+
+### Geographic Codes (`geo_code`)
+
+Use `geo_metadata` to look up the INDEC codes required for filtering.
+
+``` r
+# View the full table of geographic codes
+head(arcenso::geo_metadata)
+#> # A tibble: 6 × 4
+#>   cod_geo nombre_geo                      nombre_corto iso_3166_2
+#>   <chr>   <fct>                           <chr>        <chr>     
+#> 1 00      Total del País                  Total        AR        
+#> 2 02      Ciudad Autónoma de Buenos Aires CABA         AR-C      
+#> 3 06      Buenos Aires                    Buenos Aires AR-B      
+#> 4 10      Catamarca                       Catamarca    AR-K      
+#> 5 14      Córdoba                         Córdoba      AR-X      
+#> 6 18      Corrientes                      Corrientes   AR-W
+```
+
+### Available Topics (`census_metadata`)
+
+You can list all unique topics available in the census metadata using
+standard R commands:
+
+``` r
+# List all unique topics
+
+unique(arcenso::census_metadata$tema)
+#> [1] estructura   fecundidad   educacion    conyugal     actividad   
+#> [6] migracion    composicion  habitacional vivienda    
+#> 9 Levels: estructura fecundidad educacion conyugal actividad ... vivienda
+```
+
+## Acknowledgments
+
+This package was developed as part of the **[rOpenSci Champions
+Program](https://ropensci.org/champions/) (2023-2024)**.
+
+We would like to express our special gratitude to:
+
+- **[Yanina Bellini Saibene](https://github.com/yabellini)** (Program
+  Leader) for her constant support, accompaniment, and guidance in
+  structuring the project workflow.
+
+- **[Luis D. Verde Arregoitia](https://github.com/luisDVA)** for his
+  invaluable mentorship, patience, and guidance throughout the
+  development process.
+
+- **[Tamara Giselle Derner](https://www.linkedin.com/in/tamaraderner/)**
+  for designing the hex sticker and finding the perfect symbol to give
+  the package a true national identity.
+
+- The **rOpenSci community** for fostering diverse participation, and
+  the wider **R community** for their interest and company along the
+  way.
 
 ## Citation
 

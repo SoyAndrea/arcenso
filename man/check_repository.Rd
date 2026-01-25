@@ -4,25 +4,37 @@
 \alias{check_repository}
 \title{Check available census tables}
 \usage{
-check_repository(year = 1970, topic = NULL, geolvl = NULL)
+check_repository(year = NULL, topic = NULL, geo_code = NULL)
 }
 \arguments{
-\item{year}{Census year (1970 or 1980). Default is 1970.}
+\item{year}{Integer. The census year (e.g., 1970, 1980).}
 
-\item{topic}{Census topic of the tables (e.g., "EDUCACION").
-If NULL, all available topics for the selected year will be shown.}
+\item{topic}{Character. The specific topic of the table (e.g., "educacion", "vivienda").
+To see the list of available topics, run: \code{unique(census_metadata$tema)}.}
 
-\item{geolvl}{Geographic disaggregation level (e.g., "Total del país").
-If NULL, all jurisdictions will be included.}
+\item{geo_code}{Character. The INDEC geographic code (e.g., "02" for CABA).
+To see the full list of codes and names, inspect: \code{View(geo_metadata)}.}
 }
 \value{
-A data frame containing the table titles and the internal names
-required to access them via the get_census function.
+A data frame containing the \code{id_cuadro}, title, and relevant context columns.
 }
 \description{
-Reports the census tables currently available in the package for consultation
-based on the provided filters.
+Explores the catalog of census tables available in the package.
+This function helps identify the correct \code{id_cuadro} required
+to download data using \code{\link{get_census}}.
+}
+\details{
+The output columns are dynamically adjusted based on the filters applied
+to avoid redundant information.
 }
 \examples{
-check_repository(year = 1970, topic = "EDUCACION", geolvl = "Total del país")
+  # Check all tables available for the 1970 census
+  check_repository(year = 1970)
+
+  # Search for a specific topic in a specific jurisdiction (CABA)
+  # Note: Topics are in Spanish as they appear in the original source
+  check_repository(topic = "educacion", geo_code = "02")
+}
+\seealso{
+\code{\link{get_census}} to download the data found here.
 }

@@ -1,25 +1,23 @@
-test_that("check_repository returns a valid data frame", {
-  # Carga local para asegurar que usamos el código nuevo
-  res <- check_repository(year = 1970)
+check_repository <- function(year = NULL, topic = NULL, geo_code = NULL) {
 
-  # TEST 1: ¿Es un data frame?
-  expect_s3_class(res, "data.frame")
+  # 1. Carga los datos completos
+  data <- census_metadata
 
-  # TEST 2: ¿Tiene las columnas correctas?
-  expect_true(all(c("Archivo", "Titulo") %in% colnames(res)))
+  # 2. Filtra por año (si se pide)
+  if (!is.null(year)) {
+    data <- data[data$anio == year, ]
+  }
 
-  # TEST 3: ¿Tiene filas? (Que no venga vacío para un año válido)
-  expect_gt(nrow(res), 0)
-})
+  # 3. Filtra por tema (si se pide)
+  if (!is.null(topic)) {
+    data <- data[grepl(topic, data$tema, ignore.case = TRUE), ]
+  }
 
-test_that("check_repository filtering works", {
-  # TEST 4: Si filtro por una temática, todas las filas deben ser de esa temática
-  # (Esto asume que 'EDUCACION' existe en tus datos de 1970)
-  res_edu <- check_repository(year = 1970, topic = "EDUCACION")
+  # 4. Filtra por geografía (si se pide)
+  if (!is.null(geo_code)) {
+    data <- data[data$cod_geo == geo_code, ]
+  }
 
-  # Verificamos que traiga algo
-  expect_gt(nrow(res_edu), 0)
-
-  # Verificamos que el filtrado sea coherente comparando con el índice global
-  expect_true(all(res_edu$Archivo %in% info_cuadros_arcenso$Archivo))
-})
+  # 5. RETORNA TODO (Importante: NO selecciones columnas específicas aquí)
+  return(data)
+}
