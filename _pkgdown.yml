@@ -3,40 +3,18 @@ url: https://soyandrea.github.io/arcenso/
 template:
   bootstrap: 5
   bslib:
-    preset: yeti
-    primary: "#0b6baf"
-  includes:
-    in_header: |
-      <style>
+# --- Paleta Monocromática Azul ---
+    bg: "#e1e5f6"       # Fondo: Celeste grisáceo (Lavanda suave)
+    fg: "#1a2d40"       # Texto: Azul Noche (¡Excelente contraste!)
+    primary: "#306cc9"  # Botones/Links: Tu azul original vibrante
 
-        .navbar {
-          background-color: #0b6baf !important;
-        }
+    # --- Tipografías ---
+    base_font:
+      google: "Roboto"      # Texto general
+    heading_font:
+      google: "Montserrat"  # Títulos (h1, h2, h3...)
 
-        /* Apuntamos a todos los enlaces y al logo dentro de la barra */
-        .navbar-nav .nav-link,
-        .navbar-brand,
-        .navbar-text {
-          color: #ffffff !important;
-        }
-
-        /* Cuando pasas el mouse, se pone gris clarito */
-        .navbar-nav .nav-link:hover,
-        .navbar-brand:hover {
-          color: #d1d1d1 !important;
-        }
-
-        .navbar-logo {
-          height: 70px !important;
-          max-height: none !important;
-          margin-right: 10px;
-        }
-        .navbar-brand {
-          display: flex !important;
-          align-items: center !important;
-          justify-content: flex-start !important;
-        }
-        .navbar-nav {
-          margin-left: 20px;
-        }
-      </style>
+navbar:
+  structure:
+    left:  [github]
+    right: [search,intro, reference, news]
