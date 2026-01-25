@@ -18,7 +18,7 @@ bibentry(
     )
   ),
   year = "2025",
-  note = "R package version 0.1.0",
+  note = paste0("R package version ", packageVersion("arcenso")),
   url = "https://soyandrea.github.io/arcenso/",
   header = "To cite arcenso in publications use:"
 )

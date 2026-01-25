@@ -17,4 +17,12 @@ template:
 navbar:
   structure:
     left:  [github]
-    right: [search,intro, reference, news]
+    right: [search,intro, reference, articles, news]
+  components:
+    articles:
+      text: Tutorials
+      menu:
+        - text: "Primeros pasos con ARcenso"
+          href: articles/arcenso.html
+        - text: "Visualización: Pirámide de Población"
+          href: articles/piramide_poblacion.html
