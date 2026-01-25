@@ -20,19 +20,34 @@
 <meta property="og:description" content="Provides access to tidy and curated data from Argentina's official population censuses, covering national totals and data for the 24 jurisdictions for 1970 and 1980. The package is designed to facilitate the exploration and reuse of historical census information through tools for data retrieval, validation, and interactive visualization.">
 <meta property="og:image" content="https://soyandrea.github.io/arcenso/logo.png">
 <style>
-  /* Agrandar el logo y alinearlo */
+
+  .navbar {
+    background-color: #0b6baf !important;
+  }
+
+  /* Apuntamos a todos los enlaces y al logo dentro de la barra */
+  .navbar-nav .nav-link,
+  .navbar-brand,
+  .navbar-text {
+    color: #ffffff !important;
+  }
+
+  /* Cuando pasas el mouse, se pone gris clarito */
+  .navbar-nav .nav-link:hover,
+  .navbar-brand:hover {
+    color: #d1d1d1 !important;
+  }
+
   .navbar-logo {
-    height: 70px !important; /* Ajustá este número a tu gusto */
+    height: 70px !important;
     max-height: none !important;
     margin-right: 10px;
   }
-  /* Asegurar que el logo y el texto estén a la izquierda */
   .navbar-brand {
     display: flex !important;
     align-items: center !important;
     justify-content: flex-start !important;
   }
-  /* Ajuste de margen para que el menú no se pegue al logo gigante */
   .navbar-nav {
     margin-left: 20px;
   }
@@ -46,7 +61,7 @@
 
     <a class="navbar-brand me-2" href="index.html">arcenso</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -82,16 +97,18 @@
 
 </div>
 <div class="section level1">
-<h1 id="data-from-argentinas-population-census">Data from Argentina’s Population Census<a class="anchor" aria-label="anchor" href="#data-from-argentinas-population-census"></a>
+<h1 id="data-from-argentinas-population-census">
+<strong>Data from Argentina’s Population Census</strong><a class="anchor" aria-label="anchor" href="#data-from-argentinas-population-census"></a>
 </h1>
 <div class="section level2">
 <h2 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
 </h2>
-<p>This project was supported by the <a href="https://ropensci.org/blog/2024/02/15/champions-program-champions-2024/" class="external-link">rOpenSci Champions Program</a> 2023-2024, with <a href="https://github.com/SoyAndrea" class="external-link">Andrea Gomez Vargas</a> as the main developer, <a href="https://github.com/ECiardullo" class="external-link">Emanuel Ciardullo</a> as co-author and <a href="https://github.com/luisDVA" class="external-link">Luis D. Verde Arregoitia</a> as the mentor.</p>
-<p><strong>arcenso</strong> is a package under development that will allow access to the official data of the national population censuses in Argentina from the National Institute of Statistics and Census - INDEC. Currently, the results of the historical censuses of 1970, 1980, 1991, 2001, 2010 and 2022 are available in different formats through physical books, PDFs, Excel files or in REDATAM, without having a unified system or format that allows working with the data of these six census periods as a database. In addition, the presentation of the data is not homogeneous between the periods, making it difficult to make historical or serial comparisons of the available information.</p>
-<p>This package aims to make census data available, homogenized and ready to use. It will include the census data from 1970 to 2022. Having a package of census information will allow the public and private sectors, citizens and other actors in society to access current and historical information on Argentina’s population, households and housing in a more accessible way.</p>
+<p>This project was supported by the <a href="https://ropensci.org/blog/2024/02/15/champions-program-champions-2024/" class="external-link">rOpenSci Champions Program</a> 2023-2024, with <a href="https://github.com/SoyAndrea" class="external-link">Andrea Gomez Vargas</a> as the main developer and <a href="https://github.com/ECiardullo" class="external-link">Emanuel Ciardullo</a> as co-author.</p>
+<p><strong>ARcenso</strong> is a package under development designed to democratize access to official data from Argentina’s National Population Censuses produced by the National Institute of Statistics and Census (INDEC).</p>
+<p>Currently, historical census results (1970, 1980, 1991, 2001, 2010, and 2022) are scattered across physical books, PDFs, Excel files, or closed systems like REDATAM. This fragmentation makes it difficult to perform historical analysis or serial comparisons.</p>
+<p><strong>ARcenso</strong> aims to make this data available, homogenized, and ready to use in R.</p>
 <blockquote>
-<p><strong>The available data will be added to the package in stages as shown in the table below by year and geographic disaggregation. Currently, the package is in stage 1 of the roadmap.</strong></p>
+<p><strong>Note:</strong> The available data is being added in stages. Currently, the package is in <strong>Stage 1</strong>.</p>
 </blockquote>
 </div>
 <div class="section level2">
@@ -127,37 +144,37 @@
 <td>2</td>
 <td>1991 and 2001</td>
 <td>National level</td>
-<td></td>
+<td>Coming soon</td>
 </tr>
 <tr class="even">
 <td>3</td>
 <td>2010</td>
 <td>National level</td>
-<td></td>
+<td>Coming soon</td>
 </tr>
 <tr class="odd">
 <td>4</td>
 <td>2022</td>
 <td>National level</td>
-<td></td>
+<td>Coming soon</td>
 </tr>
 <tr class="even">
 <td>5</td>
 <td>1980 and 1991</td>
 <td>24 jurisdictions</td>
-<td></td>
+<td>Coming soon</td>
 </tr>
 <tr class="odd">
 <td>6</td>
 <td>2001 and 2010</td>
 <td>24 jurisdictions</td>
-<td></td>
+<td>Coming soon</td>
 </tr>
 <tr class="even">
 <td>7</td>
 <td>2022</td>
 <td>24 jurisdictions</td>
-<td></td>
+<td>Coming soon</td>
 </tr>
 </tbody>
 </table>
@@ -175,11 +192,11 @@
 <div class="section level2">
 <h2 id="main-functions">Main functions<a class="anchor" aria-label="anchor" href="#main-functions"></a>
 </h2>
-<p><strong>arcenso</strong> provides</p>
+<p><strong>arcenso</strong> provides three core tools:</p>
 <ul>
-<li><p><code><a href="reference/get_census.html">get_census()</a></code>: get a list with the tables currently available in the package</p></li>
-<li><p><code><a href="reference/check_repository.html">check_repository()</a></code>: reports the tables currently available in the package</p></li>
-<li><p><code><a href="reference/arcenso_gui.html">arcenso_gui()</a></code>: shinyapp to query the available tables in the package</p></li>
+<li><p><code><a href="reference/arcenso_gui.html">arcenso_gui()</a></code>: Launches a Shiny app to query and visualize available tables interactively.</p></li>
+<li><p><code><a href="reference/check_repository.html">check_repository()</a></code>: Reports the tables currently available in the package based on search criteria.</p></li>
+<li><p><code><a href="reference/get_census.html">get_census()</a></code>: Retrieves the actual datasets as a list of data frames.</p></li>
 </ul>
 </div>
 <div class="section level2">
@@ -189,51 +206,11 @@
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://soyandrea.github.io/arcenso/">arcenso</a></span><span class="op">)</span></span></code></pre></div>
 <div class="section level3">
-<h3 id="exploring-the-repository">Exploring the Repository<a class="anchor" aria-label="anchor" href="#exploring-the-repository"></a>
-</h3>
-<p>Before downloading data, you can check which tables are available for a specific year, topic, and geographic level using <code><a href="reference/check_repository.html">check_repository()</a></code>:</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="reference/check_repository.html">check_repository</a></span><span class="op">(</span></span>
-<span>  year <span class="op">=</span> <span class="fl">1970</span>, </span>
-<span>  topic <span class="op">=</span> <span class="st">"CONDICIONES HABITACIONALES"</span>, </span>
-<span>  geolvl <span class="op">=</span> <span class="st">"Total del país"</span><span class="op">)</span></span>
-<span><span class="co">#&gt;                            Archivo</span></span>
-<span><span class="co">#&gt; 1 c70_total_del_pais_poblacion_c18</span></span>
-<span><span class="co">#&gt; 2 c70_total_del_pais_poblacion_c20</span></span>
-<span><span class="co">#&gt;                                                                                                      Titulo</span></span>
-<span><span class="co">#&gt; 1    Cuadro 18. Total del país. Hogares particulares, personas y cuartos, por régimen de tenencia. Año 1970</span></span>
-<span><span class="co">#&gt; 2 Cuadro 20. Total del país. Hogares particulares, por tamaño del hogar según régimen de tenencia. Año 1970</span></span></code></pre></div>
-</div>
-<div class="section level3">
-<h3 id="accessing-census-data">Accessing Census Data<a class="anchor" aria-label="anchor" href="#accessing-census-data"></a>
-</h3>
-<p>Once you have identified the table you need, use <code><a href="reference/get_census.html">get_census()</a></code> to retrieve the data. This function returns a list containing the corresponding data frames:</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
-<span><span class="co"># Download 1970 housing data</span></span>
-<span><span class="va">census_data_1970</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/get_census.html">get_census</a></span><span class="op">(</span></span>
-<span>  year <span class="op">=</span> <span class="fl">1970</span>, </span>
-<span>  topic <span class="op">=</span> <span class="st">"CONDICIONES HABITACIONALES"</span>, </span>
-<span>  geolvl <span class="op">=</span> <span class="st">"Total del país"</span></span>
-<span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Preview the first table in the list</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">census_data_1970</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span>
-<span><span class="co">#&gt; # A tibble: 5 × 4</span></span>
-<span><span class="co">#&gt;   regimen_de_tenencia                 hogares personas cuartos </span></span>
-<span><span class="co">#&gt;   &lt;chr&gt;                               &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;   </span></span>
-<span><span class="co">#&gt; 1 Propietario                         3553250 13778700 11197900</span></span>
-<span><span class="co">#&gt; 2 Inquilino o arrendatario            1380950 4692800  3305350 </span></span>
-<span><span class="co">#&gt; 3 Ocupante en relación de dependencia 353300  1402500  880050  </span></span>
-<span><span class="co">#&gt; 4 Ocupante gratuito                   575650  2271150  1196500 </span></span>
-<span><span class="co">#&gt; 5 En otro carácter                    192950  816350   419800</span></span></code></pre></div>
-</div>
-<div class="section level3">
 <h3 id="interactive-exploration-shiny-app">Interactive Exploration (Shiny App)<a class="anchor" aria-label="anchor" href="#interactive-exploration-shiny-app"></a>
 </h3>
-<p>The arcenso package includes a built-in interactive interface to explore and consult census tables without writing code. This is ideal for quick data discovery and browsing through historical records.</p>
+<p>The easiest way to discover available data is through the built-in interface. You can browse tables, filter by geographic level, and copy the exact Table ID you need.</p>
 <p>To launch the application locally, run:</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Launch the interactive Shiny application</span></span>
 <span><span class="fu"><a href="reference/arcenso_gui.html">arcenso_gui</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>Look at the interactive interface in action:</p>
@@ -241,6 +218,132 @@
 Interactive Exploration with ARcenso
 </figcaption></figure>
 </div>
+<div class="section level3">
+<h3 id="exploring-the-repository">Exploring the Repository<a class="anchor" aria-label="anchor" href="#exploring-the-repository"></a>
+</h3>
+<p>Before downloading data, you can check which tables are available for a specific year, topic, and geographic level using <code><a href="reference/check_repository.html">check_repository()</a></code>:</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Check available tables for 1970 related to "educacion"</span></span>
+<span><span class="fu"><a href="reference/check_repository.html">check_repository</a></span><span class="op">(</span></span>
+<span>  year <span class="op">=</span> <span class="fl">1970</span>, </span>
+<span>  topic <span class="op">=</span> <span class="st">"educacion"</span></span>
+<span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 75 × 3</span></span>
+<span><span class="co">#&gt;    id_cuadro            cod_geo titulo                                          </span></span>
+<span><span class="co">#&gt;    &lt;chr&gt;                &lt;chr&gt;   &lt;chr&gt;                                           </span></span>
+<span><span class="co">#&gt;  1 1970_00_educacion_01 00      Cuadro 7. Total del país. Población de 10 y más…</span></span>
+<span><span class="co">#&gt;  2 1970_00_educacion_02 00      Cuadro 8. Total del país. Población de 5 y más …</span></span>
+<span><span class="co">#&gt;  3 1970_00_educacion_03 00      Cuadro 9. Total del país. Población de 5 y más …</span></span>
+<span><span class="co">#&gt;  4 1970_02_educacion_01 02      Cuadro 3. Capital Federal. Población de 10 y má…</span></span>
+<span><span class="co">#&gt;  5 1970_02_educacion_02 02      Cuadro 4. Capital Federal. Población de 5 y más…</span></span>
+<span><span class="co">#&gt;  6 1970_02_educacion_03 02      Cuadro 5. Capital Federal. Población de 5 y más…</span></span>
+<span><span class="co">#&gt;  7 1970_06_educacion_01 06      Cuadro 3. Provincia de Buenos Aires. Población …</span></span>
+<span><span class="co">#&gt;  8 1970_06_educacion_02 06      Cuadro 4. Provincia de Buenos Aires. Población …</span></span>
+<span><span class="co">#&gt;  9 1970_06_educacion_03 06      Cuadro 5. Provincia de Buenos Aires. Población …</span></span>
+<span><span class="co">#&gt; 10 1970_10_educacion_01 10      Cuadro 3. Provincia de Catamarca. Población de …</span></span>
+<span><span class="co">#&gt; # ℹ 65 more rows</span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="accessing-census-data">Accessing Census Data<a class="anchor" aria-label="anchor" href="#accessing-census-data"></a>
+</h3>
+<p>Once you have identified the table you need (either by ID or topic), use <code><a href="reference/get_census.html">get_census()</a></code> to retrieve the data.</p>
+<div class="section level4">
+<h4 id="get-specific-table-by-id-recommended">Get specific table by ID (Recommended)<a class="anchor" aria-label="anchor" href="#get-specific-table-by-id-recommended"></a>
+</h4>
+<p>This is the most robust method for reproducible research.</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Download specific table (e.g., Structure of Population, National level)</span></span>
+<span><span class="va">census_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/get_census.html">get_census</a></span><span class="op">(</span></span>
+<span>  year <span class="op">=</span> <span class="fl">1970</span>, </span>
+<span>  id <span class="op">=</span> <span class="st">"1970_00_estructura_01"</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">census_data</span></span>
+<span><span class="co">#&gt; $`1970_00_estructura_01`</span></span>
+<span><span class="co">#&gt; # A tibble: 54 × 3</span></span>
+<span><span class="co">#&gt;    grupo_de_edad sexo    poblacion</span></span>
+<span><span class="co">#&gt;    &lt;chr&gt;         &lt;chr&gt;   &lt;chr&gt;    </span></span>
+<span><span class="co">#&gt;  1 0-4           Total   2355300  </span></span>
+<span><span class="co">#&gt;  2 0-4           Varones 1196950  </span></span>
+<span><span class="co">#&gt;  3 0-4           Mujeres 1158350  </span></span>
+<span><span class="co">#&gt;  4 5-9           Total   2297000  </span></span>
+<span><span class="co">#&gt;  5 5-9           Varones 1163050  </span></span>
+<span><span class="co">#&gt;  6 5-9           Mujeres 1133950  </span></span>
+<span><span class="co">#&gt;  7 10-14         Total   2201150  </span></span>
+<span><span class="co">#&gt;  8 10-14         Varones 1114300  </span></span>
+<span><span class="co">#&gt;  9 10-14         Mujeres 1086850  </span></span>
+<span><span class="co">#&gt; 10 15-19         Total   2098700  </span></span>
+<span><span class="co">#&gt; # ℹ 44 more rows</span></span></code></pre></div>
+</div>
+<div class="section level4">
+<h4 id="search-by-topic-and-geography">Search by topic and geography<a class="anchor" aria-label="anchor" href="#search-by-topic-and-geography"></a>
+</h4>
+<p>You can also filter directly while requesting data.</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Download 1970 housing data for Tierra del Fuego (geo_code "94")</span></span>
+<span><span class="va">table_hab_94</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/get_census.html">get_census</a></span><span class="op">(</span></span>
+<span>  year <span class="op">=</span> <span class="fl">1970</span>, </span>
+<span>  topic <span class="op">=</span> <span class="st">"habitacional"</span>, </span>
+<span>  geo_code <span class="op">=</span> <span class="st">"94"</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">table_hab_94</span> </span>
+<span><span class="co">#&gt; $`1970_94_habitacional_01`</span></span>
+<span><span class="co">#&gt; # A tibble: 4 × 4</span></span>
+<span><span class="co">#&gt;   regimen_de_tenencia                 hogares personas cuartos</span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;                               &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;  </span></span>
+<span><span class="co">#&gt; 1 Inquilino o arrendatario            784     2772     2132   </span></span>
+<span><span class="co">#&gt; 2 Ocupante en relación de dependencia 713     2388     2321   </span></span>
+<span><span class="co">#&gt; 3 Ocupante gratuito                   122     353      377    </span></span>
+<span><span class="co">#&gt; 4 En otro carácter                    39      154      107</span></span></code></pre></div>
+</div>
+</div>
+</div>
+<div class="section level2">
+<h2 id="reference-dictionaries">Reference Dictionaries<a class="anchor" aria-label="anchor" href="#reference-dictionaries"></a>
+</h2>
+<p>Don’t know the geographic code for a province? Want to see all available topics? The package includes built-in datasets for quick reference.</p>
+<div class="section level3">
+<h3 id="geographic-codes-geo_code">Geographic Codes (<code>geo_code</code>)<a class="anchor" aria-label="anchor" href="#geographic-codes-geo_code"></a>
+</h3>
+<p>Use <code>geo_metadata</code> to look up the INDEC codes required for filtering.</p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># View the full table of geographic codes</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fu">arcenso</span><span class="fu">::</span><span class="va"><a href="reference/geo_metadata.html">geo_metadata</a></span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 6 × 4</span></span>
+<span><span class="co">#&gt;   cod_geo nombre_geo                      nombre_corto iso_3166_2</span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;   &lt;fct&gt;                           &lt;chr&gt;        &lt;chr&gt;     </span></span>
+<span><span class="co">#&gt; 1 00      Total del País                  Total        AR        </span></span>
+<span><span class="co">#&gt; 2 02      Ciudad Autónoma de Buenos Aires CABA         AR-C      </span></span>
+<span><span class="co">#&gt; 3 06      Buenos Aires                    Buenos Aires AR-B      </span></span>
+<span><span class="co">#&gt; 4 10      Catamarca                       Catamarca    AR-K      </span></span>
+<span><span class="co">#&gt; 5 14      Córdoba                         Córdoba      AR-X      </span></span>
+<span><span class="co">#&gt; 6 18      Corrientes                      Corrientes   AR-W</span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="available-topics-census_metadata">Available Topics (<code>census_metadata</code>)<a class="anchor" aria-label="anchor" href="#available-topics-census_metadata"></a>
+</h3>
+<p>You can list all unique topics available in the census metadata using standard R commands:</p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># List all unique topics</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="fu">arcenso</span><span class="fu">::</span><span class="va"><a href="reference/census_metadata.html">census_metadata</a></span><span class="op">$</span><span class="va">tema</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] estructura   fecundidad   educacion    conyugal     actividad   </span></span>
+<span><span class="co">#&gt; [6] migracion    composicion  habitacional vivienda    </span></span>
+<span><span class="co">#&gt; 9 Levels: estructura fecundidad educacion conyugal actividad ... vivienda</span></span></code></pre></div>
+</div>
+</div>
+<div class="section level2">
+<h2 id="acknowledgments">Acknowledgments<a class="anchor" aria-label="anchor" href="#acknowledgments"></a>
+</h2>
+<p>This package was developed as part of the <strong><a href="https://ropensci.org/champions/" class="external-link">rOpenSci Champions Program</a> (2023-2024)</strong>.</p>
+<p>We would like to express our special gratitude to:</p>
+<ul>
+<li><p><strong><a href="https://github.com/yabellini" class="external-link">Yanina Bellini Saibene</a></strong> (Program Leader) for her constant support, accompaniment, and guidance in structuring the project workflow.</p></li>
+<li><p><strong><a href="https://github.com/luisDVA" class="external-link">Luis D. Verde Arregoitia</a></strong> for his invaluable mentorship, patience, and guidance throughout the development process.</p></li>
+<li><p><strong><a href="https://www.linkedin.com/in/tamaraderner/" class="external-link">Tamara Giselle Derner</a></strong> for designing the hex sticker and finding the perfect symbol to give the package a true national identity.</p></li>
+<li><p>The <strong>rOpenSci community</strong> for fostering diverse participation, and the wider <strong>R community</strong> for their interest and company along the way.</p></li>
+</ul>
 </div>
 <div class="section level2">
 <h2 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a>
@@ -248,7 +351,7 @@ Interactive Exploration with ARcenso
 <p>If you use <strong>ARcenso</strong> in your research or projects, please cite it as follows:</p>
 <p>Gomez Vargas, A., &amp; Ciardullo, E. (2025). arcenso: Data from Argentina’s Population Census. R package version 0.1.0. Available at: <a href="https://soyandrea.github.io/arcenso/" class="uri">https://soyandrea.github.io/arcenso/</a></p>
 <p>You can also get the BibTeX entry by running:</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/citation.html" class="external-link">citation</a></span><span class="op">(</span><span class="st">"arcenso"</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>

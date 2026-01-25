@@ -6,25 +6,47 @@ population censuses based on the specified filters.
 ## Usage
 
 ``` r
-get_census(year = 1970, topic = NULL, geolvl = NULL)
+get_census(year = 1970, id = NULL, topic = NULL, geo_code = NULL)
 ```
 
 ## Arguments
 
 - year:
 
-  Census year (1970 or 1980). Default is 1970.
+  Integer. Census year (1970 or 1980). Default is 1970.
+
+- id:
+
+  Character vector. Specific Table IDs to retrieve (e.g.,
+  "1970_00_estructura_01"). If specified, this takes precedence over
+  topic filters.
 
 - topic:
 
-  Census topic of the tables (e.g., "EDUCACION"). If NULL, all available
-  topics for the year will be retrieved.
+  Character vector. Keywords to filter topics (e.g., "migracion",
+  c("vivienda", "material")). Matches are case-insensitive.
 
-- geolvl:
+- geo_code:
 
-  Geographic disaggregation level (e.g., "Total del país"). If NULL, all
-  jurisdictions will be retrieved.
+  Character. Geographic code (e.g., "02" for CABA).
 
 ## Value
 
 A list of data frames containing the requested census tables.
+
+## Examples
+
+``` r
+if (FALSE) { # \dontrun{
+  # 1. Retrieve a specific table by its ID
+  # Note: 'year' is still required to locate the file in the correct folder
+  my_table <- get_census(year = 1970, id = "1970_00_estructura_01")
+
+  # 2. Retrieve tables by topic (e.g., all tables about 'vivienda')
+  housing_data <- get_census(year = 1970, topic = "vivienda")
+
+  # 3. Retrieve tables for multiple topics (OR logic)
+  # Gets tables related to 'vivienda' OR 'hogar'
+  mix_data <- get_census(year = 1970, topic = c("vivienda", "hogar"))
+} # }
+```
