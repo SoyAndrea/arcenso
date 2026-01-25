@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>arcenso • arcenso</title>
+<title>Primeros pasos con ARcenso • arcenso</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="96x96" href="../favicon-96x96.png">
 <link rel="icon" type="”image/svg+xml”" href="../favicon.svg">
 <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
@@ -17,7 +17,7 @@
 <link href="../deps/Montserrat-0.4.10/font.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
-<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="arcenso">
+<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Primeros pasos con ARcenso">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -44,6 +44,13 @@
 </form></li>
 <li class="active nav-item"><a class="nav-link" href="../articles/arcenso.html">Get started</a></li>
 <li class="nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
+<li class="nav-item dropdown">
+  <button class="nav-link dropdown-toggle" type="button" id="dropdown-tutorials" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Tutorials</button>
+  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown-tutorials">
+<li><a class="dropdown-item" href="../articles/arcenso.html">Primeros pasos con ARcenso</a></li>
+    <li><a class="dropdown-item" href="../articles/piramide_poblacion.html">Visualización: Pirámide de Población</a></li>
+  </ul>
+</li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul>
 </div>
@@ -57,7 +64,7 @@
 
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
-      <img src="../logo.png" class="logo" alt=""><h1>arcenso</h1>
+      <img src="../logo.png" class="logo" alt=""><h1>Primeros pasos con ARcenso</h1>
             
       
       <small class="dont-index">Source: <a href="https://github.com/SoyAndrea/arcenso/blob/master/vignettes/arcenso.Rmd" class="external-link"><code>vignettes/arcenso.Rmd</code></a></small>
@@ -66,10 +73,202 @@
 
     
     
+<p><strong>ARcenso</strong> es un paquete diseñado para facilitar el
+acceso a los datos de los Censos Nacionales de Población, Hogares y
+Viviendas de Argentina. Los datos se entregan en formatos estándar de R,
+compatibles tanto con <strong>R base</strong> como con el ecosistema
+<strong>Tidyverse</strong>.</p>
+<blockquote>
+<p><strong>Nota sobre disponibilidad:</strong> El paquete se encuentra
+en desarrollo activo. Actualmente, el repositorio contiene una selección
+de tablas históricas de 1970 y 1980. La cobertura de años y niveles
+geográficos se irá completando progresivamente.</p>
+</blockquote>
+<div class="section level2">
+<h2 id="instalación-y-carga">Instalación y Carga<a class="anchor" aria-label="anchor" href="#instalaci%C3%B3n-y-carga"></a>
+</h2>
+<p>Puedes instalar la versión de desarrollo desde GitHub:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># install.packages("remotes")</span></span>
+<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"SoyAndrea/arcenso"</span><span class="op">)</span></span></code></pre></div>
+<p>Cargamos el paquete:</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://soyandrea.github.io/arcenso/">arcenso</a></span><span class="op">)</span></span></code></pre></div>
-<p>ejemplo de armado</p>
-  </main>
+</div>
+<div class="section level2">
+<h2 id="consultar-disponibilidad-de-datos">Consultar disponibilidad de datos<a class="anchor" aria-label="anchor" href="#consultar-disponibilidad-de-datos"></a>
+</h2>
+<p>Previo a la descarga, es necesario identificar las tablas disponibles
+en el repositorio. El paquete ofrece dos métodos para realizar esta
+consulta:</p>
+<div class="section level3">
+<h3 id="opción-a-explorador-interactivo-recomendado">Opción A: Explorador Interactivo (Recomendado)<a class="anchor" aria-label="anchor" href="#opci%C3%B3n-a-explorador-interactivo-recomendado"></a>
+</h3>
+<p>Esta función ejecuta una aplicación Shiny integrada en el paquete. A
+través de su interfaz gráfica, es posible explorar el catálogo de datos,
+aplicar filtros y visualizar la información de manera dinámica.</p>
+<p>Asimismo, permite copiar el identificador (ID) del cuadro
+seleccionado para utilizarlo posteriormente como argumento en las
+funciones de descarga.</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/arcenso_gui.html">arcenso_gui</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<p>Ejemplo:</p>
+<p><img src="shiny_preview.png" class="r-plt" alt="Captura de pantalla de la aplicación Shiny mostrando los filtros y el ID de cuadro" width="90%" style="display: block; margin: auto;"></p>
+<p>Como se observa en la interfaz, tras seleccionar los filtros (año,
+alcance y temática), el sistema muestra una previsualización de los
+datos.</p>
+<blockquote>
+<p><strong>Dato clave</strong>: En el margen superior derecho de la
+tabla se encuentra el ID de Cuadro <em>(por ejemplo:
+1970_00_educacion_01).</em> Puede copiar este identificador para
+solicitar la tabla específica mediante código en el siguiente paso.</p>
+</blockquote>
+</div>
+<div class="section level3">
+<h3 id="opción-b-consulta-vía-consola">Opción B: Consulta vía Consola<a class="anchor" aria-label="anchor" href="#opci%C3%B3n-b-consulta-v%C3%ADa-consola"></a>
+</h3>
+<p>Alternativamente, es posible consultar el catálogo directamente desde
+la consola de R mediante la función <code><a href="../reference/check_repository.html">check_repository()</a></code>.</p>
+<p>Esta función devuelve un listado con los metadatos de las tablas que
+coinciden con los criterios de búsqueda. A continuación, se ejemplifica
+la consulta para el tópico migración en el año 1970:</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># La función nos listará los IDs de cuadro, código geográfico y títulos disponibles</span></span>
+<span><span class="fu"><a href="../reference/check_repository.html">check_repository</a></span><span class="op">(</span></span>
+<span>  year <span class="op">=</span> <span class="fl">1970</span>, </span>
+<span>  topic <span class="op">=</span> <span class="st">"migracion"</span></span>
+<span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 3 × 3</span></span></span>
+<span><span class="co">#&gt;   id_cuadro            cod_geo titulo                                           </span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                            </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 1970_00_migracion_01 00      Cuadro 2. Total del país. Población total, por g…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> 1970_00_migracion_02 00      Cuadro 5. Total del país. Población total, por l…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> 1970_00_migracion_03 00      Cuadro 6. Total del país. Población de 5 y más a…</span></span></code></pre></div>
+</div>
+</div>
+<div class="section level2">
+<h2 id="descargar-datos">Descargar datos<a class="anchor" aria-label="anchor" href="#descargar-datos"></a>
+</h2>
+<p>Una vez identificada la información de interés, se utiliza la función
+<code><a href="../reference/get_census.html">get_census()</a></code>.</p>
+<p>Es importante destacar que esta función retorna invariablemente un
+objeto de tipo lista, el cual contiene uno o más data frames
+correspondientes a las tablas solicitadas.</p>
+<div class="section level3">
+<h3 id="opción-a-usando-r-base">Opción A: Usando R Base<a class="anchor" aria-label="anchor" href="#opci%C3%B3n-a-usando-r-base"></a>
+</h3>
+<p>No necesitas dependencias externas para usar arcenso.</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Descargamos</span></span>
+<span><span class="va">datos_censo</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_census.html">get_census</a></span><span class="op">(</span></span>
+<span>  year <span class="op">=</span> <span class="fl">1970</span>, </span>
+<span>  topic <span class="op">=</span> <span class="st">"migracion"</span>, </span>
+<span>  geo_code <span class="op">=</span> <span class="st">"00"</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Extraemos la segunda tabla de la lista por su índice</span></span>
+<span><span class="va">tabla_migracion</span> <span class="op">&lt;-</span> <span class="va">datos_censo</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span></span>
+<span></span>
+<span><span class="co"># Vemos las primeras filas</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">tabla_migracion</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 3</span></span></span>
+<span><span class="co">#&gt;   lugar_residencia_habitual lugar_nacimiento               poblacion</span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Total                     Total                          23390050 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> Total                     Total en el país               21179650 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> Total                     Capital Federal                2946150  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> Total                     Partidos del Gran Buenos Aires 1687600  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> Total                     Resto de Buenos Aires          3418400  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> Total                     Catamarca                      257950</span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="opción-b-usando-tidyverse">Opción B: Usando Tidyverse<a class="anchor" aria-label="anchor" href="#opci%C3%B3n-b-usando-tidyverse"></a>
+</h3>
+<p>Si usas paquetes como dplyr, puedes integrar la descarga directamente
+en tu flujo de trabajo.</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Attaching package: 'dplyr'</span></span>
+<span><span class="co">#&gt; The following objects are masked from 'package:stats':</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     filter, lag</span></span>
+<span><span class="co">#&gt; The following objects are masked from 'package:base':</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     intersect, setdiff, setequal, union</span></span>
+<span></span>
+<span><span class="co"># Descargamos</span></span>
+<span><span class="va">datos_censo</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_census.html">get_census</a></span><span class="op">(</span></span>
+<span>  year <span class="op">=</span> <span class="fl">1970</span>, </span>
+<span>  topic <span class="op">=</span> <span class="st">"migracion"</span>, </span>
+<span>  geo_code <span class="op">=</span> <span class="st">"00"</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Accedemos a la primera tabla de la lista y miramos su estructura</span></span>
+<span><span class="va">datos_censo</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Rows: 841</span></span>
+<span><span class="co">#&gt; Columns: 3</span></span>
+<span><span class="co">#&gt; $ lugar_residencia_habitual <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Total"<span style="color: #949494;">, </span>"Total"<span style="color: #949494;">, </span>"Total"<span style="color: #949494;">, </span>"Total"<span style="color: #949494;">, </span>"Total"<span style="color: #949494;">,</span>…</span></span>
+<span><span class="co">#&gt; $ lugar_nacimiento          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Total"<span style="color: #949494;">, </span>"Total en el país"<span style="color: #949494;">, </span>"Capital Federa…</span></span>
+<span><span class="co">#&gt; $ poblacion                 <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "23390050"<span style="color: #949494;">, </span>"21179650"<span style="color: #949494;">, </span>"2946150"<span style="color: #949494;">, </span>"1687600"…</span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="opción-c-descarga-directa-por-id-precisión-máxima">Opción C: Descarga directa por ID (Precisión máxima)<a class="anchor" aria-label="anchor" href="#opci%C3%B3n-c-descarga-directa-por-id-precisi%C3%B3n-m%C3%A1xima"></a>
+</h3>
+<p>Si obtuviste un identificador específico (ej.
+<code>1970_00_educacion_01</code>) desde la aplicación Shiny o mediante
+<code><a href="../reference/check_repository.html">check_repository()</a></code>, puedes usarlo para descargar
+<strong>únicamente</strong> esa tabla.</p>
+<p>Esto es ideal para scripts reproducibles donde quieres asegurarte de
+estar trabajando siempre con el mismo cuadro.</p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Descarga usando el ID específico del cuadro</span></span>
+<span><span class="va">tabla_educacion</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_census.html">get_census</a></span><span class="op">(</span>id <span class="op">=</span> <span class="st">"1970_00_educacion_01"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Inspeccionamos el resultado</span></span>
+<span><span class="va">tabla_educacion</span></span>
+<span><span class="co">#&gt; $`1970_00_educacion_01`</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 108 × 4</span></span></span>
+<span><span class="co">#&gt;    sexo  grupo_de_edad alfabetismo poblacion</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> Total 10-14         Total       2201150  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> Total 10-14         Alfabetos   2100600  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> Total 10-14         Analfabetos 100550   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> Total 15-19         Total       2098700  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> Total 15-19         Alfabetos   2012900  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> Total 15-19         Analfabetos 85800    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> Total 20-24         Total       1950500  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> Total 20-24         Alfabetos   1867400  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> Total 20-24         Analfabetos 83100    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> Total 25-29         Total       1702700  </span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 98 more rows</span></span></span></code></pre></div>
+</div>
+</div>
+<div class="section level2">
+<h2 id="siguientes-pasos-y-comunidad">Siguientes pasos y Comunidad<a class="anchor" aria-label="anchor" href="#siguientes-pasos-y-comunidad"></a>
+</h2>
+<p>Ahora que dispones de los datos, el siguiente paso es integrarlos en
+tus análisis.</p>
+<ul>
+<li>
+<strong>Tutoriales:</strong> Para ver un flujo de trabajo completo
+que incluye limpieza de datos y visualización con <code>ggplot2</code>,
+te recomendamos leer nuestro artículo: <a href="piramide_poblacion.html">Ejemplo: Pirámide de Población</a>.</li>
+<li>
+<strong>Citación:</strong> ARcenso es un desarrollo de código
+abierto. Si utilizas estos datos en investigaciones o publicaciones, por
+favor cita el paquete ejecutando <code>citation("arcenso")</code> en tu
+consola.</li>
+<li>
+<strong>Feedback:</strong> Si encuentras errores o tienes
+sugerencias de mejora, te invitamos a abrir un <em>issue</em> en nuestro
+<a href="https://github.com/SoyAndrea/arcenso" class="external-link">repositorio de
+GitHub</a>. Revisi</li>
+</ul>
+</div>
+  </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
+    </nav></aside>
 </div>
 
 
