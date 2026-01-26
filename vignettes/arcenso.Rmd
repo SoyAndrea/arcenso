@@ -110,7 +110,7 @@ head(tabla_migracion)
 
 Si usas paquetes como dplyr, puedes integrar la descarga directamente en tu flujo de trabajo.
 
-```{r warning=FALSE}
+```{r message=FALSE, warning=FALSE}
 library(dplyr)
 
 # Descargamos

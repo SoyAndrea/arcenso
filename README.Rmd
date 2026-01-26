@@ -14,7 +14,7 @@ knitr::opts_chunk$set(
 ```
 
 
-# **ARcenso** <img src="man/figures/logo.png" align="right" height="170" style="margin-right: 20px; border: none; box-shadow: none; outline: none; text-decoration: none;"/>
+# **ARcenso** <img src="man/figures/logo.png" align="right" height="200" style="margin-right: 20px; border: none; box-shadow: none; outline: none; text-decoration: none;"/>
 
 
 <br clear="left"/>

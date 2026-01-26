@@ -25,8 +25,7 @@ Retrieves a list of curated data tables from Argentina's official population
 censuses based on the specified filters.
 }
 \examples{
-\dontrun{
-  # 1. Retrieve a specific table by its ID
+# 1. Retrieve a specific table by its ID
   # Note: 'year' is still required to locate the file in the correct folder
   my_table <- get_census(year = 1970, id = "1970_00_estructura_01")
 
@@ -36,5 +35,4 @@ censuses based on the specified filters.
   # 3. Retrieve tables for multiple topics (OR logic)
   # Gets tables related to 'vivienda' OR 'hogar'
   mix_data <- get_census(year = 1970, topic = c("vivienda", "hogar"))
-}
 }

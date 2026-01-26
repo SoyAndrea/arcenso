@@ -14,8 +14,7 @@
 #' @export
 #'
 #' @examples
-#' \dontrun{
-#'   # 1. Retrieve a specific table by its ID
+#' # 1. Retrieve a specific table by its ID
 #'   # Note: 'year' is still required to locate the file in the correct folder
 #'   my_table <- get_census(year = 1970, id = "1970_00_estructura_01")
 #'
@@ -25,7 +24,6 @@
 #'   # 3. Retrieve tables for multiple topics (OR logic)
 #'   # Gets tables related to 'vivienda' OR 'hogar'
 #'   mix_data <- get_census(year = 1970, topic = c("vivienda", "hogar"))
-#' }
 get_census <- function(year = 1970, id = NULL, topic = NULL, geo_code = NULL) {
 
   # 1. Validar anio (ASCII safe)
