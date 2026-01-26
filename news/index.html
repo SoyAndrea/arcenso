@@ -39,37 +39,32 @@
 
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.2.0" id="arcenso-020">arcenso 0.2.0<a class="anchor" aria-label="anchor" href="#arcenso-020"></a></h2>
-<p>🚀 <strong>Major Refactoring &amp; Performance Update</strong></p>
-<p>This version introduces significant changes to the package structure, reducing dependencies and improving stability.</p>
 <div class="section level3">
-<h3 id="breaking-changes-0-2-0">Breaking Changes<a class="anchor" aria-label="anchor" href="#breaking-changes-0-2-0"></a></h3>
-<ul><li>
-<strong>Renamed Function:</strong> The Shiny application launcher <code>arcenso()</code> has been renamed to <strong><code><a href="../reference/arcenso_gui.html">arcenso_gui()</a></code></strong> to avoid conflicts and improve clarity.</li>
+<h3 id="new-documentation-0-2-0">New documentation<a class="anchor" aria-label="anchor" href="#new-documentation-0-2-0"></a></h3>
+<ul><li>Added a “Get Started” vignette with examples using both Base R and tidyverse-style workflows.</li>
+<li>Made internal datasets <code>geo_metadata</code> and <code>census_metadata</code> available for user inspection.</li>
+<li>Updated the README with expanded usage examples and a project roadmap.</li>
 </ul></div>
 <div class="section level3">
-<h3 id="internal-improvements-0-2-0">Internal Improvements<a class="anchor" aria-label="anchor" href="#internal-improvements-0-2-0"></a></h3>
-<ul><li>
-<strong>Dependency Diet:</strong> Removed <code>dplyr</code> and <code>magrittr</code> dependencies. The package now runs on <strong>Base R</strong> and <code>utils</code>, making it lighter and faster to install.</li>
-<li>
-<strong>Modern R:</strong> Adopted the native pipe <code>|&gt;</code> (requires R &gt;= 4.1.0).</li>
-<li>
-<strong>Shiny Stability:</strong> Fixed race conditions in <code><a href="../reference/arcenso_gui.html">arcenso_gui()</a></code> where changing years caused synchronization errors in the filters. Added <code>freezeReactiveValue</code> for smoother UI transitions.</li>
-<li>
-<strong>Clean Checks:</strong> Achieved 0 errors, 0 warnings, and 0 notes in <code>R CMD check</code>.</li>
+<h3 id="breaking-changes-0-2-0">Breaking changes<a class="anchor" aria-label="anchor" href="#breaking-changes-0-2-0"></a></h3>
+<ul><li>Renamed the Shiny application launcher from <code>arcenso()</code> to <code><a href="../reference/arcenso_gui.html">arcenso_gui()</a></code> to improve clarity and avoid naming conflicts.</li>
 </ul></div>
 <div class="section level3">
-<h3 id="documentation-0-2-0">Documentation<a class="anchor" aria-label="anchor" href="#documentation-0-2-0"></a></h3>
-<ul><li>
-<strong>Dictionaries:</strong> Exposed <code>geo_metadata</code> and <code>census_metadata</code> datasets for user reference.</li>
-<li>
-<strong>Updated README:</strong> Improved roadmap, usage examples, and acknowledgment section.</li>
-<li>
-<strong>Function Docs:</strong> Added clearer examples for <code><a href="../reference/check_repository.html">check_repository()</a></code> and <code><a href="../reference/get_census.html">get_census()</a></code>.</li>
-</ul><hr></div>
+<h3 id="improvements-0-2-0">Improvements<a class="anchor" aria-label="anchor" href="#improvements-0-2-0"></a></h3>
+<ul><li>Reduced package dependencies by removing <code>dplyr</code> and <code>magrittr</code>; core functionality now relies on Base R.</li>
+<li>Adopted the native pipe operator <code>|&gt;</code> (requires R &gt;= 4.1.0).</li>
+<li>Improved Shiny app stability by fixing synchronization issues when switching census years.</li>
+<li>Enhanced documentation for <code><a href="../reference/check_repository.html">check_repository()</a></code> and <code><a href="../reference/get_census.html">get_census()</a></code> with clearer examples.</li>
+</ul></div>
+<div class="section level3">
+<h3 id="bug-fixes-and-maintenance-0-2-0">Bug fixes and maintenance<a class="anchor" aria-label="anchor" href="#bug-fixes-and-maintenance-0-2-0"></a></h3>
+<ul><li>Fixed non-ASCII character issues in documentation and metadata.</li>
+<li>Updated package metadata, including author ORCID identifiers in <code>DESCRIPTION</code>.</li>
+</ul></div>
 </div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.1.0" id="arcenso-010">arcenso 0.1.0<a class="anchor" aria-label="anchor" href="#arcenso-010"></a></h2>
-<p>🎉 First public release of the <strong>arcenso</strong> package</p>
+<p>First public release of the <strong>arcenso</strong> package.</p>
 <p>This is the initial official release of <em>arcenso</em>, an R package designed to organize and provide access to tidy datasets based on Argentina’s <strong>official population censuses</strong>.</p>
 <div class="section level3">
 <h3 id="includes-0-1-0">Includes<a class="anchor" aria-label="anchor" href="#includes-0-1-0"></a></h3>
@@ -81,15 +76,15 @@
 </ul></li>
 <li>Three core functions:
 <ul><li>
-<code><a href="../reference/get_census.html">get_census()</a></code> – to access available datasets.</li>
+<code><a href="../reference/get_census.html">get_census()</a></code> – access available census datasets.</li>
 <li>
-<code><a href="../reference/check_repository.html">check_repository()</a></code> – to list all available sources.</li>
+<code><a href="../reference/check_repository.html">check_repository()</a></code> – list all available data sources.</li>
 <li>
-<code>arcenso()</code> – a Shiny app to explore the data interactively.</li>
+<code>arcenso()</code> – a Shiny app to explore the data interactively (renamed to <code><a href="../reference/arcenso_gui.html">arcenso_gui()</a></code> in version 0.2.0).</li>
 </ul></li>
-<li>Online documentation site:<a href="https://soyandrea.github.io/arcenso">https://soyandrea.github.io/arcenso</a>
+<li>Online documentation site: <a href="https://soyandrea.github.io/arcenso" class="uri">https://soyandrea.github.io/arcenso</a>
 </li>
-</ul><p>This version establishes a stable foundation for further development. No changes from previous versions, as this is the first official release.</p>
+</ul><p>This version establishes a stable foundation for further development.</p>
 </div>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

@@ -37,16 +37,16 @@ A list of data frames containing the requested census tables.
 ## Examples
 
 ``` r
-if (FALSE) { # \dontrun{
-  # 1. Retrieve a specific table by its ID
+# 1. Retrieve a specific table by its ID
   # Note: 'year' is still required to locate the file in the correct folder
   my_table <- get_census(year = 1970, id = "1970_00_estructura_01")
 
   # 2. Retrieve tables by topic (e.g., all tables about 'vivienda')
   housing_data <- get_census(year = 1970, topic = "vivienda")
+#> Warning: No se encontraron tablas con los filtros especificados.
 
   # 3. Retrieve tables for multiple topics (OR logic)
   # Gets tables related to 'vivienda' OR 'hogar'
   mix_data <- get_census(year = 1970, topic = c("vivienda", "hogar"))
-} # }
+#> Warning: No se encontraron tablas con los filtros especificados.
 ```
