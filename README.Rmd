@@ -23,6 +23,7 @@ knitr::opts_chunk$set(
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15192435.svg)](https://doi.org/10.5281/zenodo.15192435)
 [![R-CMD-check](https://github.com/SoyAndrea/arcenso/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/SoyAndrea/arcenso/actions/workflows/R-CMD-check.yaml)
+[![Codecov test coverage](https://codecov.io/gh/SoyAndrea/arcenso/graph/badge.svg)](https://app.codecov.io/gh/SoyAndrea/arcenso)
 <!-- badges: end -->
 
 
@@ -212,4 +213,24 @@ You can also get the BibTeX entry by running:
 citation("arcenso")
 ```
 
+
+```bibtex
+`r paste0("@Manual{,
+  title = {", desc::desc_get_field("Package"), ": ", desc::desc_get_field("Title"), "},
+  author = {", desc::desc_get_author(), "},
+  year = {", format(Sys.Date(), "%Y"), "},
+  note = {R package version ", desc::desc_get_version(), "},
+  url = {", desc::desc_get_field("URL"), "},
+}")`
+```
+
+
+## Contributing
+
+We welcome contributions in both **English** and **Spanish**. Please see our [Contributing Guidelines](.github/CONTRIBUTING.md) for more details.
+
+
+## Code of Conduct
+
+Please note that the `arcenso` project is released with a [Contributor Code of Conduct](.github/CODE_OF_CONDUCT.md). By contributing to this project, you agree to abide by its terms.
 
