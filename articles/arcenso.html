@@ -89,8 +89,7 @@ geográficos se irá completando progresivamente.</p>
 </h2>
 <p>Puedes instalar la versión de desarrollo desde GitHub:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># install.packages("remotes")</span></span>
-<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"SoyAndrea/arcenso"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"SoyAndrea/arcenso"</span><span class="op">)</span></span></code></pre></div>
 <p>Cargamos el paquete:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://soyandrea.github.io/arcenso/">arcenso</a></span><span class="op">)</span></span></code></pre></div>
@@ -135,7 +134,7 @@ la consulta para el tópico migración en el año 1970:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># La función nos listará los IDs de cuadro, código geográfico y títulos disponibles</span></span>
 <span><span class="fu"><a href="../reference/check_repository.html">check_repository</a></span><span class="op">(</span></span>
-<span>  year <span class="op">=</span> <span class="fl">1970</span>, </span>
+<span>  year <span class="op">=</span> <span class="fl">1970</span>,</span>
 <span>  topic <span class="op">=</span> <span class="st">"migracion"</span></span>
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 3 × 3</span></span></span>
@@ -161,8 +160,8 @@ correspondientes a las tablas solicitadas.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Descargamos</span></span>
 <span><span class="va">datos_censo</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_census.html">get_census</a></span><span class="op">(</span></span>
-<span>  year <span class="op">=</span> <span class="fl">1970</span>, </span>
-<span>  topic <span class="op">=</span> <span class="st">"migracion"</span>, </span>
+<span>  year <span class="op">=</span> <span class="fl">1970</span>,</span>
+<span>  topic <span class="op">=</span> <span class="st">"migracion"</span>,</span>
 <span>  geo_code <span class="op">=</span> <span class="st">"00"</span></span>
 <span><span class="op">)</span></span>
 <span></span>
@@ -191,13 +190,13 @@ en tu flujo de trabajo.</p>
 <span></span>
 <span><span class="co"># Descargamos</span></span>
 <span><span class="va">datos_censo</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_census.html">get_census</a></span><span class="op">(</span></span>
-<span>  year <span class="op">=</span> <span class="fl">1970</span>, </span>
-<span>  topic <span class="op">=</span> <span class="st">"migracion"</span>, </span>
+<span>  year <span class="op">=</span> <span class="fl">1970</span>,</span>
+<span>  topic <span class="op">=</span> <span class="st">"migracion"</span>,</span>
 <span>  geo_code <span class="op">=</span> <span class="st">"00"</span></span>
 <span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Accedemos a la primera tabla de la lista y miramos su estructura</span></span>
-<span><span class="va">datos_censo</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span><span class="va">datos_censo</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Rows: 841</span></span>
 <span><span class="co">#&gt; Columns: 3</span></span>

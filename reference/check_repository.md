@@ -46,8 +46,8 @@ to download the data found here.
 ## Examples
 
 ``` r
-  # Check all tables available for the 1970 census
-  check_repository(year = 1970)
+# Check all tables available for the 1970 census
+check_repository(year = 1970)
 #> # A tibble: 332 × 3
 #>    id_cuadro             cod_geo titulo                                         
 #>    <chr>                 <chr>   <chr>                                          
@@ -63,9 +63,9 @@ to download the data found here.
 #> 10 1970_00_actividad_04  00      Cuadro 15. Total del país. Población económica…
 #> # ℹ 322 more rows
 
-  # Search for a specific topic in a specific jurisdiction (CABA)
-  # Note: Topics are in Spanish as they appear in the original source
-  check_repository(topic = "educacion", geo_code = "02")
+# Search for a specific topic in a specific jurisdiction (CABA)
+# Note: Topics are in Spanish as they appear in the original source
+check_repository(topic = "educacion", geo_code = "02")
 #> # A tibble: 3 × 3
 #>   id_cuadro             anio titulo                                             
 #>   <chr>                <dbl> <chr>                                              

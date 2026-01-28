@@ -15,7 +15,6 @@ Los datos se entregan en formatos estándar de R, compatibles tanto con
 Puedes instalar la versión de desarrollo desde GitHub:
 
 ``` r
-# install.packages("remotes")
 remotes::install_github("SoyAndrea/arcenso")
 ```
 
@@ -72,7 +71,7 @@ la consulta para el tópico migración en el año 1970:
 ``` r
 # La función nos listará los IDs de cuadro, código geográfico y títulos disponibles
 check_repository(
-  year = 1970, 
+  year = 1970,
   topic = "migracion"
 )
 #> # A tibble: 3 × 3
@@ -99,8 +98,8 @@ No necesitas dependencias externas para usar arcenso.
 ``` r
 # Descargamos
 datos_censo <- get_census(
-  year = 1970, 
-  topic = "migracion", 
+  year = 1970,
+  topic = "migracion",
   geo_code = "00"
 )
 
@@ -130,13 +129,13 @@ library(dplyr)
 
 # Descargamos
 datos_censo <- get_census(
-  year = 1970, 
-  topic = "migracion", 
+  year = 1970,
+  topic = "migracion",
   geo_code = "00"
 )
 
 # Accedemos a la primera tabla de la lista y miramos su estructura
-datos_censo[[2]] %>% 
+datos_censo[[2]] |> 
   glimpse()
 #> Rows: 841
 #> Columns: 3

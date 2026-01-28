@@ -16,7 +16,7 @@ A Shiny app object.
 ## Examples
 
 ``` r
-if (FALSE) { # \dontrun{
-arcenso_gui()
-} # }
+if (interactive()) {
+  arcenso_gui()
+}
 ```

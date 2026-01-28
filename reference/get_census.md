@@ -39,10 +39,10 @@ A list of data frames containing the requested census tables.
 ``` r
 # 1. Retrieve a specific table by its ID
 
-  # Note: 'year' is still required to locate the file in the correct folder
-  my_table <- get_census(year = 1970, id = "1970_00_estructura_01")
+# Note: 'year' is still required to locate the file in the correct folder
+my_table <- get_census(year = 1970, id = "1970_00_estructura_01")
 
-  my_table
+my_table
 #> $`1970_00_estructura_01`
 #> # A tibble: 54 × 3
 #>    grupo_de_edad sexo    poblacion
@@ -60,12 +60,12 @@ A list of data frames containing the requested census tables.
 #> # ℹ 44 more rows
 #> 
 
-  # 2. Retrieve tables by topic (e.g., all tables about 'habitacional')
+# 2. Retrieve tables by topic (e.g., all tables about 'habitacional')
 
-  housing_data <- get_census(year = 1970, topic = "habitacional")
+housing_data <- get_census(year = 1970, topic = "habitacional")
 
-  # Explore the list and extract the first table
-  housing_data[[1]]
+# Explore the list and extract the first table
+housing_data[[1]]
 #> # A tibble: 5 × 4
 #>   regimen_de_tenencia                 hogares personas cuartos 
 #>   <chr>                               <chr>   <chr>    <chr>   
