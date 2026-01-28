@@ -2,7 +2,7 @@ name: Update CodeMeta
 
 on:
   push:
-    branches: [ main, master ]
+    branches: [ main ]
     paths:
       - 'DESCRIPTION'
 
