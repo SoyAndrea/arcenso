@@ -1,0 +1,171 @@
+{
+  "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
+  "@type": "SoftwareSourceCode",
+  "identifier": "arcenso",
+  "description": "Provides access to tidy and curated data from Argentina's official population censuses, covering national totals and data for the 24 jurisdictions for 1970 and 1980. The package is designed to facilitate the exploration and reuse of historical census information through tools for data retrieval, validation, and interactive visualization.",
+  "name": "arcenso: Data from Argentina's Population Census",
+  "relatedLink": "https://soyandrea.github.io/arcenso/",
+  "codeRepository": "https://github.com/SoyAndrea/arcenso",
+  "issueTracker": "https://github.com/SoyAndrea/arcenso/issues",
+  "license": "https://spdx.org/licenses/MIT",
+  "version": "0.2.0",
+  "programmingLanguage": {
+    "@type": "ComputerLanguage",
+    "name": "R",
+    "url": "https://r-project.org"
+  },
+  "runtimePlatform": "R version 4.5.1 (2025-06-13 ucrt)",
+  "author": [
+    {
+      "@type": "Person",
+      "givenName": "Andrea",
+      "familyName": "Gomez Vargas",
+      "email": "andrea.gomezv11@gmail.com",
+      "@id": "https://orcid.org/0009-0007-8745-3967"
+    },
+    {
+      "@type": "Person",
+      "givenName": "Emanuel",
+      "familyName": "Ciardullo",
+      "email": "emanuelciardullo997@gmail.com",
+      "@id": "https://orcid.org/0009-0004-9447-7420"
+    }
+  ],
+  "maintainer": [
+    {
+      "@type": "Person",
+      "givenName": "Andrea",
+      "familyName": "Gomez Vargas",
+      "email": "andrea.gomezv11@gmail.com",
+      "@id": "https://orcid.org/0009-0007-8745-3967"
+    }
+  ],
+  "softwareSuggestions": [
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "dplyr",
+      "name": "dplyr",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=dplyr"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "ggplot2",
+      "name": "ggplot2",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=ggplot2"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "knitr",
+      "name": "knitr",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=knitr"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "rmarkdown",
+      "name": "rmarkdown",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=rmarkdown"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "testthat",
+      "name": "testthat",
+      "version": ">= 3.0.0",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=testthat"
+    }
+  ],
+  "softwareRequirements": {
+    "1": {
+      "@type": "SoftwareApplication",
+      "identifier": "R",
+      "name": "R",
+      "version": ">= 4.1.0"
+    },
+    "2": {
+      "@type": "SoftwareApplication",
+      "identifier": "gt",
+      "name": "gt",
+      "version": ">= 0.9.0",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=gt"
+    },
+    "3": {
+      "@type": "SoftwareApplication",
+      "identifier": "shiny",
+      "name": "shiny",
+      "version": ">= 1.7.0",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=shiny"
+    },
+    "SystemRequirements": null
+  },
+  "fileSize": "704.551KB",
+  "citation": [
+    {
+      "@type": "SoftwareSourceCode",
+      "datePublished": "2025",
+      "author": [
+        {
+          "@type": "Person",
+          "givenName": "Andrea",
+          "familyName": "Gomez Vargas",
+          "email": "andrea.gomezv11@gmail.com",
+          "@id": "https://orcid.org/0009-0007-8745-3967"
+        },
+        {
+          "@type": "Person",
+          "givenName": "Emanuel",
+          "familyName": "Ciardullo",
+          "email": "emanuelciardullo997@gmail.com",
+          "@id": "https://orcid.org/0009-0004-9447-7420"
+        }
+      ],
+      "name": "ARcenso: Data from Argentina's Population Census",
+      "url": "https://soyandrea.github.io/arcenso/",
+      "description": "R package version 0.2.0"
+    }
+  ],
+  "releaseNotes": "https://github.com/SoyAndrea/arcenso/blob/main/NEWS.md",
+  "readme": "https://github.com/SoyAndrea/arcenso/blob/main/README.md",
+  "contIntegration": "https://github.com/SoyAndrea/arcenso/actions/workflows/R-CMD-check.yaml",
+  "keywords": ["argentina", "census-data", "package", "r"]
+}
