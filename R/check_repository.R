@@ -19,23 +19,23 @@
 #' @seealso \code{\link{get_census}} to download the data found here.
 #'
 #' @examples
-#'   # Check all tables available for the 1970 census
-#'   check_repository(year = 1970)
+#' # Check all tables available for the 1970 census
+#' check_repository(year = 1970)
 #'
-#'   # Search for a specific topic in a specific jurisdiction (CABA)
-#'   # Note: Topics are in Spanish as they appear in the original source
-#'   check_repository(topic = "educacion", geo_code = "02")
-
+#' # Search for a specific topic in a specific jurisdiction (CABA)
+#' # Note: Topics are in Spanish as they appear in the original source
+#' check_repository(topic = "educacion", geo_code = "02")
 check_repository <- function(year = NULL, topic = NULL, geo_code = NULL) {
-
   out <- census_metadata
 
   # Filtro por AÑO
   if (!is.null(year)) {
     available_years <- unique(out$anio)
     if (!year %in% available_years) {
-      stop("El a\u00f1o ", year, " no est\u00e1 disponible. A\u00f1os v\u00e1lidos: ",
-           paste(available_years, collapse = ", "))
+      stop(
+        "El a\u00f1o ", year, " no est\u00e1 disponible. A\u00f1os v\u00e1lidos: ",
+        paste(available_years, collapse = ", ")
+      )
     }
     # Subset base: filas donde anio coincide
     out <- out[out$anio == year, ]
@@ -45,8 +45,10 @@ check_repository <- function(year = NULL, topic = NULL, geo_code = NULL) {
   if (!is.null(topic)) {
     available_topics <- unique(out$tema)
     if (!topic %in% available_topics) {
-      stop("El tema '", topic, "' no es v\u00e1lido. Temas disponibles:\n",
-           paste(available_topics, collapse = ", "))
+      stop(
+        "El tema '", topic, "' no es v\u00e1lido. Temas disponibles:\n",
+        paste(available_topics, collapse = ", ")
+      )
     }
     out <- out[out$tema == topic, ]
   }

@@ -16,19 +16,18 @@
 #' @examples
 #' # 1. Retrieve a specific table by its ID
 #'
-#'   # Note: 'year' is still required to locate the file in the correct folder
-#'   my_table <- get_census(year = 1970, id = "1970_00_estructura_01")
+#' # Note: 'year' is still required to locate the file in the correct folder
+#' my_table <- get_census(year = 1970, id = "1970_00_estructura_01")
 #'
-#'   my_table
+#' my_table
 #'
-#'   # 2. Retrieve tables by topic (e.g., all tables about 'habitacional')
+#' # 2. Retrieve tables by topic (e.g., all tables about 'habitacional')
 #'
-#'   housing_data <- get_census(year = 1970, topic = "habitacional")
+#' housing_data <- get_census(year = 1970, topic = "habitacional")
 #'
-#'   # Explore the list and extract the first table
-#'   housing_data[[1]]
+#' # Explore the list and extract the first table
+#' housing_data[[1]]
 get_census <- function(year = 1970, id = NULL, topic = NULL, geo_code = NULL) {
-
   # 1. Validar anio (ASCII safe)
   if (!year %in% c(1970, 1980)) {
     stop(paste0("El an\u00f1o ", year, " no es un an\u00f1o censal disponible."))
@@ -94,7 +93,6 @@ get_census <- function(year = 1970, id = NULL, topic = NULL, geo_code = NULL) {
 
   # 4. Loop de carga
   for (i in seq_len(nrow(selec))) {
-
     buscado_clean <- clean_fname(selec$archivo_rds[i])
     match_idx <- which(reales_clean == buscado_clean)
 

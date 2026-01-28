@@ -82,10 +82,9 @@ Para construir la pirámide de población, es necesario adaptar los datos censal
 
 
 ```{r}
-
-datos_piramide <- poblacion_1970 %>%
+datos_piramide <- poblacion_1970 |> 
   # 1. Filtramos para conservar únicamente los datos desagregados por sexo
-  filter(sexo != "Total") %>%
+  filter(sexo != "Total") |> 
   mutate(
     # 2. Recodificación para asegurar el orden secuencial
     grupo_de_edad = case_when(
@@ -95,16 +94,16 @@ datos_piramide <- poblacion_1970 %>%
     ),
     # Conversión a variable numérica
     poblacion = as.numeric(poblacion)
-  ) %>%
+  ) |> 
   # 3. Cálculo de la estructura relativa
-  group_by(sexo) %>%
+  group_by(sexo)  |> 
   mutate(
     poblacion_rel = if_else(
       sexo == "Varones",
       -poblacion / sum(poblacion), # Valores negativos para el lado izquierdo
-      poblacion / sum(poblacion)   # Valores positivos para el lado derecho
+      poblacion / sum(poblacion) # Valores positivos para el lado derecho
     )
-  ) %>%
+  ) |> 
   ungroup()
 
 
@@ -119,19 +118,20 @@ Finalmente, procedemos a la representación gráfica utilizando `ggplot2`.
 
 
 ```{r fig.width=9, fig.height=5} 
-datos_piramide %>%
-  mutate(sexo = factor(sexo, levels = c("Varones", "Mujeres"))) %>% 
+datos_piramide  |> 
+  mutate(sexo = factor(sexo, levels = c("Varones", "Mujeres")))  |> 
   ggplot(aes(x = poblacion_rel, y = grupo_de_edad, fill = sexo)) +
   geom_col() +
   scale_fill_manual(values = c("#00f59b", "#7014f2")) +
   # Ajuste del eje X: etiquetas en % absoluto y límites simétricos
   scale_x_continuous(
     labels = function(x) paste0(abs(round(x * 100, 1)), "%"),
-    limits = c(-0.15, 0.15), 
+    limits = c(-0.15, 0.15),
     breaks = seq(-0.15, 0.15, by = 0.05)
   ) +
   labs(
-    title = "Estructura de población por sexo y grupo quinquenal de edad. Total del país. Año 1970",
+    title = 
+      "Estructura de población por sexo y grupo quinquenal de edad. Total del país. Año 1970",
     x = "porcentaje",
     y = "Grupo quinquenal de edad",
     caption = "Fuente: INDEC, Censo 1970. Procesado con paquete {arcenso}.",

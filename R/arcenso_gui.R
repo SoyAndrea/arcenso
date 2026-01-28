@@ -6,19 +6,18 @@
 #' @return A Shiny app object.
 #'
 #' @examples
-#' \dontrun{
-#' arcenso_gui()
+#' if (interactive()) {
+#'   arcenso_gui()
 #' }
 #'
 #' @import shiny
 #' @import gt
 #' @export
 arcenso_gui <- function() {
-
+  res_id <- NULL
   # UI ----------------------------------------------------------------------
   ui <- shiny::fluidPage(
     shiny::titlePanel("ARcenso: Consulta de Datos"),
-
     shiny::sidebarLayout(
       shiny::sidebarPanel(
         shiny::helpText("Seleccione los filtros para visualizar la tabla."),
@@ -29,17 +28,15 @@ arcenso_gui <- function() {
         shiny::hr(),
         shiny::p("Desarrollado con el paquete {arcenso}")
       ),
-
       shiny::mainPanel(
         shiny::div(
           style = "text-align: right; margin-bottom: 10px; border-bottom: 1px solid #eee; padding-bottom: 5px;",
           shiny::tags$span("ID de Cuadro: ", style = "color: #666; font-size: 0.9em; margin-right: 5px;"),
           shiny::tags$code(shiny::textOutput("id_view", inline = TRUE),
-                           style = "color: #007bff; font-weight: bold; font-size: 1.1em;")
+            style = "color: #007bff; font-weight: bold; font-size: 1.1em;"
+          )
         ),
-
         gt::gt_output("tablacensal"),
-
         shiny::br(),
         shiny::uiOutput("fuente_ui")
       )
@@ -48,7 +45,6 @@ arcenso_gui <- function() {
 
   # SERVER ------------------------------------------------------------------
   server <- function(input, output, session) {
-
     # 1. Filtros (Con freezeReactiveValue para evitar errores al cambiar año)
     shiny::observeEvent(input$anio, {
       shiny::req(input$anio)
@@ -76,7 +72,7 @@ arcenso_gui <- function() {
 
     shiny::observeEvent(input$geo, {
       shiny::req(input$anio)
-      shiny::freezeReactiveValue(input, "tema")   # Congelamos los siguientes
+      shiny::freezeReactiveValue(input, "tema") # Congelamos los siguientes
       shiny::freezeReactiveValue(input, "listas")
 
       tema_filtrado <- census_metadata$tema[
@@ -102,10 +98,17 @@ arcenso_gui <- function() {
       shiny::req(input$listas)
       # Validacion rapida para evitar parpadeos
       titulo_valido <- input$listas %in% census_metadata$titulo[census_metadata$anio == input$anio]
-      if(!titulo_valido) return("-")
+      if (!titulo_valido) {
+        return("-")
+      }
 
       id <- census_metadata$id_cuadro[census_metadata$titulo == input$listas]
-      if(length(id) > 0) id[1] else "-"
+      if (length(id) > 0) id[1] else "-"
+
+      shiny::exportTestValues(id_view_test = res_id)
+      # --------------------------------------
+
+      return(res_id)
     })
 
     # 3. Render Tabla
@@ -133,7 +136,7 @@ arcenso_gui <- function() {
       }
 
       buscado_clean <- limpiar(nombre_en_excel[1])
-      reales_clean  <- limpiar(basename(archivos_reales))
+      reales_clean <- limpiar(basename(archivos_reales))
       match_idx <- which(reales_clean == buscado_clean)
 
       if (length(match_idx) > 0) {
@@ -164,14 +167,13 @@ arcenso_gui <- function() {
             heading.title.font.size = 16,
             column_labels.background.color = "#f0f0f0"
           )
-
       } else {
         gt::gt(data.frame(Error = "Archivo no encontrado en el paquete"))
       }
     })
 
     output$fuente_ui <- shiny::renderUI({
-      txt <- if(input$anio == 1970) "1970" else "1980"
+      txt <- if (input$anio == 1970) "1970" else "1980"
       shiny::tags$i(paste("Fuente: INDEC, Censo Nacional de Poblaci\u00f3n", txt))
     })
   }

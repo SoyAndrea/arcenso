@@ -14,8 +14,8 @@ Launches a basic Shiny application to interactively browse and consult
 Argentina's historical census data.
 }
 \examples{
-\dontrun{
-arcenso_gui()
+if (interactive()) {
+  arcenso_gui()
 }
 
 }

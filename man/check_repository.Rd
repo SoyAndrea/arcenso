@@ -28,12 +28,12 @@ The output columns are dynamically adjusted based on the filters applied
 to avoid redundant information.
 }
 \examples{
-  # Check all tables available for the 1970 census
-  check_repository(year = 1970)
+# Check all tables available for the 1970 census
+check_repository(year = 1970)
 
-  # Search for a specific topic in a specific jurisdiction (CABA)
-  # Note: Topics are in Spanish as they appear in the original source
-  check_repository(topic = "educacion", geo_code = "02")
+# Search for a specific topic in a specific jurisdiction (CABA)
+# Note: Topics are in Spanish as they appear in the original source
+check_repository(topic = "educacion", geo_code = "02")
 }
 \seealso{
 \code{\link{get_census}} to download the data found here.

@@ -1,5 +1,4 @@
 test_that("check_repository filters and adjusts columns dynamically", {
-
   # 1. Test: Filtro por año (Validamos que NO incluya la columna 'anio')
   # Usamos un año que sabemos que existe (ej: 1970)
   res_1970 <- check_repository(year = 1970)

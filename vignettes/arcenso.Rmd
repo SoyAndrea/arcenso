@@ -12,7 +12,6 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
-
 ```
 
 **ARcenso** es un paquete diseñado para facilitar el acceso a los datos de los Censos Nacionales de Población, Hogares y Viviendas de Argentina. Los datos se entregan en formatos estándar de R, compatibles tanto con **R base** como con el ecosistema **Tidyverse**.
@@ -24,7 +23,6 @@ knitr::opts_chunk$set(
 Puedes instalar la versión de desarrollo desde GitHub:
 
 ```{r instalacion, eval=FALSE}
-# install.packages("remotes")
 remotes::install_github("SoyAndrea/arcenso")
 ```
 
@@ -74,7 +72,7 @@ Esta función devuelve un listado con los metadatos de las tablas que coinciden 
 ```{r check}
 # La función nos listará los IDs de cuadro, código geográfico y títulos disponibles
 check_repository(
-  year = 1970, 
+  year = 1970,
   topic = "migracion"
 )
 ```
@@ -93,8 +91,8 @@ No necesitas dependencias externas para usar arcenso.
 ```{r}
 # Descargamos
 datos_censo <- get_census(
-  year = 1970, 
-  topic = "migracion", 
+  year = 1970,
+  topic = "migracion",
   geo_code = "00"
 )
 
@@ -115,13 +113,13 @@ library(dplyr)
 
 # Descargamos
 datos_censo <- get_census(
-  year = 1970, 
-  topic = "migracion", 
+  year = 1970,
+  topic = "migracion",
   geo_code = "00"
 )
 
 # Accedemos a la primera tabla de la lista y miramos su estructura
-datos_censo[[2]] %>% 
+datos_censo[[2]] |> 
   glimpse()
 ```
 

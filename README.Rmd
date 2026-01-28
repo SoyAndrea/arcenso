@@ -116,7 +116,7 @@ Before downloading data, you can check which tables are available for a specific
 ```{r exploration}
 # Check available tables for 1970 related to "educacion"
 check_repository(
-  year = 1970, 
+  year = 1970,
   topic = "educacion"
 )
 ```
@@ -134,7 +134,7 @@ This is the most robust method for reproducible research.
 ```{r data-access}
 # Download specific table (e.g., Structure of Population, National level)
 census_data <- get_census(
-  year = 1970, 
+  year = 1970,
   id = "1970_00_estructura_01"
 )
 
@@ -150,12 +150,12 @@ You can also filter directly while requesting data.
 ```{r}
 # Download 1970 housing data for Tierra del Fuego (geo_code "94")
 table_hab_94 <- get_census(
-  year = 1970, 
-  topic = "habitacional", 
+  year = 1970,
+  topic = "habitacional",
   geo_code = "94"
 )
 
-table_hab_94 
+table_hab_94
 ```
 
 ## Reference Dictionaries
