@@ -255,3 +255,27 @@ You can also get the BibTeX entry by running:
 ``` r
 citation("arcenso")
 ```
+
+``` bibtex
+@Manual{,
+  title = {arcenso: Data from Argentina's Population Census},
+  author = {Andrea Gomez Vargas <andrea.gomezv11@gmail.com> [aut, cre] (ORCID: <https://orcid.org/0009-0007-8745-3967>)},
+  year = {2026},
+  note = {R package version 0.2.0},
+  url = {https://soyandrea.github.io/arcenso/, https://doi.org/10.5281/zenodo.15192435},
+}
+```
+
+## Contributing
+
+We welcome contributions in both **English** and **Spanish**. Please see
+our [Contributing
+Guidelines](https://soyandrea.github.io/arcenso/CONTRIBUTING.md) for
+more details.
+
+## Code of Conduct
+
+Please note that the `arcenso` project is released with a [Contributor
+Code of
+Conduct](https://soyandrea.github.io/arcenso/CODE_OF_CONDUCT.md). By
+contributing to this project, you agree to abide by its terms.
