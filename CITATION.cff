@@ -11,7 +11,7 @@ title: 'arcenso: Data from Argentina''s Population Census'
 version: 0.2.1
 identifiers:
 - type: url
-  value: https://doi.org/10.5281/zenodo.18378026
+  value: https://doi.org/10.5281/zenodo.18419873
 abstract: Provides access to tidy and curated data from Argentina's official population
   censuses, covering national totals and data for the 24 jurisdictions for 1970 and
   1980. The package is designed to facilitate the exploration and reuse of historical
