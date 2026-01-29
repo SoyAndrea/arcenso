@@ -1,5 +1,10 @@
 # Changelog
 
+## arcenso 0.2.1
+
+- Added `CITATION.cff` file to provide standardized citation metadata.
+- Improved metadata generation (`codemeta.json`).
+
 ## arcenso 0.2.0
 
 ### New documentation

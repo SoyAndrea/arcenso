@@ -2,6 +2,11 @@
 
   
 
+[![R-CMD-check](https://github.com/SoyAndrea/arcenso/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/SoyAndrea/arcenso/actions/workflows/R-CMD-check.yaml)
+
+[![Codecov test
+coverage](https://codecov.io/gh/SoyAndrea/arcenso/graph/badge.svg)](https://app.codecov.io/gh/SoyAndrea/arcenso)
+
 # **Data from Argentina’s Population Census**
 
 ## Overview
@@ -104,7 +109,7 @@ specific year, topic, and geographic level using
 ``` r
 # Check available tables for 1970 related to "educacion"
 check_repository(
-  year = 1970, 
+  year = 1970,
   topic = "educacion"
 )
 #> # A tibble: 75 × 3
@@ -136,7 +141,7 @@ This is the most robust method for reproducible research.
 ``` r
 # Download specific table (e.g., Structure of Population, National level)
 census_data <- get_census(
-  year = 1970, 
+  year = 1970,
   id = "1970_00_estructura_01"
 )
 
@@ -165,12 +170,12 @@ You can also filter directly while requesting data.
 ``` r
 # Download 1970 housing data for Tierra del Fuego (geo_code "94")
 table_hab_94 <- get_census(
-  year = 1970, 
-  topic = "habitacional", 
+  year = 1970,
+  topic = "habitacional",
   geo_code = "94"
 )
 
-table_hab_94 
+table_hab_94
 #> $`1970_94_habitacional_01`
 #> # A tibble: 4 × 4
 #>   regimen_de_tenencia                 hogares personas cuartos
@@ -261,8 +266,8 @@ citation("arcenso")
   title = {arcenso: Data from Argentina's Population Census},
   author = {Andrea Gomez Vargas <andrea.gomezv11@gmail.com> [aut, cre] (ORCID: <https://orcid.org/0009-0007-8745-3967>)},
   year = {2026},
-  note = {R package version 0.2.0},
-  url = {https://soyandrea.github.io/arcenso/, https://doi.org/10.5281/zenodo.15192435},
+  note = {R package version 0.2.1},
+  url = {https://soyandrea.github.io/arcenso/, https://doi.org/10.5281/zenodo.18378026},
 }
 ```
 

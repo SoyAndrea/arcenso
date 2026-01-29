@@ -14,13 +14,13 @@ Source:
 [`inst/CITATION`](https://github.com/SoyAndrea/arcenso/blob/main/inst/CITATION)
 
 Gomez Vargas A, Ciardullo E (2025). *ARcenso: Data from Argentina's
-Population Census*. R package version 0.2.0,
+Population Census*. R package version 0.2.1,
 <https://soyandrea.github.io/arcenso/>.
 
     @Manual{,
       title = {ARcenso: Data from Argentina's Population Census},
       author = {Andrea {Gomez Vargas} and Emanuel Ciardullo},
       year = {2025},
-      note = {R package version 0.2.0},
+      note = {R package version 0.2.1},
       url = {https://soyandrea.github.io/arcenso/},
     }
