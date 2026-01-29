@@ -17,7 +17,7 @@ bibentry(
       comment = c(ORCID = "0009-0004-9447-7420")
     )
   ),
-  year = "2025",
+  year = "2026",
   note = paste0("R package version ", packageVersion("arcenso")),
   url = "https://soyandrea.github.io/arcenso/",
   header = "To cite arcenso in publications use:"
