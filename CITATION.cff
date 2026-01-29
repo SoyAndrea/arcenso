@@ -1,0 +1,292 @@
+# --------------------------------------------
+# CITATION file created with {cffr} R package
+# See also: https://docs.ropensci.org/cffr/
+# --------------------------------------------
+
+cff-version: 1.2.0
+message: 'To cite package "arcenso" in publications use:'
+type: software
+license: MIT
+title: 'arcenso: Data from Argentina''s Population Census'
+version: 0.2.0
+identifiers:
+- type: url
+  value: https://doi.org/10.5281/zenodo.18378026
+abstract: Provides access to tidy and curated data from Argentina's official population
+  censuses, covering national totals and data for the 24 jurisdictions for 1970 and
+  1980. The package is designed to facilitate the exploration and reuse of historical
+  census information through tools for data retrieval, validation, and interactive
+  visualization.
+authors:
+- family-names: Gomez Vargas
+  given-names: Andrea
+  email: andrea.gomezv11@gmail.com
+  orcid: https://orcid.org/0009-0007-8745-3967
+- family-names: Ciardullo
+  given-names: Emanuel
+  email: emanuelciardullo997@gmail.com
+  orcid: https://orcid.org/0009-0004-9447-7420
+preferred-citation:
+  type: manual
+  title: 'ARcenso: Data from Argentina''s Population Census'
+  authors:
+  - family-names: Gomez Vargas
+    given-names: Andrea
+    email: andrea.gomezv11@gmail.com
+    orcid: https://orcid.org/0009-0007-8745-3967
+  - family-names: Ciardullo
+    given-names: Emanuel
+    email: emanuelciardullo997@gmail.com
+    orcid: https://orcid.org/0009-0004-9447-7420
+  year: '2025'
+  notes: R package version 0.2.0
+  url: https://soyandrea.github.io/arcenso/
+repository-code: https://github.com/SoyAndrea/arcenso
+url: https://soyandrea.github.io/arcenso/
+contact:
+- family-names: Gomez Vargas
+  given-names: Andrea
+  email: andrea.gomezv11@gmail.com
+  orcid: https://orcid.org/0009-0007-8745-3967
+keywords:
+- argentina
+- census-data
+- package
+- r
+references:
+- type: software
+  title: 'R: A Language and Environment for Statistical Computing'
+  notes: Depends
+  url: https://www.R-project.org/
+  authors:
+  - name: R Core Team
+  institution:
+    name: R Foundation for Statistical Computing
+    address: Vienna, Austria
+  year: '2026'
+  version: '>= 4.1.0'
+- type: software
+  title: gt
+  abstract: 'gt: Easily Create Presentation-Ready Display Tables'
+  notes: Imports
+  url: https://gt.rstudio.com
+  repository: https://CRAN.R-project.org/package=gt
+  authors:
+  - family-names: Iannone
+    given-names: Richard
+    email: rich@posit.co
+    orcid: https://orcid.org/0000-0003-3925-190X
+  - family-names: Cheng
+    given-names: Joe
+    email: joe@posit.co
+  - family-names: Schloerke
+    given-names: Barret
+    email: barret@posit.co
+    orcid: https://orcid.org/0000-0001-9986-114X
+  - family-names: Haughton
+    given-names: Shannon
+    email: shannon.l.haughton@gsk.com
+  - family-names: Hughes
+    given-names: Ellis
+    email: ellis.h.hughes@gsk.com
+    orcid: https://orcid.org/0000-0003-0637-4436
+  - family-names: Lauer
+    given-names: Alexandra
+    email: alexandralauer1@gmail.com
+    orcid: https://orcid.org/0000-0002-4191-6301
+  - family-names: François
+    given-names: Romain
+    email: romain@tada.science
+  - family-names: Seo
+    given-names: JooYoung
+    email: jseo1005@illinois.edu
+    orcid: https://orcid.org/0000-0002-4064-6012
+  - family-names: Brevoort
+    given-names: Ken
+    email: ken@brevoort.com
+    orcid: https://orcid.org/0000-0002-4001-8358
+  - family-names: Roy
+    given-names: Olivier
+  year: '2026'
+  doi: 10.32614/CRAN.package.gt
+  version: '>= 0.9.0'
+- type: software
+  title: shiny
+  abstract: 'shiny: Web Application Framework for R'
+  notes: Imports
+  url: https://shiny.posit.co/
+  repository: https://CRAN.R-project.org/package=shiny
+  authors:
+  - family-names: Chang
+    given-names: Winston
+    email: winston@posit.co
+    orcid: https://orcid.org/0000-0002-1576-2126
+  - family-names: Cheng
+    given-names: Joe
+    email: joe@posit.co
+  - family-names: Allaire
+    given-names: JJ
+    email: jj@posit.co
+  - family-names: Sievert
+    given-names: Carson
+    email: carson@posit.co
+    orcid: https://orcid.org/0000-0002-4958-2844
+  - family-names: Schloerke
+    given-names: Barret
+    email: barret@posit.co
+    orcid: https://orcid.org/0000-0001-9986-114X
+  - family-names: Aden-Buie
+    given-names: Garrick
+    email: garrick@adenbuie.com
+    orcid: https://orcid.org/0000-0002-7111-0077
+  - family-names: Xie
+    given-names: Yihui
+    email: yihui@posit.co
+  - family-names: Allen
+    given-names: Jeff
+  - family-names: McPherson
+    given-names: Jonathan
+    email: jonathan@posit.co
+  - family-names: Dipert
+    given-names: Alan
+  - family-names: Borges
+    given-names: Barbara
+  year: '2026'
+  doi: 10.32614/CRAN.package.shiny
+  version: '>= 1.7.0'
+- type: software
+  title: dplyr
+  abstract: 'dplyr: A Grammar of Data Manipulation'
+  notes: Suggests
+  url: https://dplyr.tidyverse.org
+  repository: https://CRAN.R-project.org/package=dplyr
+  authors:
+  - family-names: Wickham
+    given-names: Hadley
+    email: hadley@posit.co
+    orcid: https://orcid.org/0000-0003-4757-117X
+  - family-names: François
+    given-names: Romain
+    orcid: https://orcid.org/0000-0002-2444-4226
+  - family-names: Henry
+    given-names: Lionel
+  - family-names: Müller
+    given-names: Kirill
+    orcid: https://orcid.org/0000-0002-1416-3412
+  - family-names: Vaughan
+    given-names: Davis
+    email: davis@posit.co
+    orcid: https://orcid.org/0000-0003-4777-038X
+  year: '2026'
+  doi: 10.32614/CRAN.package.dplyr
+- type: software
+  title: ggplot2
+  abstract: 'ggplot2: Create Elegant Data Visualisations Using the Grammar of Graphics'
+  notes: Suggests
+  url: https://ggplot2.tidyverse.org
+  repository: https://CRAN.R-project.org/package=ggplot2
+  authors:
+  - family-names: Wickham
+    given-names: Hadley
+    email: hadley@posit.co
+    orcid: https://orcid.org/0000-0003-4757-117X
+  - family-names: Chang
+    given-names: Winston
+    orcid: https://orcid.org/0000-0002-1576-2126
+  - family-names: Henry
+    given-names: Lionel
+  - family-names: Pedersen
+    given-names: Thomas Lin
+    email: thomas.pedersen@posit.co
+    orcid: https://orcid.org/0000-0002-5147-4711
+  - family-names: Takahashi
+    given-names: Kohske
+  - family-names: Wilke
+    given-names: Claus
+    orcid: https://orcid.org/0000-0002-7470-9261
+  - family-names: Woo
+    given-names: Kara
+    orcid: https://orcid.org/0000-0002-5125-4188
+  - family-names: Yutani
+    given-names: Hiroaki
+    orcid: https://orcid.org/0000-0002-3385-7233
+  - family-names: Dunnington
+    given-names: Dewey
+    orcid: https://orcid.org/0000-0002-9415-4582
+  - family-names: Brand
+    given-names: Teun
+    name-particle: van den
+    orcid: https://orcid.org/0000-0002-9335-7468
+  year: '2026'
+  doi: 10.32614/CRAN.package.ggplot2
+- type: software
+  title: knitr
+  abstract: 'knitr: A General-Purpose Package for Dynamic Report Generation in R'
+  notes: Suggests
+  url: https://yihui.org/knitr/
+  repository: https://CRAN.R-project.org/package=knitr
+  authors:
+  - family-names: Xie
+    given-names: Yihui
+    email: xie@yihui.name
+    orcid: https://orcid.org/0000-0003-0645-5666
+  year: '2026'
+  doi: 10.32614/CRAN.package.knitr
+- type: software
+  title: rmarkdown
+  abstract: 'rmarkdown: Dynamic Documents for R'
+  notes: Suggests
+  url: https://pkgs.rstudio.com/rmarkdown/
+  repository: https://CRAN.R-project.org/package=rmarkdown
+  authors:
+  - family-names: Allaire
+    given-names: JJ
+    email: jj@posit.co
+  - family-names: Xie
+    given-names: Yihui
+    email: xie@yihui.name
+    orcid: https://orcid.org/0000-0003-0645-5666
+  - family-names: Dervieux
+    given-names: Christophe
+    email: cderv@posit.co
+    orcid: https://orcid.org/0000-0003-4474-2498
+  - family-names: McPherson
+    given-names: Jonathan
+    email: jonathan@posit.co
+  - family-names: Luraschi
+    given-names: Javier
+  - family-names: Ushey
+    given-names: Kevin
+    email: kevin@posit.co
+  - family-names: Atkins
+    given-names: Aron
+    email: aron@posit.co
+  - family-names: Wickham
+    given-names: Hadley
+    email: hadley@posit.co
+  - family-names: Cheng
+    given-names: Joe
+    email: joe@posit.co
+  - family-names: Chang
+    given-names: Winston
+    email: winston@posit.co
+  - family-names: Iannone
+    given-names: Richard
+    email: rich@posit.co
+    orcid: https://orcid.org/0000-0003-3925-190X
+  year: '2026'
+  doi: 10.32614/CRAN.package.rmarkdown
+- type: software
+  title: testthat
+  abstract: 'testthat: Unit Testing for R'
+  notes: Suggests
+  url: https://testthat.r-lib.org
+  repository: https://CRAN.R-project.org/package=testthat
+  authors:
+  - family-names: Wickham
+    given-names: Hadley
+    email: hadley@posit.co
+  year: '2026'
+  doi: 10.32614/CRAN.package.testthat
+  version: '>= 3.0.0'
+
