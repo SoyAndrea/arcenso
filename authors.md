@@ -11,7 +11,7 @@
 ## Citation
 
 Source:
-[`inst/CITATION`](https://github.com/SoyAndrea/arcenso/blob/V0.2.1/inst/CITATION)
+[`inst/CITATION`](https://github.com/SoyAndrea/arcenso/blob/main/inst/CITATION)
 
 Gomez Vargas A, Ciardullo E (2025). *ARcenso: Data from Argentina's
 Population Census*. R package version 0.2.1,
