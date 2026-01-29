@@ -1,4 +1,4 @@
 # License
 
-    YEAR: 2024
-    COPYRIGHT HOLDER: arcenso authors
+    YEAR: 2024-2026
+    COPYRIGHT HOLDER: Andrea Gomez Vargas, Emanuel Ciardullo
