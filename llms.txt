@@ -251,7 +251,7 @@ We would like to express our special gratitude to:
 If you use **ARcenso** in your research or projects, please cite it as
 follows:
 
-Gomez Vargas, A., & Ciardullo, E. (2025). arcenso: Data from Argentina’s
+Gomez Vargas, A., & Ciardullo, E. (2026). arcenso: Data from Argentina’s
 Population Census. R package version 0.1.0. Available at:
 <https://soyandrea.github.io/arcenso/>
 
