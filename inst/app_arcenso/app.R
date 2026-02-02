@@ -1,6 +1,8 @@
 library(shiny)
 library(gt)
-library(arcenso)
+
+data("census_metadata", package = "arcenso")
+data("geo_metadata", package = "arcenso")
 
 # UI ----------------------------------------------------------------------
 ui <- fluidPage(
@@ -33,16 +35,15 @@ ui <- fluidPage(
 # SERVER ------------------------------------------------------------------
 server <- function(input, output, session) {
 
-  # 1. Filtros dinámicos
   observeEvent(input$anio, {
     req(input$anio)
     freezeReactiveValue(input, "geo")
     freezeReactiveValue(input, "tema")
     freezeReactiveValue(input, "listas")
 
-    # Usamos los datasets que vienen en el paquete
-    codigos_existentes <- arcenso::census_metadata$cod_geo[arcenso::census_metadata$anio == input$anio]
-    geo_subset <- arcenso::geo_metadata[arcenso::geo_metadata$cod_geo %in% codigos_existentes, ]
+
+    codigos_existentes <- census_metadata$cod_geo[census_metadata$anio == input$anio]
+    geo_subset <- geo_metadata[geo_metadata$cod_geo %in% codigos_existentes, ]
 
     es_total <- geo_subset$cod_geo == "00"
     geo_sorted <- rbind(geo_subset[es_total, ], geo_subset[!es_total, ])
@@ -56,8 +57,8 @@ server <- function(input, output, session) {
     freezeReactiveValue(input, "tema")
     freezeReactiveValue(input, "listas")
 
-    tema_filtrado <- arcenso::census_metadata$tema[
-      arcenso::census_metadata$anio == input$anio & arcenso::census_metadata$cod_geo == input$geo
+    tema_filtrado <- census_metadata$tema[
+      census_metadata$anio == input$anio & census_metadata$cod_geo == input$geo
     ]
     updateSelectInput(session, "tema", choices = sort(unique(tema_filtrado)))
   })
@@ -66,36 +67,32 @@ server <- function(input, output, session) {
     req(input$anio, input$geo)
     freezeReactiveValue(input, "listas")
 
-    listas_filtrado <- arcenso::census_metadata$titulo[
-      arcenso::census_metadata$anio == input$anio &
-        arcenso::census_metadata$cod_geo == input$geo &
-        arcenso::census_metadata$tema == input$tema
+    listas_filtrado <- census_metadata$titulo[
+      census_metadata$anio == input$anio &
+        census_metadata$cod_geo == input$geo &
+        census_metadata$tema == input$tema
     ]
     updateSelectInput(session, "listas", choices = sort(unique(listas_filtrado)))
   })
 
-  # 2. Output ID y Exportación para Tests
+
   output$id_view <- renderText({
     req(input$listas)
 
-    # Buscamos el ID
-    id <- arcenso::census_metadata$id_cuadro[arcenso::census_metadata$titulo == input$listas]
+    id <- census_metadata$id_cuadro[census_metadata$titulo == input$listas]
     res_id <- if (length(id) > 0) id[1] else "-"
 
-    # ESTO ES CLAVE PARA SHINYTEST2: Permite leer valores internos
-    exportTestValues(id_view_test = res_id)
+    res_id
 
-    return(res_id)
   })
 
-  # 3. Render Tabla
   output$tablacensal <- render_gt({
     req(input$listas)
 
-    titulos_posibles <- arcenso::census_metadata$titulo[arcenso::census_metadata$anio == input$anio]
+    titulos_posibles <- census_metadata$titulo[census_metadata$anio == input$anio]
     req(input$listas %in% titulos_posibles)
 
-    nombre_en_excel <- arcenso::census_metadata$archivo_rds[arcenso::census_metadata$titulo == input$listas]
+    nombre_en_excel <- census_metadata$archivo_rds[census_metadata$titulo == input$listas]
     req(length(nombre_en_excel) > 0)
 
     # Buscamos los archivos RDS en el sistema de archivos del paquete instalado
