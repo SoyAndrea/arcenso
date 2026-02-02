@@ -2,7 +2,8 @@
 % Please edit documentation in R/arcenso_gui.R
 \name{arcenso_gui}
 \alias{arcenso_gui}
-\title{ARcenso Interactive Interface}
+\title{Launches a basic Shiny application to interactively browse and consult
+Argentina's historical census data.}
 \usage{
 arcenso_gui()
 }

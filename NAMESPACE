@@ -3,5 +3,6 @@
 export(arcenso_gui)
 export(check_repository)
 export(get_census)
-import(gt)
-import(shiny)
+importFrom(gt,gt_output)
+importFrom(gt,render_gt)
+importFrom(shiny,runApp)
