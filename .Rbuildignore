@@ -10,3 +10,4 @@
 ^codemeta\.json$
 ^CITATION\.cff$
 _\.new\.png$
+^\.covrignore$

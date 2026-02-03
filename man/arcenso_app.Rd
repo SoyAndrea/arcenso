@@ -2,16 +2,16 @@
 % Please edit documentation in R/arcenso_app.R
 \name{arcenso_app}
 \alias{arcenso_app}
-\title{Launches a basic Shiny application to interactively browse and consult
-Argentina's historical census data.}
+\title{Launch ARcenso Shiny application}
 \usage{
 arcenso_app()
 }
 \value{
-A Shiny app object.
+Launches the Shiny application (invisibly returns the result of
+\code{\link[shiny:runApp]{shiny::runApp()}}).
 }
 \description{
-Launches a basic Shiny application to interactively browse and consult
+Launches a Shiny application to interactively browse and consult
 Argentina's historical census data.
 }
 \examples{

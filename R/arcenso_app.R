@@ -1,7 +1,10 @@
-#' Launches a basic Shiny application to interactively browse and consult
+#' Launch ARcenso Shiny application
+#'
+#' Launches a Shiny application to interactively browse and consult
 #' Argentina's historical census data.
 #'
-#' @return A Shiny app object.
+#' @return Launches the Shiny application (invisibly returns the result of
+#'   [shiny::runApp()]).
 #'
 #' @examples
 #' if (interactive()) {
@@ -9,10 +12,8 @@
 #' }
 #'
 #' @importFrom shiny runApp
-#' @importFrom gt gt_output render_gt
 #' @export
 arcenso_app <- function() {
-
   app_dir <- system.file("app_arcenso", package = "arcenso")
 
   if (app_dir == "") {

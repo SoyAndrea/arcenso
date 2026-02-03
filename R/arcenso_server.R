@@ -59,7 +59,7 @@ arcenso_server <- function(census_metadata, geo_metadata) {
 
   })
 
-  output$tablacensal <- render_gt({
+  output$tablacensal <- gt::render_gt({
     req(input$listas)
 
     titulos_posibles <- census_metadata$titulo[census_metadata$anio == input$anio]
@@ -86,10 +86,10 @@ arcenso_server <- function(census_metadata, geo_metadata) {
     if (length(match_idx) > 0) {
       df <- readRDS(archivos_reales[match_idx[1]])
 
-      gt(df) |>
-        tab_header(title = input$listas) |>
-        fmt_number(columns = where(is.numeric), decimals = 0, sep_mark = ".", dec_mark = ",") |>
-        opt_interactive(use_compact_mode = TRUE)
+      gt::gt(df) |>
+        gt::tab_header(title = input$listas) |>
+        gt::fmt_number(columns = tidyselect::where(is.numeric), decimals = 0, sep_mark = ".", dec_mark = ",") |>
+        gt::opt_interactive(use_compact_mode = TRUE)
     } else {
       gt(data.frame(Error = "Archivo no encontrado"))
     }
