@@ -61,7 +61,7 @@ remotes::install_github("SoyAndrea/arcenso")
 
 **arcenso** provides three core tools:
 
-- [`arcenso_gui()`](https://soyandrea.github.io/arcenso/reference/arcenso_gui.md):
+- [`arcenso_app()`](https://soyandrea.github.io/arcenso/reference/arcenso_app.md):
   Launches a Shiny app to query and visualize available tables
   interactively.
 
@@ -90,7 +90,7 @@ To launch the application locally, run:
 
 ``` r
 # Launch the interactive Shiny application
-arcenso_gui()
+arcenso_app()
 ```
 
 Look at the interactive interface in action:
@@ -251,7 +251,7 @@ We would like to express our special gratitude to:
 If you use **ARcenso** in your research or projects, please cite it as
 follows:
 
-Gomez Vargas, A., & Ciardullo, E. (2026). arcenso: Data from Argentina’s
+Gomez Vargas, A., & Ciardullo, E. (2025). arcenso: Data from Argentina’s
 Population Census. R package version 0.1.0. Available at:
 <https://soyandrea.github.io/arcenso/>
 
@@ -267,7 +267,7 @@ citation("arcenso")
   author = {Andrea Gomez Vargas <andrea.gomezv11@gmail.com> [aut, cre] (ORCID: <https://orcid.org/0009-0007-8745-3967>)},
   year = {2026},
   note = {R package version 0.2.1},
-  url = {https://soyandrea.github.io/arcenso/, https://doi.org/10.5281/zenodo.18378026},
+  url = {https://soyandrea.github.io/arcenso/, https://doi.org/10.5281/zenodo.18419873},
 }
 ```
 
@@ -289,8 +289,9 @@ contributing to this project, you agree to abide by its terms.
 
 ## All functions
 
-- [`arcenso_gui()`](https://soyandrea.github.io/arcenso/reference/arcenso_gui.md)
-  : ARcenso Interactive Interface
+- [`arcenso_app()`](https://soyandrea.github.io/arcenso/reference/arcenso_app.md)
+  : Launches a basic Shiny application to interactively browse and
+  consult Argentina's historical census data.
 - [`census_metadata`](https://soyandrea.github.io/arcenso/reference/census_metadata.md)
   : Census Metadata (Table Catalog)
 - [`check_repository()`](https://soyandrea.github.io/arcenso/reference/check_repository.md)

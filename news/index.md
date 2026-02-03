@@ -18,8 +18,7 @@
 ### Breaking changes
 
 - Renamed the Shiny application launcher from `arcenso()` to
-  [`arcenso_gui()`](https://soyandrea.github.io/arcenso/reference/arcenso_gui.md)
-  to improve clarity and avoid naming conflicts.
+  `arcenso_gui()` to improve clarity and avoid naming conflicts.
 
 ### Improvements
 
@@ -59,9 +58,7 @@ to organize and provide access to tidy datasets based on Argentina’s
   - [`check_repository()`](https://soyandrea.github.io/arcenso/reference/check_repository.md)
     – list all available data sources.
   - `arcenso()` – a Shiny app to explore the data interactively (renamed
-    to
-    [`arcenso_gui()`](https://soyandrea.github.io/arcenso/reference/arcenso_gui.md)
-    in version 0.2.0).
+    to `arcenso_gui()` in version 0.2.0).
 - Online documentation site: <https://soyandrea.github.io/arcenso>
 
 This version establishes a stable foundation for further development.
