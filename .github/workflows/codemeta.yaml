@@ -19,12 +19,12 @@ jobs:
         with:
           use-public-rspm: true
 
-      - name: Install system dependencies
-        run: sudo apt-get install -y libxml2-dev
-
-      - name: Install codemetar
-        run: install.packages("codemetar")
-        shell: Rscript {0}
+      # --- ESTO ES LO QUE AGREGMOS/CAMBIAMOS ---
+      - name: Install dependencies
+        uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          extra-packages: any::codemetar
+      # -----------------------------------------
 
       - name: Install arcenso
         run: R CMD INSTALL .

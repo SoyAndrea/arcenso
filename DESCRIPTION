@@ -35,7 +35,7 @@ Depends:
 Imports: 
     gt (>= 0.9.0),
     shiny (>= 1.7.0),
-    tidyselect  (>= 1.2.0)
+    tidyselect (>= 1.2.0)
 Suggests: 
     dplyr,
     ggplot2,
