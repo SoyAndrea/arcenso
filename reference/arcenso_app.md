@@ -1,6 +1,6 @@
-# Launches a basic Shiny application to interactively browse and consult Argentina's historical census data.
+# Launch ARcenso Shiny application
 
-Launches a basic Shiny application to interactively browse and consult
+Launches a Shiny application to interactively browse and consult
 Argentina's historical census data.
 
 ## Usage
@@ -11,7 +11,8 @@ arcenso_app()
 
 ## Value
 
-A Shiny app object.
+Launches the Shiny application (invisibly returns the result of
+[`shiny::runApp()`](https://rdrr.io/pkg/shiny/man/runApp.html)).
 
 ## Examples
 

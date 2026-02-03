@@ -3,8 +3,7 @@
 ## All functions
 
 - [`arcenso_app()`](https://soyandrea.github.io/arcenso/reference/arcenso_app.md)
-  : Launches a basic Shiny application to interactively browse and
-  consult Argentina's historical census data.
+  : Launch ARcenso Shiny application
 - [`census_metadata`](https://soyandrea.github.io/arcenso/reference/census_metadata.md)
   : Census Metadata (Table Catalog)
 - [`check_repository()`](https://soyandrea.github.io/arcenso/reference/check_repository.md)
