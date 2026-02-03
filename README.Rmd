@@ -76,7 +76,7 @@ remotes::install_github("SoyAndrea/arcenso")
 **arcenso** provides three core tools:
 
 
-- `arcenso_gui()`: Launches a Shiny app to query and visualize available tables interactively.
+- `arcenso_app()`: Launches a Shiny app to query and visualize available tables interactively.
 
 - `check_repository()`: Reports the tables currently available in the package based on search criteria.
 
@@ -100,7 +100,7 @@ To launch the application locally, run:
 
 ```{r shiny-app, eval = FALSE}
 # Launch the interactive Shiny application
-arcenso_gui()
+arcenso_app()
 ```
 
 

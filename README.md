@@ -7,7 +7,7 @@
 
 <!-- badges: start -->
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18419873.svg)](https://doi.org/10.5281/zenodo.18419873)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15192435.svg)](https://doi.org/10.5281/zenodo.15192435)
 
 [![R-CMD-check](https://github.com/SoyAndrea/arcenso/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/SoyAndrea/arcenso/actions/workflows/R-CMD-check.yaml)
 
@@ -69,7 +69,7 @@ remotes::install_github("SoyAndrea/arcenso")
 
 **arcenso** provides three core tools:
 
-- `arcenso_gui()`: Launches a Shiny app to query and visualize available
+- `arcenso_app()`: Launches a Shiny app to query and visualize available
   tables interactively.
 
 - `check_repository()`: Reports the tables currently available in the
@@ -96,7 +96,7 @@ To launch the application locally, run:
 
 ``` r
 # Launch the interactive Shiny application
-arcenso_gui()
+arcenso_app()
 ```
 
 Look at the interactive interface in action:
@@ -257,7 +257,7 @@ We would like to express our special gratitude to:
 If you use **ARcenso** in your research or projects, please cite it as
 follows:
 
-Gomez Vargas, A., & Ciardullo, E. (2026). arcenso: Data from Argentina’s
+Gomez Vargas, A., & Ciardullo, E. (2025). arcenso: Data from Argentina’s
 Population Census. R package version 0.1.0. Available at:
 <https://soyandrea.github.io/arcenso/>
 
@@ -273,7 +273,7 @@ citation("arcenso")
   author = {Andrea Gomez Vargas <andrea.gomezv11@gmail.com> [aut, cre] (ORCID: <https://orcid.org/0009-0007-8745-3967>)},
   year = {2026},
   note = {R package version 0.2.1},
-  url = {https://soyandrea.github.io/arcenso/, https://doi.org/10.5281/zenodo.18378026},
+  url = {https://soyandrea.github.io/arcenso/, https://doi.org/10.5281/zenodo.18419873},
 }
 ```
 

@@ -5,18 +5,22 @@
 #'
 #' @examples
 #' if (interactive()) {
-#'   arcenso_gui()
+#'   arcenso_app()
 #' }
 #'
 #' @importFrom shiny runApp
 #' @importFrom gt gt_output render_gt
 #' @export
-arcenso_gui <- function() {
+arcenso_app <- function() {
+
   app_dir <- system.file("app_arcenso", package = "arcenso")
 
   if (app_dir == "") {
-    stop("No se pudo encontrar el directorio de la aplicaci\u00f3n. Reinstala el paquete.", call. = FALSE)
+    stop(
+      "No se pudo encontrar el directorio de la aplicaci\u00f3n.",
+      call. = FALSE
+    )
   }
 
-  shiny::runApp(app_dir, display.mode = "normal")
+  shiny::runApp(app_dir)
 }
