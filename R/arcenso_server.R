@@ -91,7 +91,7 @@ arcenso_server <- function(census_metadata, geo_metadata) {
         gt::fmt_number(columns = tidyselect::where(is.numeric), decimals = 0, sep_mark = ".", dec_mark = ",") |>
         gt::opt_interactive(use_compact_mode = TRUE)
     } else {
-      gt(data.frame(Error = "Archivo no encontrado"))
+      gt::gt(data.frame(Error = "Archivo no encontrado"))
     }
   })
 
