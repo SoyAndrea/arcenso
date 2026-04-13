@@ -4,38 +4,50 @@
 \alias{get_census}
 \title{Get census data tables}
 \usage{
-get_census(year = 1970, id = NULL, topic = NULL, geo_code = NULL)
+get_census(year = NULL, id = NULL, topic = NULL, geo_code = NULL)
 }
 \arguments{
-\item{year}{Integer. Census year (1970 or 1980). Default is 1970.}
+\item{year}{Integer. Census year. Valid census years are 1970, 1980,
+1991, 2001, 2010, and 2022. Currently, only 1970 and 1980 are
+available in this package. Used only when \code{id} is \code{NULL}.}
 
-\item{id}{Character vector. Specific Table IDs to retrieve (e.g., "1970_00_estructura_01").
-If specified, this takes precedence over topic filters.}
+\item{id}{Character vector. Specific table IDs to retrieve
+(e.g., \code{"1970_00_estructura_01"}). If supplied, this takes precedence over
+\code{year}, \code{topic}, and \code{geo_code}.}
 
-\item{topic}{Character vector. Keywords to filter topics (e.g., "migracion", c("vivienda", "material")).
-Matches are case-insensitive.}
+\item{topic}{Character vector. Keywords to filter topics
+(e.g., \code{"migracion"}, \code{c("vivienda", "material")}).
+Matching is case-insensitive and accent-insensitive.}
 
-\item{geo_code}{Character. Geographic code (e.g., "02" for CABA).}
+\item{geo_code}{Character vector. Geographic code(s) (e.g., \code{"02"} for CABA).}
 }
 \value{
-A list of data frames containing the requested census tables.
+If one table is found, a data frame. If multiple tables are found,
+a named list of data frames. If no matches are found, returns \code{NULL}.
 }
 \description{
-Retrieves a list of curated data tables from Argentina's official population
-censuses based on the specified filters.
+Retrieves curated data tables from Argentina's official population censuses
+based on table ID or filtering criteria.
 }
 \examples{
-# 1. Retrieve a specific table by its ID
+# 1. Retrieve a specific table by ID
+educacion <- get_census(id = "1970_00_educacion_01")
+head(educacion)
 
-# Note: 'year' is still required to locate the file in the correct folder
-my_table <- get_census(year = 1970, id = "1970_00_estructura_01")
 
-my_table
-
-# 2. Retrieve tables by topic (e.g., all tables about 'habitacional')
-
+# 2. Retrieve tables by topic (may return multiple tables)
 housing_data <- get_census(year = 1970, topic = "habitacional")
+
 
 # Explore the list and extract the first table
 housing_data[[1]]
+
+
+# 3. Retrieve a single table using filters (returns a data frame)
+poblacion_total <- get_census(
+  year = 1970,
+  topic = "estructura",
+  geo_code = "00"
+)
+head(poblacion_total)
 }

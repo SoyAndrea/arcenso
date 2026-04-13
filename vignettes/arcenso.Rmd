@@ -48,7 +48,7 @@ Asimismo, permite copiar el identificador (ID) del cuadro seleccionado para util
 
 
 ```{r shinyapp, eval=FALSE}
-arcenso_gui()
+arcenso_app()
 ```
 
 Ejemplo:
@@ -145,4 +145,3 @@ Ahora que dispones de los datos, el siguiente paso es integrarlos en tus anális
 * **Tutoriales:** Para ver un flujo de trabajo completo que incluye limpieza de datos y visualización con `ggplot2`, te recomendamos leer nuestro artículo: [Ejemplo: Pirámide de Población](piramide_poblacion.html).
 * **Citación:** ARcenso es un desarrollo de código abierto. Si utilizas estos datos en investigaciones o publicaciones, por favor cita el paquete ejecutando `citation("arcenso")` en tu consola.
 * **Feedback:** Si encuentras errores o tienes sugerencias de mejora, te invitamos a abrir un *issue* en nuestro [repositorio de GitHub](https://github.com/SoyAndrea/arcenso).
-Revisi
