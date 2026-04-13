@@ -127,24 +127,16 @@ resultar en múltiples tablas de datos.</p>
 lista y luego extraer el data frame específico que deseamos
 analizar.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># 1. Descargamos los datos (Obtenemos una lista de resultados)</span></span>
-<span><span class="va">lista_censo</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_census.html">get_census</a></span><span class="op">(</span></span>
+<code class="sourceCode R"><span><span class="co"># En este caso, los filtros son lo suficientemente específicos como para</span></span>
+<span><span class="co"># devolver una única tabla. Por eso, get_census retorna directamente</span></span>
+<span><span class="co"># un data frame listo para usar (no una lista).</span></span>
+<span></span>
+<span><span class="va">poblacion_1970</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_census.html">get_census</a></span><span class="op">(</span></span>
 <span>  year <span class="op">=</span> <span class="fl">1970</span>,</span>
 <span>  topic <span class="op">=</span> <span class="st">"estructura"</span>,</span>
 <span>  geo_code <span class="op">=</span> <span class="st">"00"</span></span>
 <span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Verificamos el contenido de la lista</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/class.html" class="external-link">class</a></span><span class="op">(</span><span class="va">lista_censo</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "list"</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">lista_censo</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 1</span></span>
-<span></span>
-<span><span class="co"># 2. Extracción de la tabla</span></span>
-<span><span class="co"># Como sabemos que nuestra búsqueda es específica, tomamos el primer elemento</span></span>
-<span><span class="va">poblacion_1970</span> <span class="op">&lt;-</span> <span class="va">lista_censo</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></span>
-<span></span>
-<span><span class="co"># Ahora sí, tenemos un data frame listo para trabajar</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">poblacion_1970</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 3</span></span></span>
 <span><span class="co">#&gt;   grupo_de_edad sexo    poblacion</span></span>
@@ -178,7 +170,7 @@ las pirámides demográficas.</p></li>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">sexo</span> <span class="op">!=</span> <span class="st">"Total"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span></span>
 <span>    <span class="co"># 2. Recodificación para asegurar el orden secuencial</span></span>
-<span>    grupo_de_edad <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html" class="external-link">case_when</a></span><span class="op">(</span></span>
+<span>    grupo_de_edad <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case-and-replace-when.html" class="external-link">case_when</a></span><span class="op">(</span></span>
 <span>      <span class="va">grupo_de_edad</span> <span class="op">==</span> <span class="st">"0-4"</span> <span class="op">~</span> <span class="st">"00-04"</span>,</span>
 <span>      <span class="va">grupo_de_edad</span> <span class="op">==</span> <span class="st">"5-9"</span> <span class="op">~</span> <span class="st">"05-09"</span>,</span>
 <span>      <span class="cn">TRUE</span> <span class="op">~</span> <span class="va">grupo_de_edad</span></span>
@@ -232,7 +224,7 @@ las pirámides demográficas.</p></li>
 <span>      <span class="st">"Estructura de población por sexo y grupo quinquenal de edad. Total del país. Año 1970"</span>,</span>
 <span>    x <span class="op">=</span> <span class="st">"porcentaje"</span>,</span>
 <span>    y <span class="op">=</span> <span class="st">"Grupo quinquenal de edad"</span>,</span>
-<span>    caption <span class="op">=</span> <span class="st">"Fuente: INDEC, Censo 1970. Procesado con paquete {arcenso}."</span>,</span>
+<span>    caption <span class="op">=</span> <span class="st">"Fuente: INDEC, Censo 1970. Procesado en R con el paquete {arcenso}."</span>,</span>
 <span>    fill <span class="op">=</span> <span class="st">"Sexo"</span></span>
 <span>  <span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_bw</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>

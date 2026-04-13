@@ -58,24 +58,16 @@ Por lo tanto, el flujo de trabajo estándar consiste en descargar la
 lista y luego extraer el data frame específico que deseamos analizar.
 
 ``` r
-# 1. Descargamos los datos (Obtenemos una lista de resultados)
-lista_censo <- get_census(
+# En este caso, los filtros son lo suficientemente específicos como para
+# devolver una única tabla. Por eso, get_census retorna directamente
+# un data frame listo para usar (no una lista).
+
+poblacion_1970 <- get_census(
   year = 1970,
   topic = "estructura",
   geo_code = "00"
 )
 
-# Verificamos el contenido de la lista
-class(lista_censo)
-#> [1] "list"
-length(lista_censo)
-#> [1] 1
-
-# 2. Extracción de la tabla
-# Como sabemos que nuestra búsqueda es específica, tomamos el primer elemento
-poblacion_1970 <- lista_censo[[1]]
-
-# Ahora sí, tenemos un data frame listo para trabajar
 head(poblacion_1970)
 #> # A tibble: 6 × 3
 #>   grupo_de_edad sexo    poblacion
@@ -164,7 +156,7 @@ datos_piramide  |>
       "Estructura de población por sexo y grupo quinquenal de edad. Total del país. Año 1970",
     x = "porcentaje",
     y = "Grupo quinquenal de edad",
-    caption = "Fuente: INDEC, Censo 1970. Procesado con paquete {arcenso}.",
+    caption = "Fuente: INDEC, Censo 1970. Procesado en R con el paquete {arcenso}.",
     fill = "Sexo"
   ) +
   theme_bw() +

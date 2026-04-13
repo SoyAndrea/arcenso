@@ -141,12 +141,10 @@ This is the most robust method for reproducible research.
 ``` r
 # Download specific table (e.g., Structure of Population, National level)
 census_data <- get_census(
-  year = 1970,
   id = "1970_00_estructura_01"
 )
 
 census_data
-#> $`1970_00_estructura_01`
 #> # A tibble: 54 × 3
 #>    grupo_de_edad sexo    poblacion
 #>    <chr>         <chr>   <chr>    
@@ -176,7 +174,6 @@ table_hab_94 <- get_census(
 )
 
 table_hab_94
-#> $`1970_94_habitacional_01`
 #> # A tibble: 4 × 4
 #>   regimen_de_tenencia                 hogares personas cuartos
 #>   <chr>                               <chr>   <chr>    <chr>  
@@ -251,8 +248,8 @@ We would like to express our special gratitude to:
 If you use **ARcenso** in your research or projects, please cite it as
 follows:
 
-Gomez Vargas, A., & Ciardullo, E. (2025). arcenso: Data from Argentina’s
-Population Census. R package version 0.1.0. Available at:
+Gomez Vargas, A., & Ciardullo, E. (2026). arcenso: Data from Argentina’s
+Population Census. R package version 0.2.1. Available at:
 <https://soyandrea.github.io/arcenso/>
 
 You can also get the BibTeX entry by running:

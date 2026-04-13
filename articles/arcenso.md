@@ -41,7 +41,7 @@ para utilizarlo posteriormente como argumento en las funciones de
 descarga.
 
 ``` r
-arcenso_gui()
+arcenso_app()
 ```
 
 Ejemplo:
@@ -160,7 +160,6 @@ tabla_educacion <- get_census(id = "1970_00_educacion_01")
 
 # Inspeccionamos el resultado
 tabla_educacion
-#> $`1970_00_educacion_01`
 #> # A tibble: 108 × 4
 #>    sexo  grupo_de_edad alfabetismo poblacion
 #>    <chr> <chr>         <chr>       <chr>    
@@ -191,4 +190,4 @@ análisis.
   paquete ejecutando `citation("arcenso")` en tu consola.
 - **Feedback:** Si encuentras errores o tienes sugerencias de mejora, te
   invitamos a abrir un *issue* en nuestro [repositorio de
-  GitHub](https://github.com/SoyAndrea/arcenso). Revisi
+  GitHub](https://github.com/SoyAndrea/arcenso).
