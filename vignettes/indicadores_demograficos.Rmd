@@ -1,8 +1,8 @@
 ---
-title: "Indicadores Demograficos"
+title: "Construyendo indicadores demográficos"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{indicadores_demograficos}
+  %\VignetteIndexEntry{Construyendo indicadores demográficos}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -85,7 +85,7 @@ disponible utilizando `check_repository()`:
 check_repository(topic = "estructura", geo_code = "00")
 ```
 
-El resultado muestra los años disponibles para esa combinación de tema y
+> El resultado muestra los años disponibles para esa combinación de tema y
 geografía, junto con los identificadores de los cuadros (IDs) y su
 título. A partir de esta consulta seleccionamos los identificadores
 `1970_00_estructura_01` y `1980_00_estructura_03`, correspondientes a
@@ -123,7 +123,7 @@ pob_1970 <- poblacion_1970 |>
   select(censo, sexo, grupo_edad, poblacion)
 ```
 
-En el caso del censo de 1970, la información ya se encuentra agrupada en grupos quinquenales de edad, por lo que solo es necesario ajustar el formato de algunas etiquetas y conservar las variables relevantes para el análisis.
+> En el caso del censo de 1970, la información ya se encuentra agrupada en grupos quinquenales de edad, por lo que solo es necesario ajustar el formato de algunas etiquetas y conservar las variables relevantes para el análisis.
 
 ### Censo 1980
 
@@ -251,7 +251,7 @@ piramide |>
   )
 ```
 
-En ambos censos se observa una estructura poblacional joven, con una
+> En ambos censos se observa una estructura poblacional joven, con una
 alta concentración en los primeros grupos de edad. No obstante, hacia
 1980 comienza a evidenciarse un ligero desplazamiento hacia edades
 adultas, indicando un incipiente proceso de envejecimiento de la
@@ -275,9 +275,7 @@ envejecimiento <- poblacion |>
     poblacion_65ymas = sum(poblacion[grupo_edad %in% c("65-69", "70-74", "75-79", "80-84", "85 y más")]),
     indice = round(poblacion_65ymas / poblacion_0a14 * 100, 0)
   )
-```
 
-```{r}
 gt(envejecimiento) |>
   tab_header(
     title    = "Comparación del índice de envejecimiento",
@@ -302,7 +300,7 @@ gt(envejecimiento) |>
   )
 ```
 
-El aumento del índice de envejecimiento refleja un cambio en la
+> El aumento del índice de envejecimiento refleja un cambio en la
 estructura etaria entre 1970 y 1980, lo que indica un mayor peso
 relativo de la población de 65 años y más en relación con la población
 joven, es decir, una población relativamente más envejecida.
@@ -350,7 +348,7 @@ feminidad |>
   theme_minimal()
 ```
 
-El índice de feminidad muestra una mayor presencia de mujeres en las
+> El índice de feminidad muestra una mayor presencia de mujeres en las
 edades más avanzadas, diferencia que se acentúa entre 1970 y 1980 en
 todos los grupos de edad analizados, lo que refleja patrones de mayor
 supervivencia femenina.
@@ -461,5 +459,12 @@ población al evaluar la calidad de la fuente.
 Ambos usos son posibles porque ARcenso entrega la información en un
 formato consistente y listo para procesar.
 
-Si te interesa seguir explorando, en las demás vignettes del paquete vas
-a encontrar más ejemplos para trabajar con estos datos.
+
+## Comunidad
+
+endamos leer nuestro artículo: [Ejemplo: Pirámide de Población](piramide_poblacion.html).
+* **Citación:** ARcenso es un desarrollo de código abierto. Si utilizas estos datos en investigaciones o publicaciones, por favor cita el paquete ejecutando `citation("arcenso")` en tu consola.
+* **Feedback:** Si encuentras errores o tienes sugerencias de mejora, te invitamos a abrir un *issue* en nuestro [repositorio de GitHub](https://github.com/SoyAndrea/arcenso).
+
+
+
