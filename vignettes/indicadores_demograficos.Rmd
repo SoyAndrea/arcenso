@@ -19,25 +19,14 @@ knitr::opts_chunk$set(
 )
 ```
 
-Los censos de población son una fuente clave para comprender cómo está
-compuesta y cómo cambia la población. Aportan evidencia fundamental para
-la investigación, el diseño y la evaluación de políticas públicas, así
-como para la toma de decisiones informadas. Permiten caracterizar la
-estructura y dinámica de la población en cada territorio del país.
-
-Trabajar con estos datos suele implicar varios pasos previos:
-identificar qué información está disponible, descargar los datos,
-organizarlos y dejarlos listos para el análisis. Cuando esa información
-se encuentra dispersa y en formatos heterogéneos, el proceso puede
-volverse complejo.
-
-En esta vignette mostramos cómo trabajar de forma simple y reproducible
-con los datos censales históricos disponibles en ARcenso. A partir de
-datos oficiales que originalmente se encuentran en cuadros de Excel,
-construimos tablas estructuradas y estandarizadas listas para su
-análisis en R. Con ellas, generamos resultados de análisis demográfico
-combinando visualizaciones y tablas para explorar la estructura de la
-población, utilizando como ejemplo los censos de **1970 y 1980**.
+Los censos de población son fuentes clave para comprender la composición 
+y dinámicas poblacionales. Trabajar con ellos suele implicar varios pasos 
+previos: identificar qué información existe, descargar datos, organizarlos 
+y dejarlos listos para el análisis. En esta vignette mostramos cómo 
+trabajar de forma simple y reproducible con datos censales históricos 
+usando ARcenso, construyendo tablas estructuradas para generar 
+indicadores demográficos. Utilizamos los censos de **1970 y 1980** como 
+ejemplo.
 
 ## Paquetes de trabajo
 
@@ -50,7 +39,7 @@ instalados):
 # Si no tenés remotes
 install.packages("remotes")
 
-# Instalar {arcenso} desde GitHub
+# Instalar ARcenso desde GitHub
 remotes::install_github("SoyAndrea/arcenso")
 
 # Instalar paquetes necesarios desde CRAN
@@ -198,6 +187,10 @@ organiza los absolutos poblacionales por año censal, sexo y grupo de
 edad. Esto permite comparar de manera consistente la composición de la
 población entre distintos momentos en el tiempo.
 
+```{r}
+head(poblacion)
+```
+
 La organización por sexo y grupos quinquenales de edad permite analizar
 la estructura mediante distintas visualizaciones. En este caso
 utilizamos una **pirámide poblacional**, que facilita la lectura
@@ -207,12 +200,10 @@ conjunta de ambas dimensiones.
 
 Calculamos la distribución relativa de la población dentro de cada
 censo, lo que permite comparar la estructura poblacional entre 1970 y
-1980 independientemente del tamaño total. Además, la forma de la
-pirámide permite identificar características generales, como una mayor
-concentración en edades jóvenes o un perfil relativamente más
-envejecido.
+1980 independientemente del tamaño total.
+Para mayor detalle de como construir e interpretar una piramide poblacional el lector puede referirse a la vignette "Visualización demográfica: Pirámide de Población".
 
-```{r piramide, fig.width=8, fig.height=6}
+```{r fig.cap="Estructura de la población por sexo y grupos quinquenales de edad. Argentina, 1970 y 1980.", fig.alt= "Pirámides poblacionales que comparan la distribución por edad y sexo en Argentina entre 1970 y 1980. Se observa una base más estrecha en 1980 y un leve aumento relativo de la población en edades adultas y mayores, con diferencias entre varones y mujeres."}
 # Base para la pirámide poblacional
 piramide <- poblacion |>
   group_by(censo, sexo) |>
@@ -241,7 +232,7 @@ piramide |>
     subtitle = "Argentina. Años 1970 y 1980",
     x        = "Porcentaje",
     y        = "Grupo quinquenal de edad",
-    caption  = "Fuente: INDEC, Censo Nacional de Población 1970 y 1980. Procesado con {arcenso}.",
+    caption  = "Fuente: INDEC, Censo Nacional de Población 1970 y 1980. Procesado con ARcenso.",
     fill     = "Sexo"
   ) +
   theme_bw() +
@@ -307,7 +298,7 @@ joven, es decir, una población relativamente más envejecida.
 
 ### Índice de feminidad
 
-```{r}
+```{r fig.alt= "Gráfico que compara el índice de feminidad (mujeres por cada 100 varones) en la población de 60 años y más entre 1970 y 1980, por grupos quinquenales de edad. En todos los grupos se observa un aumento del índice, con valores más altos en las edades más avanzadas, lo que indica una mayor presencia relativa de mujeres.", fig.cap= "Cambio en el índice de feminidad de la población de 60 años y más, por grupo de edad. Argentina, 1970 y 1980."}
 feminidad <- poblacion |>
   filter(
     grupo_edad %in% c("60-64", "65-69", "70-74", "75-79", "80-84", "85 y más")
@@ -319,9 +310,8 @@ feminidad <- poblacion |>
     indice_feminidad = round(Mujeres / Varones * 100, 0)
   ) |>
   select(-Varones, -Mujeres)
-```
 
-```{r feminidad, fig.width=8, fig.height=5}
+
 feminidad |>
   pivot_wider(
     names_from   = censo,
@@ -343,7 +333,7 @@ feminidad |>
     y        = "Grupo de edad",
     title    = "Cambio en el índice de feminidad de la población de 60 años y más",
     subtitle = "Argentina. Años 1970 y 1980",
-    caption  = "Fuente: INDEC, Censo Nacional de Población 1970 y 1980. Procesado con {arcenso}."
+    caption  = "Fuente: INDEC, Censo Nacional de Población 1970 y 1980. Procesado con ARcenso."
   ) +
   theme_minimal()
 ```
@@ -372,13 +362,7 @@ los datos son muy precisos, entre 105 y 124 aceptables, y a partir de
 
 A diferencia de los indicadores anteriores, este solo puede calcularse
 para el censo de 1980, ya que requiere la edad en valores simples (no
-agrupados). Esto vuelve a ilustrar una idea central de esta vignette:
-distintos censos habilitan distintos análisis, y poder identificar
-rápidamente qué tabulados están disponibles —con `check_repository()` o
-`arcenso_app()`— es parte del trabajo previo a cualquier estudio.
-
-Para calcular el índice, volvemos al cuadro original de 1980 con la edad
-en valores simples, antes de agruparla en grupos quinquenales:
+agrupados). Para calcular el índice, volvemos al cuadro original de 1980 con la edad en valores simples, antes de agruparla en grupos quinquenales:
 
 ```{r}
 edad_simple_1980 <- get_census(id = "1980_00_estructura_03") |>
@@ -401,10 +385,7 @@ whipple <- edad_simple_1980 |>
     indice_whipple  = round(pob_multiplos_5 / (pob_total / 5) * 100, 1)
   )
 
-whipple
-```
 
-```{r}
 gt(whipple) |>
   tab_header(
     title    = "Índice de Whipple",
@@ -425,46 +406,43 @@ gt(whipple) |>
   )
 ```
 
-El índice arroja un valor de **106,6**, que en la escala de Naciones
+> El índice arroja un valor de **106,6**, que en la escala de Naciones
 Unidas se ubica en la franja de declaración *relativamente precisa*
 (entre 105 y 109). Esto significa que existe una leve atracción por las
-edades terminadas en 0 y 5 —algo prácticamente inevitable en cualquier
-censo, sobre todo en edades adultas donde la memoria sobre el año exacto
-de nacimiento puede ser menos precisa— pero el sesgo es acotado y no
+edades terminadas en 0 y 5 pero es acotado y no
 compromete la calidad general del dato.
 
-El resultado refleja un operativo censal con buena cobertura y
+> El resultado refleja un operativo censal con buena cobertura y
 un nivel de declaración de la edad razonablemente confiable, lo que da
 respaldo a los análisis demograficos presentados en las secciones
 anteriores.
 
 ## ¿Qué nos deja este análisis?
 
-Al trabajar con datos en análisis demográfico, la parte más laboriosa no
-suele estar en la construcción de indicadores o visualizaciones, sino en
-todo lo que ocurre antes: identificar qué información existe para cada
-censo, comprender cómo está organizada y construir una base coherente
-que permita comparar distintos momentos en el tiempo.
+Al trabajar con datos censales, la parte más laboriosa suele ser todo lo 
+que ocurre antes del análisis: identificar qué información existe, 
+comprender cómo está organizada y construir una base comparable entre 
+distintos momentos en el tiempo. Es justamente este proceso el que ARcenso busca simplificar.
 
-En este ejemplo eso implicó localizar los cuadros relevantes, entender
-las diferencias de estructura entre los censos de 1970 y 1980 y
-reconstruir variables a partir de la información disponible. Es
-justamente este proceso el que ARcenso busca simplificar:
-
-Una vez resuelta la organización de los datos, el análisis se vuelve más
-accesible y reproducible, permitiendo ampliar y adaptar los resultados a
-nuevas preguntas. Y más allá del valor numérico, lo interesante de este ejercicio es lo que representa: con la misma base de datos y unas pocas líneas de código
-podemos pasar de análizar cómo es y cómo cambia la
-población al evaluar la calidad de la fuente.
-Ambos usos son posibles porque ARcenso entrega la información en un
-formato consistente y listo para procesar.
+Una vez resuelta la organización de los datos, el análisis se vuelve 
+accesible y reproducible. Como muestra esta vignette, eso permite no solo 
+describir patrones demográficos sino también evaluar la calidad de los 
+datos con herramientas como el índice de Whipple.
 
 
 ## Comunidad
 
-endamos leer nuestro artículo: [Ejemplo: Pirámide de Población](piramide_poblacion.html).
+Recomendamos leer nuestro artículo: [Ejemplo: Pirámide de Población](piramide_poblacion.html).
+
 * **Citación:** ARcenso es un desarrollo de código abierto. Si utilizas estos datos en investigaciones o publicaciones, por favor cita el paquete ejecutando `citation("arcenso")` en tu consola.
+
 * **Feedback:** Si encuentras errores o tienes sugerencias de mejora, te invitamos a abrir un *issue* en nuestro [repositorio de GitHub](https://github.com/SoyAndrea/arcenso).
 
+## Referencias
 
+- Naciones Unidas (1955). *Manual II: Methods of Appraisal of Quality of
+  Basic Data for Population Estimates*. Population Studies No. 23,
+  ST/SOA/Series A/23. Department of Economic and Social Affairs,
+  Population Branch. Disponible en
+  [un.org](https://www.un.org/development/desa/pd/content/manual-ii-methods-appraisal-quality-basic-data-population-estimates).
 
