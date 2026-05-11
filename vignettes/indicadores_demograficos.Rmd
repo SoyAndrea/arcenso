@@ -322,25 +322,13 @@ supervivencia femenina.
 
 ### Índice de Whipple
 
-Hasta acá usamos los datos para describir a la población pero los censos
-también permiten algo distinto: evaluar la **calidad del propio dato**.
+Hasta acá utilizamos los datos censales para describir características de la población. Sin embargo, los censos también permiten evaluar la calidad de la información relevada.
 
-El índice de Whipple es uno de los indicadores clásicos para medir un
-fenómeno conocido como *atracción de dígitos*: la tendencia de las
-personas a declarar (o de quien releva a registrar) edades terminadas en
-0 y 5, especialmente entre quienes no recuerdan con precisión su edad.
+El índice de Whipple es un indicador clásico utilizado para medir la llamada atracción de dígitos: la tendencia a declarar edades terminadas en 0 o 5, especialmente cuando la edad exacta no se recuerda con precisión.
 
-Se calcula sobre el rango de 23 a 62 años, comparando la población que
-declara edades múltiplo de cinco (25, 30, 35... 60) contra una quinta
-parte del total del rango. Si la declaración fuera perfecta, el índice
-daría 100; valores más altos indican mayor concentración en esos
-dígitos. Naciones Unidas propone una escala interpretativa: hasta 105
-los datos son muy precisos, entre 105 y 124 aceptables, y a partir de
-125 la declaración presenta deficiencias.
+El indicador se calcula sobre la población de 23 a 62 años, comparando la cantidad de personas que declaran edades múltiplo de cinco (25, 30, 35, ..., 60) con la distribución esperada bajo una declaración uniforme. Un valor de 100 representa una declaración exacta, mientras que valores más altos indican una mayor concentración en esos dígitos.
 
-A diferencia de los indicadores anteriores, este solo puede calcularse
-para el censo de 1980, ya que requiere la edad en valores simples (no
-agrupados). Para calcular el índice, volvemos al cuadro original de 1980 con la edad en valores simples, antes de agruparla en grupos quinquenales:
+Naciones Unidas propone una escala de interpretación para este indicador: valores hasta 105 corresponden a datos muy precisos, entre 105 y 124 indican una precisión aceptable y valores iguales o superiores a 125 reflejan deficiencias en la declaración de la edad.
 
 ```{r}
 edad_simple_1980 <- get_census(id = "1980_00_estructura_03") |>
