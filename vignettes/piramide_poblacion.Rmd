@@ -1,8 +1,8 @@
 ---
-title: "Visualización demográfica: Pirámide de Población"
+title: "Visualización demográfica: pirámides poblacionales"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Visualización demográfica: Pirámide de Población}
+  %\VignetteIndexEntry{Visualización demográfica: pirámides poblacionales}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -14,21 +14,35 @@ knitr::opts_chunk$set(
 )
 ```
 
-En este artículo veremos un flujo de trabajo completo utilizando `arcenso`: desde la búsqueda de datos hasta la visualización final. El objetivo es construir una pirámide de población utilizando los datos del Censo Nacional de población de 1970.
+En este artículo veremos un flujo de trabajo completo utilizando ARcenso: desde la búsqueda de datos hasta la visualización final. El objetivo es construir una pirámide de población utilizando los datos del Censo Nacional de población de 1970.
 
 > La pirámide de población constituye una representación gráfica fundamental para el análisis demográfico. Su función principal es visualizar la composición por sexo y edad de una población, permitiendo identificar patrones estructurales como el envejecimiento, la transición demográfica o el impacto de procesos migratorios.
 
-## Paquetes de trabajo
+##  ¿Cómo empezar? 
 
-Además de `arcenso`, utilizaremos paquetes del ecosistema `tidyverse`(dplyr para manipulación de datos y ggplot2 para el gráfico).
+Para reproducir este ejemplo, es necesario contar con un entorno de trabajo en R con los paquetes requeridos. ARcenso puede instalarse desde GitHub y los demás paquetes desde CRAN *(este paso puede omitirse si los paquetes ya están instalados)*.
+
+
+```{r, eval = FALSE}
+# Si no tenés remotes
+install.packages("remotes")
+
+# Instalar ARcenso desde GitHub
+remotes::install_github("SoyAndrea/arcenso")
+
+# Instalar paquetes necesarios desde CRAN
+install.packages(c("dplyr", "tidyr", "ggplot2"))
+```
+
+Luego, cargamos los paquetes necesarios para trabajar con los datos censales y
+construir indicadores para el análisis:
 
 
 ```{r message=FALSE, warning=FALSE}
-library(arcenso)
-library(dplyr)
-library(ggplot2)
+library(arcenso) # obtención de datos censales
+library(dplyr)   # procesamiento de datos
+library(ggplot2) # diseño de gráficos
 ```
-
 
 
 ## Obtención de los datos
@@ -59,7 +73,7 @@ poblacion_1970 <- get_census(
   year = 1970,
   topic = "estructura",
   geo_code = "00"
-)
+ )
 
 head(poblacion_1970)
 ```
@@ -87,8 +101,7 @@ datos_piramide <- poblacion_1970 |>
       TRUE ~ grupo_de_edad
     ),
     # Conversión a variable numérica
-    poblacion = as.numeric(poblacion)
-  ) |> 
+    poblacion = as.numeric(poblacion)) |> 
   # 3. Cálculo de la estructura relativa
   group_by(sexo)  |> 
   mutate(
@@ -96,8 +109,7 @@ datos_piramide <- poblacion_1970 |>
       sexo == "Varones",
       -poblacion / sum(poblacion), # Valores negativos para el lado izquierdo
       poblacion / sum(poblacion) # Valores positivos para el lado derecho
-    )
-  ) |> 
+    ) ) |> 
   ungroup()
 
 
@@ -121,16 +133,14 @@ datos_piramide  |>
   scale_x_continuous(
     labels = function(x) paste0(abs(round(x * 100, 1)), "%"),
     limits = c(-0.15, 0.15),
-    breaks = seq(-0.15, 0.15, by = 0.05)
-  ) +
+    breaks = seq(-0.15, 0.15, by = 0.05)) +
   labs(
     title = 
       "Estructura de población por sexo y grupo quinquenal de edad. Total del país. Año 1970",
     x = "porcentaje",
     y = "Grupo quinquenal de edad",
     caption = "Fuente: INDEC, Censo 1970. Procesado en R con el paquete {arcenso}.",
-    fill = "Sexo"
-  ) +
+    fill = "Sexo") +
   theme_bw() +
   theme(legend.position = "bottom")
 ```
@@ -141,6 +151,6 @@ En este artículo se detalló el flujo de trabajo para transformar datos censale
 
 ## Comunidad
 
-* **Citación:** Si utilizas `ARcenso` en investigaciones, publicaciones o proyectos, te invitamos a citar el paquete ejecutando `citation("arcenso")` en tu consola de R. 
+* **Citación:** Si utilizas ARcenso en investigaciones, publicaciones o proyectos, te invitamos a citar el paquete `citation("arcenso")`. 
 
 * **Feedback:** Las sugerencias, reportes de errores y contribuciones son bienvenidas. Para más información sobre cómo colaborar con el proyecto, consulta nuestra [guía de contribución](https://soyandrea.github.io/arcenso/CONTRIBUTING.html).

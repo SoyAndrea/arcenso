@@ -143,6 +143,6 @@ tabla_educacion
 Ahora que dispones de los datos, el siguiente paso es integrarlos en tus análisis.
 
 
-* **Citación:** Si utilizas `ARcenso` en investigaciones, publicaciones o proyectos, te invitamos a citar el paquete ejecutando `citation("arcenso")` en tu consola de R. 
+* **Citación:** Si utilizas ARcenso en investigaciones, publicaciones o proyectos, te invitamos a citar el paquete `citation("arcenso")`.  
 
 * **Feedback:** Las sugerencias, reportes de errores y contribuciones son bienvenidas. Para más información sobre cómo colaborar con el proyecto, consulta nuestra [guía de contribución](https://soyandrea.github.io/arcenso/CONTRIBUTING.html).
