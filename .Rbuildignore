@@ -11,3 +11,5 @@
 ^CITATION\.cff$
 _\.new\.png$
 ^\.covrignore$
+^\.positai$
+^\.claude$

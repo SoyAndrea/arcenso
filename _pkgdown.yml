@@ -24,5 +24,7 @@ navbar:
       menu:
         - text: "Primeros pasos con ARcenso"
           href: articles/arcenso.html
-        - text: "Visualización: Pirámide de Población"
+        - text: "Visualización demográfica: pirámides poblacionales"
           href: articles/piramide_poblacion.html
+        - text: "Construyendo indicadores demográficos"
+          href: articles/indicadores_demograficos.html
