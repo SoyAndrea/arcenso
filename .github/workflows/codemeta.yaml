@@ -26,6 +26,10 @@ jobs:
         with:
           extra-packages: any::codemetar
 
+      - name: Install local package
+        run: R CMD INSTALL .
+        shell: bash
+
       - name: Write codemeta.json
         run: codemetar::write_codemeta()
         shell: Rscript {0}

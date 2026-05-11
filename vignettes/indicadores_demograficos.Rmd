@@ -43,7 +43,7 @@ install.packages(c("dplyr", "tidyr", "ggplot2", "gt"))
 Cargamos los paquetes necesarios para trabajar con los datos censales y
 construir indicadores para el análisis:
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 library(arcenso)  # obtención de datos censales
 library(dplyr)    # procesamiento de datos
 library(tidyr)    # orden y transformación de datos
