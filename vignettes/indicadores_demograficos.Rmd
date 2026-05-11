@@ -275,7 +275,7 @@ joven, es decir, una población relativamente más envejecida.
 
 Este indicador muestra cuántas mujeres hay por cada 100 varones en un grupo especifico de población. En este caso, lo analizamos en edades mayores a 60 años, donde suelen aparecer diferencias más marcadas entre hombres y mujeres.
 
-```{r fig.alt= "Gráfico que compara el índice de feminidad (mujeres por cada 100 varones) en la población de 60 años y más entre 1970 y 1980, por grupos quinquenales de edad. En todos los grupos se observa un aumento del índice, con valores más altos en las edades más avanzadas, lo que indica una mayor presencia relativa de mujeres.", fig.cap= "Cambio en el índice de feminidad de la población de 60 años y más, por grupo de edad. Argentina, 1970 y 1980."}
+```{r fig.alt= "Gráfico que compara el índice de feminidad (mujeres por cada 100 varones) en la población de 60 años y más entre 1970 y 1980, por grupos quinquenales de edad. En todos los grupos se observa un aumento del índice, con valores más altos en las edades más avanzadas, lo que indica una mayor presencia relativa de mujeres.", fig.cap= "Cambio en el índice de feminidad de la población de 60 años y más, por grupo de edad. Argentina, 1970 y 1980." , fig.width=9, fig.height=5}
 
 feminidad <- poblacion |>
   filter(
