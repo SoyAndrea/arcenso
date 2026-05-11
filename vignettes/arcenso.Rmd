@@ -138,10 +138,11 @@ tabla_educacion
 ```
 
 
-## Siguientes pasos y Comunidad
+## Comunidad
 
 Ahora que dispones de los datos, el siguiente paso es integrarlos en tus análisis.
 
-* **Tutoriales:** Para ver un flujo de trabajo completo que incluye limpieza de datos y visualización con `ggplot2`, te recomendamos leer nuestro artículo: [Ejemplo: Pirámide de Población](piramide_poblacion.html).
-* **Citación:** ARcenso es un desarrollo de código abierto. Si utilizas estos datos en investigaciones o publicaciones, por favor cita el paquete ejecutando `citation("arcenso")` en tu consola.
-* **Feedback:** Si encuentras errores o tienes sugerencias de mejora, te invitamos a abrir un *issue* en nuestro [repositorio de GitHub](https://github.com/SoyAndrea/arcenso).
+
+* **Citación:** Si utilizas `ARcenso` en investigaciones, publicaciones o proyectos, te invitamos a citar el paquete ejecutando `citation("arcenso")` en tu consola de R. 
+
+* **Feedback:** Las sugerencias, reportes de errores y contribuciones son bienvenidas. Para más información sobre cómo colaborar con el proyecto, consulta nuestra [guía de contribución](https://soyandrea.github.io/arcenso/CONTRIBUTING.html).
