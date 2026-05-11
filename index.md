@@ -34,16 +34,16 @@ use in R.
 
 ## Data Availability Roadmap
 
-| Stage | Census years  | Geographic level              | Notes                                 |
-|-------|---------------|-------------------------------|---------------------------------------|
-| **1** | 1970          | National and 24 jurisdictions | First available census data           |
-|       | 1980          | National level                | Jurisdiction-level data not available |
-| 2     | 1991 and 2001 | National level                | Coming soon                           |
-| 3     | 2010          | National level                | Coming soon                           |
-| 4     | 2022          | National level                | Coming soon                           |
-| 5     | 1980 and 1991 | 24 jurisdictions              | Coming soon                           |
-| 6     | 2001 and 2010 | 24 jurisdictions              | Coming soon                           |
-| 7     | 2022          | 24 jurisdictions              | Coming soon                           |
+| Stage | Census years | Geographic level | Notes |
+|----|----|----|----|
+| **1** | 1970 | National and 24 jurisdictions | First available census data |
+|  | 1980 | National level | Jurisdiction-level data not available |
+| 2 | 1991 and 2001 | National level | Coming soon |
+| 3 | 2010 | National level | Coming soon |
+| 4 | 2022 | National level | Coming soon |
+| 5 | 1980 and 1991 | 24 jurisdictions | Coming soon |
+| 6 | 2001 and 2010 | 24 jurisdictions | Coming soon |
+| 7 | 2022 | 24 jurisdictions | Coming soon |
 
 ## Installation
 
@@ -51,6 +51,7 @@ You can install the development version of arcenso from
 [GitHub](https://github.com/) with:
 
 ``` r
+
 # install.packages("remotes")
 # if you do not have remotes installed
 
@@ -77,6 +78,7 @@ remotes::install_github("SoyAndrea/arcenso")
 First, load the library:
 
 ``` r
+
 library(arcenso)
 ```
 
@@ -89,6 +91,7 @@ the exact Table ID you need.
 To launch the application locally, run:
 
 ``` r
+
 # Launch the interactive Shiny application
 arcenso_app()
 ```
@@ -107,6 +110,7 @@ specific year, topic, and geographic level using
 [`check_repository()`](https://soyandrea.github.io/arcenso/reference/check_repository.md):
 
 ``` r
+
 # Check available tables for 1970 related to "educacion"
 check_repository(
   year = 1970,
@@ -139,6 +143,7 @@ to retrieve the data.
 This is the most robust method for reproducible research.
 
 ``` r
+
 # Download specific table (e.g., Structure of Population, National level)
 census_data <- get_census(
   id = "1970_00_estructura_01"
@@ -166,6 +171,7 @@ census_data
 You can also filter directly while requesting data.
 
 ``` r
+
 # Download 1970 housing data for Tierra del Fuego (geo_code "94")
 table_hab_94 <- get_census(
   year = 1970,
@@ -193,6 +199,7 @@ topics? The package includes built-in datasets for quick reference.
 Use `geo_metadata` to look up the INDEC codes required for filtering.
 
 ``` r
+
 # View the full table of geographic codes
 head(arcenso::geo_metadata)
 #> # A tibble: 6 × 4
@@ -212,6 +219,7 @@ You can list all unique topics available in the census metadata using
 standard R commands:
 
 ``` r
+
 # List all unique topics
 
 unique(arcenso::census_metadata$tema)
@@ -255,6 +263,7 @@ Population Census. R package version 0.2.1. Available at:
 You can also get the BibTeX entry by running:
 
 ``` r
+
 citation("arcenso")
 ```
 

@@ -1,7 +1,7 @@
-# Visualización demográfica: Pirámide de Población
+# Visualización demográfica: pirámides poblacionales
 
 En este artículo veremos un flujo de trabajo completo utilizando
-`arcenso`: desde la búsqueda de datos hasta la visualización final. El
+ARcenso: desde la búsqueda de datos hasta la visualización final. El
 objetivo es construir una pirámide de población utilizando los datos del
 Censo Nacional de población de 1970.
 
@@ -11,15 +11,33 @@ Censo Nacional de población de 1970.
 > permitiendo identificar patrones estructurales como el envejecimiento,
 > la transición demográfica o el impacto de procesos migratorios.
 
-## Paquetes de trabajo
+## ¿Cómo empezar?
 
-Además de `arcenso`, utilizaremos paquetes del ecosistema
-`tidyverse`(dplyr para manipulación de datos y ggplot2 para el gráfico).
+Para reproducir este ejemplo, es necesario contar con un entorno de
+trabajo en R con los paquetes requeridos. ARcenso puede instalarse desde
+GitHub y los demás paquetes desde CRAN *(este paso puede omitirse si los
+paquetes ya están instalados)*.
 
 ``` r
-library(arcenso)
-library(dplyr)
-library(ggplot2)
+
+# Si no tenés remotes
+install.packages("remotes")
+
+# Instalar ARcenso desde GitHub
+remotes::install_github("SoyAndrea/arcenso")
+
+# Instalar paquetes necesarios desde CRAN
+install.packages(c("dplyr", "tidyr", "ggplot2"))
+```
+
+Luego, cargamos los paquetes necesarios para trabajar con los datos
+censales y construir indicadores para el análisis:
+
+``` r
+
+library(arcenso) # obtención de datos censales
+library(dplyr)   # procesamiento de datos
+library(ggplot2) # diseño de gráficos
 ```
 
 ## Obtención de los datos
@@ -32,6 +50,7 @@ Por ejemplo, si quisiéramos consultar los códigos de las jurisdicciones
 disponibles:
 
 ``` r
+
 # Consultamos los metadatos geográficos para ver los códigos de las provincias
 head(geo_metadata)
 #> # A tibble: 6 × 4
@@ -58,6 +77,7 @@ Por lo tanto, el flujo de trabajo estándar consiste en descargar la
 lista y luego extraer el data frame específico que deseamos analizar.
 
 ``` r
+
 # En este caso, los filtros son lo suficientemente específicos como para
 # devolver una única tabla. Por eso, get_census retorna directamente
 # un data frame listo para usar (no una lista).
@@ -66,7 +86,7 @@ poblacion_1970 <- get_census(
   year = 1970,
   topic = "estructura",
   geo_code = "00"
-)
+ )
 
 head(poblacion_1970)
 #> # A tibble: 6 × 3
@@ -97,6 +117,7 @@ censales originales mediante tres operaciones clave con `dplyr`:
   de las pirámides demográficas.
 
 ``` r
+
 datos_piramide <- poblacion_1970 |> 
   # 1. Filtramos para conservar únicamente los datos desagregados por sexo
   filter(sexo != "Total") |> 
@@ -108,8 +129,7 @@ datos_piramide <- poblacion_1970 |>
       TRUE ~ grupo_de_edad
     ),
     # Conversión a variable numérica
-    poblacion = as.numeric(poblacion)
-  ) |> 
+    poblacion = as.numeric(poblacion)) |> 
   # 3. Cálculo de la estructura relativa
   group_by(sexo)  |> 
   mutate(
@@ -117,8 +137,7 @@ datos_piramide <- poblacion_1970 |>
       sexo == "Varones",
       -poblacion / sum(poblacion), # Valores negativos para el lado izquierdo
       poblacion / sum(poblacion) # Valores positivos para el lado derecho
-    )
-  ) |> 
+    ) ) |> 
   ungroup()
 
 
@@ -140,6 +159,7 @@ head(datos_piramide)
 Finalmente, procedemos a la representación gráfica utilizando `ggplot2`.
 
 ``` r
+
 datos_piramide  |> 
   mutate(sexo = factor(sexo, levels = c("Varones", "Mujeres")))  |> 
   ggplot(aes(x = poblacion_rel, y = grupo_de_edad, fill = sexo)) +
@@ -149,23 +169,31 @@ datos_piramide  |>
   scale_x_continuous(
     labels = function(x) paste0(abs(round(x * 100, 1)), "%"),
     limits = c(-0.15, 0.15),
-    breaks = seq(-0.15, 0.15, by = 0.05)
-  ) +
+    breaks = seq(-0.15, 0.15, by = 0.05)) +
   labs(
     title = 
       "Estructura de población por sexo y grupo quinquenal de edad. Total del país. Año 1970",
     x = "porcentaje",
     y = "Grupo quinquenal de edad",
     caption = "Fuente: INDEC, Censo 1970. Procesado en R con el paquete {arcenso}.",
-    fill = "Sexo"
-  ) +
+    fill = "Sexo") +
   theme_bw() +
   theme(legend.position = "bottom")
 ```
 
-![](piramide_poblacion_files/figure-html/unnamed-chunk-5-1.png)
+![](piramide_poblacion_files/figure-html/unnamed-chunk-6-1.png)
 
 En este artículo se detalló el flujo de trabajo para transformar datos
 censales brutos en una visualización analítica. A partir de la
 estructura de datos obtenida, es posible extender este procedimiento
 para calcular otros indicadores demográficos
+
+## Comunidad
+
+- **Citación:** Si utilizas ARcenso en investigaciones, publicaciones o
+  proyectos, te invitamos a citar el paquete `citation("arcenso")`.
+
+- **Feedback:** Las sugerencias, reportes de errores y contribuciones
+  son bienvenidas. Para más información sobre cómo colaborar con el
+  proyecto, consulta nuestra [guía de
+  contribución](https://soyandrea.github.io/arcenso/CONTRIBUTING.html).

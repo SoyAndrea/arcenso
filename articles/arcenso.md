@@ -15,12 +15,14 @@ Los datos se entregan en formatos estándar de R, compatibles tanto con
 Puedes instalar la versión de desarrollo desde GitHub:
 
 ``` r
+
 remotes::install_github("SoyAndrea/arcenso")
 ```
 
 Cargamos el paquete:
 
 ``` r
+
 library(arcenso)
 ```
 
@@ -41,6 +43,7 @@ para utilizarlo posteriormente como argumento en las funciones de
 descarga.
 
 ``` r
+
 arcenso_app()
 ```
 
@@ -69,6 +72,7 @@ coinciden con los criterios de búsqueda. A continuación, se ejemplifica
 la consulta para el tópico migración en el año 1970:
 
 ``` r
+
 # La función nos listará los IDs de cuadro, código geográfico y títulos disponibles
 check_repository(
   year = 1970,
@@ -96,6 +100,7 @@ correspondientes a las tablas solicitadas.
 No necesitas dependencias externas para usar arcenso.
 
 ``` r
+
 # Descargamos
 datos_censo <- get_census(
   year = 1970,
@@ -125,6 +130,7 @@ Si usas paquetes como dplyr, puedes integrar la descarga directamente en
 tu flujo de trabajo.
 
 ``` r
+
 library(dplyr)
 
 # Descargamos
@@ -155,6 +161,7 @@ Esto es ideal para scripts reproducibles donde quieres asegurarte de
 estar trabajando siempre con el mismo cuadro.
 
 ``` r
+
 # Descarga usando el ID específico del cuadro
 tabla_educacion <- get_census(id = "1970_00_educacion_01")
 
@@ -176,18 +183,15 @@ tabla_educacion
 #> # ℹ 98 more rows
 ```
 
-## Siguientes pasos y Comunidad
+## Comunidad
 
 Ahora que dispones de los datos, el siguiente paso es integrarlos en tus
 análisis.
 
-- **Tutoriales:** Para ver un flujo de trabajo completo que incluye
-  limpieza de datos y visualización con `ggplot2`, te recomendamos leer
-  nuestro artículo: [Ejemplo: Pirámide de
-  Población](https://soyandrea.github.io/arcenso/articles/piramide_poblacion.md).
-- **Citación:** ARcenso es un desarrollo de código abierto. Si utilizas
-  estos datos en investigaciones o publicaciones, por favor cita el
-  paquete ejecutando `citation("arcenso")` en tu consola.
-- **Feedback:** Si encuentras errores o tienes sugerencias de mejora, te
-  invitamos a abrir un *issue* en nuestro [repositorio de
-  GitHub](https://github.com/SoyAndrea/arcenso).
+- **Citación:** Si utilizas ARcenso en investigaciones, publicaciones o
+  proyectos, te invitamos a citar el paquete `citation("arcenso")`.
+
+- **Feedback:** Las sugerencias, reportes de errores y contribuciones
+  son bienvenidas. Para más información sobre cómo colaborar con el
+  proyecto, consulta nuestra [guía de
+  contribución](https://soyandrea.github.io/arcenso/CONTRIBUTING.html).
