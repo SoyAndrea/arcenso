@@ -19,8 +19,8 @@ Authors@R: c(
     )
   )
 Description: Provides access to tidy and curated data from Argentina's 
-    official population censuses, covering national totals and data for the 
-    24 jurisdictions for 1970 and 1980. The package is designed to 
+    official population censuses, currently covering 1970 (national and 
+    subnational) and 1980 (national level). The package is designed to 
     facilitate the exploration and reuse of historical census information 
     through tools for data retrieval, validation, and interactive visualization.
 License: MIT + file LICENSE
