@@ -2,7 +2,7 @@
   "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
   "@type": "SoftwareSourceCode",
   "identifier": "arcenso",
-  "description": "Provides access to tidy and curated data from Argentina's official population censuses, covering national totals and data for the 24 jurisdictions for 1970 and 1980. The package is designed to facilitate the exploration and reuse of historical census information through tools for data retrieval, validation, and interactive visualization.",
+  "description": "Provides access to tidy and curated data from Argentina's official population censuses, currently covering 1970 (national and subnational) and 1980 (national level). The package is designed to facilitate the exploration and reuse of historical census information through tools for data retrieval, validation, and interactive visualization.",
   "name": "arcenso: Data from Argentina's Population Census",
   "relatedLink": "https://soyandrea.github.io/arcenso/",
   "codeRepository": "https://github.com/SoyAndrea/arcenso",
@@ -163,7 +163,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "726.527KB",
+  "fileSize": "726.785KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
