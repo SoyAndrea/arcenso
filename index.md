@@ -34,26 +34,35 @@ use in R.
 
 ## Data Availability Roadmap
 
+> Geographic levels: **National** refers to country-level totals;
+> **Subnational** refers to the 24 jurisdictions (23 provinces and the
+> Autonomous City of Buenos Aires).
+
 | Stage | Census years | Geographic level | Notes |
 |----|----|----|----|
-| **1** | 1970 | National and 24 jurisdictions | Available |
-|  | 1980 | National level | Jurisdiction-level data not available |
-| 2 | 1960 | National and 24 jurisdictions | Coming soon |
-|  | 1991 and 2001 | National level | Coming soon |
-| 3 | 2010 | National level | Coming soon |
-| 4 | 2022 | National level | Coming soon |
-| 5 | 1980 and 1991 | 24 jurisdictions | Coming soon |
-| 6 | 2001 and 2010 | 24 jurisdictions | Coming soon |
-| 7 | 2022 | 24 jurisdictions | Coming soon |
+| **1** | 1970 | National and Subnational | Available |
+|  | 1980 | National | Available |
+| 2 | 1960 | National | Coming soon — released by INDEC August 2026 |
+|  | 1991 | National | Coming soon |
+|  | 2001 | National | Coming soon |
+| 3 | 2010 | National | Coming soon |
+| 4 | 2022 | National | Coming soon |
+| 5 | 1960 | Subnational | Coming soon |
+|  | 1980 | Subnational | Coming soon |
+|  | 1991 | Subnational | Coming soon |
+| 6 | 2001 | Subnational | Coming soon |
+|  | 2010 | Subnational | Coming soon |
+| 7 | 2022 | Subnational | Coming soon |
 
 ## Installation
 
-You can install ARcenso from [GitHub](https://github.com/) with:
+You can install ARcenso from
+[GitHub](https://github.com/SoyAndrea/arcenso) with:
 
 ``` r
 
 # install.packages("pak")
-# if you do not have remotes installed
+# if you do not have pak installed
 
 pak::pak("SoyAndrea/arcenso")
 ```
