@@ -3,16 +3,20 @@
 export(arcenso_app)
 export(check_repository)
 export(get_census)
-importFrom(gt,fmt_number)
-importFrom(gt,gt)
-importFrom(gt,opt_interactive)
-importFrom(gt,tab_header)
-importFrom(shiny,freezeReactiveValue)
-importFrom(shiny,observeEvent)
-importFrom(shiny,renderText)
-importFrom(shiny,renderUI)
-importFrom(shiny,req)
-importFrom(shiny,runApp)
-importFrom(shiny,tags)
-importFrom(shiny,updateSelectInput)
+importFrom(gt,
+  fmt_number,
+  gt,
+  opt_interactive,
+  tab_header
+)
+importFrom(shiny,
+  freezeReactiveValue,
+  observeEvent,
+  renderText,
+  renderUI,
+  req,
+  runApp,
+  tags,
+  updateSelectInput
+)
 importFrom(tidyselect,where)

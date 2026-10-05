@@ -7,7 +7,7 @@
 
 <!-- badges: start -->
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15192435.svg)](https://doi.org/10.5281/zenodo.15192435)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18419873.svg)](https://doi.org/10.5281/zenodo.18419873)
 
 [![R-CMD-check](https://github.com/SoyAndrea/arcenso/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/SoyAndrea/arcenso/actions/workflows/R-CMD-check.yaml)
 
@@ -25,14 +25,14 @@ Program](https://ropensci.org/blog/2024/02/15/champions-program-champions-2024/)
 the main developer and [Emanuel
 Ciardullo](https://github.com/ECiardullo) as co-author.
 
-**ARcenso** is a package under development designed to democratize
-access to official data from Argentina’s National Population Censuses
-produced by the National Institute of Statistics and Census (INDEC).
+**ARcenso** is a package designed to democratize access to official data
+from Argentina’s National Population Censuses produced by the National
+Institute of Statistics and Census (INDEC).
 
-Currently, historical census results (1970, 1980, 1991, 2001, 2010, and
-2022) are scattered across physical books, PDFs, Excel files, or closed
-systems like REDATAM. This fragmentation makes it difficult to perform
-historical analysis or serial comparisons.
+Currently, historical census results (1960, 1970, 1980, 1991, 2001,
+2010, and 2022) are scattered across physical books, PDFs, Excel files,
+or closed systems like REDATAM. This fragmentation makes it difficult to
+perform historical analysis or serial comparisons.
 
 **ARcenso** aims to make this data available, homogenized, and ready to
 use in R.
@@ -44,9 +44,10 @@ use in R.
 
 | Stage | Census years | Geographic level | Notes |
 |----|----|----|----|
-| **1** | 1970 | National and 24 jurisdictions | First available census data |
+| **1** | 1970 | National and 24 jurisdictions | Available |
 |  | 1980 | National level | Jurisdiction-level data not available |
-| 2 | 1991 and 2001 | National level | Coming soon |
+| 2 | 1960 | National and 24 jurisdictions | Coming soon |
+|  | 1991 and 2001 | National level | Coming soon |
 | 3 | 2010 | National level | Coming soon |
 | 4 | 2022 | National level | Coming soon |
 | 5 | 1980 and 1991 | 24 jurisdictions | Coming soon |
@@ -55,19 +56,18 @@ use in R.
 
 ## Installation
 
-You can install the development version of arcenso from
-[GitHub](https://github.com/) with:
+You can install ARcenso from [GitHub](https://github.com/) with:
 
 ``` r
-# install.packages("remotes")
+# install.packages("pak")
 # if you do not have remotes installed
 
-remotes::install_github("SoyAndrea/arcenso")
+pak::pak("SoyAndrea/arcenso")
 ```
 
 ## Main functions
 
-**arcenso** provides three core tools:
+**ARcenso** provides three core tools:
 
 - `arcenso_app()`: Launches a Shiny app to query and visualize available
   tables interactively.
@@ -226,6 +226,20 @@ unique(arcenso::census_metadata$tema)
 #> 9 Levels: estructura fecundidad educacion conyugal actividad ... vivienda
 ```
 
+## Data Source
+
+The data included in **ARcenso** comes from the official population
+census publications by
+[INDEC](https://www.indec.gob.ar/indec/web/Nivel3-Tema-2-41),
+Argentina’s national statistics institute. The original census tables
+are publicly available through their digital library and historical
+publications.
+
+> **Note on citation:** If you use this data in academic publications or
+> research, we recommend citing both the ARcenso package (see
+> [Citation](#citation)) and the original INDEC census publications as
+> the primary data source.
+
 ## Acknowledgments
 
 This package was developed as part of the **[rOpenSci Champions
@@ -266,11 +280,11 @@ citation("arcenso")
 
 ``` bibtex
 @Manual{,
-  title = {arcenso: Data from Argentina's Population Census},
-  author = {Andrea Gomez Vargas <andrea.gomezv11@gmail.com> [aut, cre] (ORCID: <https://orcid.org/0009-0007-8745-3967>)},
+  title = {ARcenso: Data from Argentina's Population Census},
+  author = {Andrea {Gomez Vargas} and Emanuel Ciardullo},
   year = {2026},
   note = {R package version 0.2.1},
-  url = {https://soyandrea.github.io/arcenso/, https://doi.org/10.5281/zenodo.18419873},
+  url = {https://soyandrea.github.io/arcenso/},
 }
 ```
 
